@@ -1,7 +1,8 @@
-# Hactoberfest 2024
-<img src=https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg />
-A beginner-friendly project to help you in open-source contribution. Made specifically for contribution in HACKTOBERFEST 2024! Hello World Programs and Algorithms! Please leave a star to support this project! 
-![](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
+# Hactoberfest 2025
+<img src="https://hacktoberfest.com/_next/static/media/logo-hacktoberfest-12--nav.0ac01b46.svg" />
+A beginner-friendly project to help you in open-source contribution. Made specifically for contribution in HACKTOBERFEST 2024! Hello World Programs and Algorithms! Please leave a star to support this project!
+
+![hacktoberfest heroicon animation](https://hacktoberfest.com/_next/static/media/heroicon-animation.dd8cd700.gif)
 
 # This All programs For beginner 
 Enjoy All
