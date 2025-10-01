@@ -1,0 +1,4 @@
+Hacktoberfest is awesome! 
+Hacktoberfest brings developers together. 
+Java is powerful and fun. 
+Fun projects make Hacktoberfest special.
