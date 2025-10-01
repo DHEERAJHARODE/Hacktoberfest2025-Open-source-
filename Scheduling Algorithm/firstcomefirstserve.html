@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCFS CPU Scheduling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .gantt-chart {
+            display: flex;
+            margin-top: 20px;
+        }
+        .gantt-chart div {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>First Come First Serve (FCFS) CPU Scheduling</h2>
+    <div>
+        <label>Number of Processes: </label>
+        <input type="number" id="processCount" value="3">
+        <button onclick="createInputFields()">Generate</button>
+    </div>
+
+    <div id="inputFields"></div>
+
+    <button onclick="calculateFCFS()">Calculate</button>
+
+    <h3>Process Details</h3>
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>Process</th>
+                <th>Burst Time</th>
+                <th>Arrival Time</th>
+                <th>Waiting Time</th>
+                <th>Turnaround Time</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>Gantt Chart</h3>
+    <div class="gantt-chart" id="ganttChart"></div>
+</div>
+
+<script>
+function createInputFields() {
+    const count = document.getElementById('processCount').value;
+    const inputFields = document.getElementById('inputFields');
+    inputFields.innerHTML = '';
+
+    for(let i = 0; i < count; i++) {
+        inputFields.innerHTML += `
+            <div>
+                <label>Process ${i+1} Burst Time: </label>
+                <input type="number" id="burst${i}" value="${Math.floor(Math.random()*10)+1}">
+                <label>Arrival Time: </label>
+                <input type="number" id="arrival${i}" value="${i}"><br><br>
+            </div>
+        `;
+    }
+}
+
+function calculateFCFS() {
+    const count = document.getElementById('processCount').value;
+    const processes = [];
+
+    for(let i = 0; i < count; i++) {
+        const burstTime = parseInt(document.getElementById(`burst${i}`).value);
+        const arrivalTime = parseInt(document.getElementById(`arrival${i}`).value);
+        processes.push({id: i+1, burstTime, arrivalTime});
+    }
+
+    processes.sort((a,b) => a.arrivalTime - b.arrivalTime);
+
+    let time = 0;
+    let waitingTime = 0;
+    let turnaroundTime = 0;
+    const resultBody = document.querySelector('#resultTable tbody');
+    resultBody.innerHTML = '';
+
+    const ganttChart = document.getElementById('ganttChart');
+    ganttChart.innerHTML = '';
+
+    processes.forEach(p => {
+        if(time < p.arrivalTime) time = p.arrivalTime;
+
+        const wt = time - p.arrivalTime;
+        const tat = wt + p.burstTime;
+        waitingTime += wt;
+        turnaroundTime += tat;
+
+        resultBody.innerHTML += `
+            <tr>
+                <td>P${p.id}</td>
+                <td>${p.burstTime}</td>
+                <td>${p.arrivalTime}</td>
+                <td>${wt}</td>
+                <td>${tat}</td>
+            </tr>
+        `;
+
+        ganttChart.innerHTML += `
+            <div style="width:${p.burstTime*30}px; background-color:#${Math.floor(Math.random()*16777215).toString(16)};">
+                P${p.id}<br>${time} - ${time + p.burstTime}
+            </div>
+        `;
+
+        time += p.burstTime;
+    });
+
+    alert(`Average Waiting Time: ${(waitingTime / count).toFixed(2)}\nAverage Turnaround Time: ${(turnaroundTime / count).toFixed(2)}`);
+}
+</script>
+</body>
+</html>
