@@ -1,0 +1,1445 @@
+1. Two Sum
+-----------------------------------
+QUESTION:
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+Constraints:
+- 2 <= nums.length <= 10^4
+- -10^9 <= nums[i] <= 10^9
+- -10^9 <= target <= 10^9
+- Only one valid answer exists.
+
+SOLUTION (Python):
+def twoSum(nums, target):
+    num_map = {}
+    for i, n in enumerate(nums):
+        diff = target - n
+        if diff in num_map:
+            return [num_map[diff], i]
+        num_map[n] = i
+
+LeetCode: https://leetcode.com/problems/two-sum/
+
+
+2. Best Time to Buy and Sell Stock
+-----------------------------------
+QUESTION:
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+Constraints:
+1 <= prices.length <= 10^5
+0 <= prices[i] <= 10^4
+
+SOLUTION (Python):
+def maxProfit(prices):
+    min_price, max_profit = float('inf'), 0
+    for p in prices:
+        min_price = min(min_price, p)
+        max_profit = max(max_profit, p - min_price)
+    return max_profit
+
+LeetCode: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+
+3. Maximum Subarray (Kadane’s Algorithm)
+-----------------------------------
+QUESTION:
+Given an integer array nums, find the subarray with the largest sum, and return its sum.
+
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum = 6.
+
+Example 2:
+Input: nums = [1]
+Output: 1
+
+Example 3:
+Input: nums = [5,4,-1,7,8]
+Output: 23
+
+Constraints:
+1 <= nums.length <= 10^5
+-10^4 <= nums[i] <= 10^4
+
+SOLUTION (Python):
+def maxSubArray(nums):
+    max_sum = curr_sum = nums[0]
+    for n in nums[1:]:
+        curr_sum = max(n, curr_sum + n)
+        max_sum = max(max_sum, curr_sum)
+    return max_sum
+
+LeetCode: https://leetcode.com/problems/maximum-subarray/
+
+
+4. Merge Two Sorted Lists
+-----------------------------------
+QUESTION:
+You are given the heads of two sorted linked lists list1 and list2.
+
+Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+Return the head of the merged linked list.
+
+Example 1:
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+
+Example 2:
+Input: list1 = [], list2 = []
+Output: []
+
+Example 3:
+Input: list1 = [], list2 = [0]
+Output: [0]
+
+Constraints:
+- The number of nodes in both lists is in the range [0, 50].
+- -100 <= Node.val <= 100
+- Both list1 and list2 are sorted in non-decreasing order.
+
+SOLUTION (Python):
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def mergeTwoLists(list1, list2):
+    dummy = ListNode()
+    tail = dummy
+    while list1 and list2:
+        if list1.val < list2.val:
+            tail.next = list1
+            list1 = list1.next
+        else:
+            tail.next = list2
+            list2 = list2.next
+        tail = tail.next
+    tail.next = list1 or list2
+    return dummy.next
+
+LeetCode: https://leetcode.com/problems/merge-two-sorted-lists/
+
+
+5. Valid Parentheses
+-----------------------------------
+QUESTION:
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+1. Open brackets must be closed by the same type of brackets.
+2. Open brackets must be closed in the correct order.
+3. Every close bracket has a corresponding open bracket of the same type.
+
+Example 1:
+Input: s = "()"
+Output: true
+
+Example 2:
+Input: s = "()[]{}"
+Output: true
+
+Example 3:
+Input: s = "(]"
+Output: false
+
+Constraints:
+1 <= s.length <= 10^4
+s consists of parentheses only '()[]{}'.
+
+SOLUTION (Python):
+def isValid(s):
+    stack = []
+    mapping = {")":"(", "}":"{", "]":"["}
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else "#"
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    return not stack
+
+LeetCode: https://leetcode.com/problems/valid-parentheses/
+
+
+6. Search in Rotated Sorted Array
+-----------------------------------
+QUESTION:
+There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length).
+
+Given the array nums after the rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Example 1:
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+Example 2:
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+
+Example 3:
+Input: nums = [1], target = 0
+Output: -1
+
+Constraints:
+1 <= nums.length <= 5000
+-10^4 <= nums[i] <= 10^4
+All values of nums are unique.
+nums is guaranteed to be rotated at some pivot.
+-10^4 <= target <= 10^4
+
+SOLUTION (Python):
+def search(nums, target):
+    left, right = 0, len(nums)-1
+    while left <= right:
+        mid = (left + right)//2
+        if nums[mid] == target:
+            return mid
+        if nums[left] <= nums[mid]:
+            if nums[left] <= target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        else:
+            if nums[mid] < target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+    return -1
+
+LeetCode: https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+
+7. Container With Most Water
+-----------------------------------
+QUESTION:
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the i-th line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+Example 1:
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+
+Example 2:
+Input: height = [1,1]
+Output: 1
+
+Constraints:
+n == height.length
+2 <= n <= 10^5
+0 <= height[i] <= 10^4
+
+SOLUTION (Python):
+def maxArea(height):
+    l, r = 0, len(height)-1
+    max_area = 0
+    while l < r:
+        max_area = max(max_area, (r-l) * min(height[l], height[r]))
+        if height[l] < height[r]:
+            l += 1
+        else:
+            r -= 1
+    return max_area
+
+LeetCode: https://leetcode.com/problems/container-with-most-water/
+
+
+8. Climbing Stairs
+-----------------------------------
+QUESTION:
+You are climbing a staircase. It takes n steps to reach the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Example 1:
+Input: n = 2
+Output: 2
+Explanation: There are two ways: (1+1) and (2).
+
+Example 2:
+Input: n = 3
+Output: 3
+Explanation: (1+1+1), (1+2), (2+1).
+
+Constraints:
+1 <= n <= 45
+
+SOLUTION (Python):
+def climbStairs(n):
+    a, b = 1, 1
+    for _ in range(n):
+        a, b = b, a+b
+    return a
+
+LeetCode: https://leetcode.com/problems/climbing-stairs/
+
+
+9. Minimum Path Sum
+-----------------------------------
+QUESTION:
+Given a m x n grid filled with non-negative numbers, find a path from top-left to bottom-right, which minimizes the sum of all numbers along its path.
+
+You can only move either down or right at any point in time.
+
+Example 1:
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: The path is 1 → 3 → 1 → 1 → 1.
+
+Example 2:
+Input: grid = [[1,2,3],[4,5,6]]
+Output: 12
+
+Constraints:
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 200
+0 <= grid[i][j] <= 200
+
+SOLUTION (Python):
+def minPathSum(grid):
+    m, n = len(grid), len(grid[0])
+    for i in range(1, m):
+        grid[i][0] += grid[i-1][0]
+    for j in range(1, n):
+        grid[0][j] += grid[0][j-1]
+    for i in range(1, m):
+        for j in range(1, n):
+            grid[i][j] += min(grid[i-1][j], grid[i][j-1])
+    return grid[-1][-1]
+
+LeetCode: https://leetcode.com/problems/minimum-path-sum/
+
+
+10. Unique Paths
+-----------------------------------
+QUESTION:
+There is a robot on an m x n grid. The robot is initially located at the top-left corner (0, 0).
+
+The robot tries to move to the bottom-right corner (m-1, n-1). The robot can only move either down or right at any point in time.
+
+Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+
+The answer is guaranteed to be less than or equal to 2 * 10^9.
+
+Example 1:
+Input: m = 3, n = 7
+Output: 28
+
+Example 2:
+Input: m = 3, n = 2
+Output: 3
+Explanation: From the start, you can move right → down → down OR down → down → right OR down → right → down.
+
+Constraints:
+1 <= m, n <= 100
+
+SOLUTION (Python):
+def uniquePaths(m, n):
+    dp = [[1]*n for _ in range(m)]
+    for i in range(1, m):
+        for j in range(1, n):
+            dp[i][j] = dp[i-1][j] + dp[i][j-1]
+    return dp[m-1][n-1]
+
+LeetCode: https://leetcode.com/problems/unique-paths/
+
+
+11. Set Matrix Zeroes
+-----------------------------------
+QUESTION:
+Given an m x n integer matrix, if an element is 0, set its entire row and column to 0's.
+
+You must do it in place.
+
+Example 1:
+Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+Output: [[1,0,1],[0,0,0],[1,0,1]]
+
+Example 2:
+Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+
+Constraints:
+m == matrix.length
+n == matrix[0].length
+1 <= m, n <= 200
+-2^31 <= matrix[i][j] <= 2^31 - 1
+
+SOLUTION (Python):
+def setZeroes(matrix):
+    rows, cols = len(matrix), len(matrix[0])
+    row_zero = False
+    col_zero = False
+    
+    # Check if first row has zero
+    for j in range(cols):
+        if matrix[0][j] == 0:
+            row_zero = True
+    # Check if first column has zero
+    for i in range(rows):
+        if matrix[i][0] == 0:
+            col_zero = True
+    
+    # Use first row/col as markers
+    for i in range(1, rows):
+        for j in range(1, cols):
+            if matrix[i][j] == 0:
+                matrix[i][0] = 0
+                matrix[0][j] = 0
+    
+    # Zero cells based on markers
+    for i in range(1, rows):
+        for j in range(1, cols):
+            if matrix[i][0] == 0 or matrix[0][j] == 0:
+                matrix[i][j] = 0
+    
+    # Handle first row and column
+    if row_zero:
+        for j in range(cols):
+            matrix[0][j] = 0
+    if col_zero:
+        for i in range(rows):
+            matrix[i][0] = 0
+
+LeetCode: https://leetcode.com/problems/set-matrix-zeroes/
+
+
+12. Rotate Image
+-----------------------------------
+QUESTION:
+You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+
+You must rotate the image in-place, which means you have to modify the input 2D matrix directly.
+
+Example 1:
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[7,4,1],[8,5,2],[9,6,3]]
+
+Example 2:
+Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+
+Constraints:
+n == matrix.length == matrix[i].length
+1 <= n <= 20
+-1000 <= matrix[i][j] <= 1000
+
+SOLUTION (Python):
+def rotate(matrix):
+    n = len(matrix)
+    # transpose
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    # reverse each row
+    for row in matrix:
+        row.reverse()
+
+LeetCode: https://leetcode.com/problems/rotate-image/
+
+
+13. Spiral Matrix
+-----------------------------------
+QUESTION:
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+Example 1:
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+Constraints:
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+SOLUTION (Python):
+def spiralOrder(matrix):
+    res = []
+    while matrix:
+        res += matrix.pop(0)
+        if matrix and matrix[0]:
+            for row in matrix:
+                res.append(row.pop())
+        if matrix:
+            res += matrix.pop()[::-1]
+        if matrix and matrix[0]:
+            for row in matrix[::-1]:
+                res.append(row.pop(0))
+    return res
+
+LeetCode: https://leetcode.com/problems/spiral-matrix/
+
+
+14. Subsets
+-----------------------------------
+QUESTION:
+Given an integer array nums of unique elements, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
+
+Example 2:
+Input: nums = [0]
+Output: [[],[0]]
+
+Constraints:
+1 <= nums.length <= 10
+-10 <= nums[i] <= 10
+All elements of nums are unique.
+
+SOLUTION (Python):
+def subsets(nums):
+    res = [[]]
+    for num in nums:
+        res += [curr + [num] for curr in res]
+    return res
+
+LeetCode: https://leetcode.com/problems/subsets/
+
+
+15. Combination Sum
+-----------------------------------
+QUESTION:
+Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. 
+
+You may return the combinations in any order. The same number may be chosen an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+
+Example 1:
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+
+Example 2:
+Input: candidates = [2,3,5], target = 8
+Output: [[2,2,2,2],[2,3,3],[3,5]]
+
+Example 3:
+Input: candidates = [2], target = 1
+Output: []
+
+Constraints:
+1 <= candidates.length <= 30
+2 <= candidates[i] <= 40
+All elements of candidates are distinct.
+1 <= target <= 40
+
+SOLUTION (Python):
+def combinationSum(candidates, target):
+    res = []
+    def backtrack(remain, comb, start):
+        if remain == 0:
+            res.append(list(comb))
+            return
+        for i in range(start, len(candidates)):
+            if candidates[i] > remain:
+                continue
+            comb.append(candidates[i])
+            backtrack(remain - candidates[i], comb, i)
+            comb.pop()
+    backtrack(target, [], 0)
+    return res
+
+LeetCode: https://leetcode.com/problems/combination-sum/
+
+
+16. Permutations
+-----------------------------------
+QUESTION:
+Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+
+Example 1:
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+Example 2:
+Input: nums = [0,1]
+Output: [[0,1],[1,0]]
+
+Constraints:
+1 <= nums.length <= 6
+-10 <= nums[i] <= 10
+All the integers of nums are unique.
+
+SOLUTION (Python):
+def permute(nums):
+    res = []
+    def backtrack(start):
+        if start == len(nums):
+            res.append(nums[:])
+        for i in range(start, len(nums)):
+            nums[start], nums[i] = nums[i], nums[start]
+            backtrack(start+1)
+            nums[start], nums[i] = nums[i], nums[start]
+    backtrack(0)
+    return res
+
+LeetCode: https://leetcode.com/problems/permutations/
+
+
+17. Merge Intervals
+-----------------------------------
+QUESTION:
+Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+
+Constraints:
+1 <= intervals.length <= 10^4
+intervals[i].length == 2
+0 <= starti <= endi <= 10^4
+
+SOLUTION (Python):
+def merge(intervals):
+    intervals.sort(key=lambda x:x[0])
+    res = [intervals[0]]
+    for start, end in intervals[1:]:
+        if res[-1][1] >= start:
+            res[-1][1] = max(res[-1][1], end)
+        else:
+            res.append([start, end])
+    return res
+
+LeetCode: https://leetcode.com/problems/merge-intervals/
+
+
+18. Insert Interval
+-----------------------------------
+QUESTION:
+You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] sorted in ascending order by starti, and an interval newInterval = [start, end].
+
+Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge if needed).
+
+Return intervals after the insertion.
+
+Example 1:
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+
+Example 2:
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+
+Constraints:
+0 <= intervals.length <= 10^4
+intervals[i].length == 2
+0 <= starti <= endi <= 10^5
+newInterval.length == 2
+0 <= start <= end <= 10^5
+
+SOLUTION (Python):
+def insert(intervals, newInterval):
+    res = []
+    for i, (s,e) in enumerate(intervals):
+        if newInterval[1] < s:
+            res.append(newInterval)
+            return res + intervals[i:]
+        elif newInterval[0] > e:
+            res.append([s,e])
+        else:
+            newInterval[0] = min(newInterval[0], s)
+            newInterval[1] = max(newInterval[1], e)
+    res.append(newInterval)
+    return res
+
+LeetCode: https://leetcode.com/problems/insert-interval/
+
+
+19. Longest Substring Without Repeating Characters
+-----------------------------------
+QUESTION:
+Given a string s, find the length of the longest substring without repeating characters.
+
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with length 3.
+
+Example 2:
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with length 1.
+
+Example 3:
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", length 3.
+
+Constraints:
+0 <= s.length <= 5 * 10^4
+s consists of English letters, digits, symbols and spaces.
+
+SOLUTION (Python):
+def lengthOfLongestSubstring(s):
+    seen = {}
+    left = max_len = 0
+    for right, c in enumerate(s):
+        if c in seen and seen[c] >= left:
+            left = seen[c] + 1
+        seen[c] = right
+        max_len = max(max_len, right - left + 1)
+    return max_len
+
+LeetCode: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+
+20. Longest Palindromic Substring
+-----------------------------------
+QUESTION:
+Given a string s, return the longest palindromic substring in s.
+
+Example 1:
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+
+Example 2:
+Input: s = "cbbd"
+Output: "bb"
+
+Constraints:
+1 <= s.length <= 1000
+s consist of only digits and English letters.
+
+SOLUTION (Python):
+def longestPalindrome(s):
+    res = ""
+    for i in range(len(s)):
+        # odd length palindrome
+        l, r = i, i
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            if (r - l + 1) > len(res):
+                res = s[l:r+1]
+            l -= 1; r += 1
+        # even length palindrome
+        l, r = i, i+1
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            if (r - l + 1) > len(res):
+                res = s[l:r+1]
+            l -= 1; r += 1
+    return res
+
+LeetCode: https://leetcode.com/problems/longest-palindromic-substring/
+
+
+21. Palindromic Substrings
+-----------------------------------
+QUESTION:
+Given a string s, return the number of palindromic substrings in it.
+
+Example 1:
+Input: s = "abc"
+Output: 3
+Explanation: "a","b","c".
+
+Example 2:
+Input: s = "aaa"
+Output: 6
+Explanation: "a","a","a","aa","aa","aaa".
+
+Constraints:
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+
+SOLUTION (Python):
+def countSubstrings(s):
+    def expand(l, r):
+        count = 0
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            count += 1
+            l -= 1; r += 1
+        return count
+    res = 0
+    for i in range(len(s)):
+        res += expand(i,i) + expand(i,i+1)
+    return res
+
+LeetCode: https://leetcode.com/problems/palindromic-substrings/
+
+
+22. Word Search
+-----------------------------------
+QUESTION:
+Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cells (horizontally or vertically). The same cell may not be used more than once.
+
+Example 1:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+Output: true
+
+Example 2:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
+Output: true
+
+Example 3:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
+Output: false
+
+Constraints:
+m == board.length
+n == board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
+
+SOLUTION (Python):
+def exist(board, word):
+    rows, cols = len(board), len(board[0])
+    path = set()
+    def dfs(r,c,i):
+        if i == len(word):
+            return True
+        if (r<0 or c<0 or r>=rows or c>=cols or word[i]!=board[r][c] or (r,c) in path):
+            return False
+        path.add((r,c))
+        res = (dfs(r+1,c,i+1) or dfs(r-1,c,i+1) or dfs(r,c+1,i+1) or dfs(r,c-1,i+1))
+        path.remove((r,c))
+        return res
+    for r in range(rows):
+        for c in range(cols):
+            if dfs(r,c,0): return True
+    return False
+
+LeetCode: https://leetcode.com/problems/word-search/
+
+
+23. Valid Sudoku
+-----------------------------------
+QUESTION:
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated.
+
+A Sudoku board (partially filled) could be valid but incomplete.
+
+Example 1:
+Input: 
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+Output: true
+
+Constraints:
+board.length == 9
+board[i].length == 9
+board[i][j] is a digit or '.'.
+
+SOLUTION (Python):
+def isValidSudoku(board):
+    rows = [set() for _ in range(9)]
+    cols = [set() for _ in range(9)]
+    boxes = [set() for _ in range(9)]
+    for i in range(9):
+        for j in range(9):
+            num = board[i][j]
+            if num == ".": continue
+            if num in rows[i] or num in cols[j] or num in boxes[(i//3)*3 + j//3]:
+                return False
+            rows[i].add(num); cols[j].add(num); boxes[(i//3)*3 + j//3].add(num)
+    return True
+
+LeetCode: https://leetcode.com/problems/valid-sudoku/
+
+
+24. Rotate Array
+-----------------------------------
+QUESTION:
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+Example 1:
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+
+Example 2:
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+
+Constraints:
+1 <= nums.length <= 10^5
+-2^31 <= nums[i] <= 2^31 - 1
+0 <= k <= 10^5
+
+SOLUTION (Python):
+def rotate(nums, k):
+    n = len(nums)
+    k %= n
+    nums[:] = nums[-k:] + nums[:-k]
+
+LeetCode: https://leetcode.com/problems/rotate-array/
+
+
+25. Jump Game
+-----------------------------------
+QUESTION:
+You are given an integer array nums. You are initially positioned at the first index. Each element nums[i] represents your maximum jump length at that position.
+
+Return true if you can reach the last index, or false otherwise.
+
+Example 1:
+Input: nums = [2,3,1,1,4]
+Output: true
+
+Example 2:
+Input: nums = [3,2,1,0,4]
+Output: false
+
+Constraints:
+1 <= nums.length <= 10^4
+0 <= nums[i] <= 10^5
+
+SOLUTION (Python):
+def canJump(nums):
+    max_reach = 0
+    for i, num in enumerate(nums):
+        if i > max_reach:
+            return False
+        max_reach = max(max_reach, i+num)
+    return True
+
+LeetCode: https://leetcode.com/problems/jump-game/
+
+
+26. Merge Sorted Array
+-----------------------------------
+QUESTION:
+You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums2 into nums1 as one sorted array. The final sorted array should not be returned by the function but instead be stored inside the array nums1.
+
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+
+Example 2:
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+
+Constraints:
+1 <= m, n <= 200
+-10^9 <= nums1[i], nums2[j] <= 10^9
+
+SOLUTION (Python):
+def merge(nums1, m, nums2, n):
+    i, j, k = m-1, n-1, m+n-1
+    while j >= 0:
+        if i >= 0 and nums1[i] > nums2[j]:
+            nums1[k] = nums1[i]
+            i -= 1
+        else:
+            nums1[k] = nums2[j]
+            j -= 1
+        k -= 1
+
+LeetCode: https://leetcode.com/problems/merge-sorted-array/
+
+
+27. Plus One
+-----------------------------------
+QUESTION:
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant.
+
+Increment the large integer by one and return the resulting array.
+
+Example 1:
+Input: digits = [1,2,3]
+Output: [1,2,4]
+
+Example 2:
+Input: digits = [9]
+Output: [1,0]
+
+Constraints:
+1 <= digits.length <= 100
+0 <= digits[i] <= 9
+
+SOLUTION (Python):
+def plusOne(digits):
+    for i in range(len(digits)-1, -1, -1):
+        if digits[i] < 9:
+            digits[i] += 1
+            return digits
+        digits[i] = 0
+    return [1] + digits
+
+LeetCode: https://leetcode.com/problems/plus-one/
+
+
+28. Add Binary
+-----------------------------------
+QUESTION:
+Given two binary strings a and b, return their sum as a binary string.
+
+Example 1:
+Input: a = "11", b = "1"
+Output: "100"
+
+Example 2:
+Input: a = "1010", b = "1011"
+Output: "10101"
+
+Constraints:
+1 <= a.length, b.length <= 10^4
+a and b consist only of '0' or '1'.
+
+SOLUTION (Python):
+def addBinary(a, b):
+    i, j, carry, res = len(a)-1, len(b)-1, 0, []
+    while i >= 0 or j >= 0 or carry:
+        total = carry
+        if i >= 0: total += int(a[i]); i -= 1
+        if j >= 0: total += int(b[j]); j -= 1
+        res.append(str(total % 2))
+        carry = total // 2
+    return "".join(reversed(res))
+
+LeetCode: https://leetcode.com/problems/add-binary/
+
+
+29. Sqrt(x)
+-----------------------------------
+QUESTION:
+Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative.
+
+You must not use built-in exponent function or sqrt.
+
+Example 1:
+Input: x = 4
+Output: 2
+
+Example 2:
+Input: x = 8
+Output: 2
+Explanation: The square root of 8 is 2.828... so the answer is 2.
+
+Constraints:
+0 <= x <= 2^31 - 1
+
+SOLUTION (Python):
+def mySqrt(x):
+    l, r = 0, x
+    while l <= r:
+        mid = (l+r)//2
+        if mid*mid <= x < (mid+1)*(mid+1):
+            return mid
+        elif mid*mid < x:
+            l = mid+1
+        else:
+            r = mid-1
+
+LeetCode: https://leetcode.com/problems/sqrtx/
+
+
+30. Pow(x, n)
+-----------------------------------
+QUESTION:
+Implement pow(x, n), which calculates x raised to the power n (i.e., x^n).
+
+Example 1:
+Input: x = 2.00000, n = 10
+Output: 1024.00000
+
+Example 2:
+Input: x = 2.10000, n = 3
+Output: 9.26100
+
+Example 3:
+Input: x = 2.00000, n = -2
+Output: 0.25
+
+Constraints:
+-100.0 < x < 100.0
+-2^31 <= n <= 2^31 - 1
+n is an integer.
+-10^4 <= x^n <= 10^4
+
+SOLUTION (Python):
+def myPow(x, n):
+    if n == 0: return 1
+    if n < 0: return 1 / myPow(x, -n)
+    half = myPow(x, n//2)
+    return half * half if n%2 == 0 else half * half * x
+
+LeetCode: https://leetcode.com/problems/powx-n/
+
+
+31. Reverse Linked List
+-----------------------------------
+QUESTION:
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+Example 1:
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+Constraints:
+The number of nodes in the list is in the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+SOLUTION (Python):
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverseList(head):
+    prev, curr = None, head
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_temp
+    return prev
+
+LeetCode: https://leetcode.com/problems/reverse-linked-list/
+
+
+32. Detect Cycle in Linked List
+-----------------------------------
+QUESTION:
+Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+Example 1:
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: tail connects to node index 1.
+
+Example 2:
+Input: head = [1,2], pos = 0
+Output: true
+
+Example 3:
+Input: head = [1], pos = -1
+Output: false
+
+Constraints:
+The number of the nodes in the list is in the range [0, 10^4].
+-10^5 <= Node.val <= 10^5
+pos is -1 or a valid index in the linked-list.
+
+SOLUTION (Python):
+def hasCycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+
+LeetCode: https://leetcode.com/problems/linked-list-cycle/
+
+
+33. Intersection of Two Linked Lists
+-----------------------------------
+QUESTION:
+Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection, return null.
+
+Example 1:
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
+Output: Reference of the node with value = 8
+
+Example 2:
+Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+Output: Reference of the node with value = 2
+
+Constraints:
+The number of nodes in listA is in the range [0, 3 * 10^4].
+The number of nodes in listB is in the range [0, 3 * 10^4].
+-10^5 <= Node.val <= 10^5
+
+SOLUTION (Python):
+def getIntersectionNode(headA, headB):
+    a, b = headA, headB
+    while a != b:
+        a = a.next if a else headB
+        b = b.next if b else headA
+    return a
+
+LeetCode: https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+
+34. Remove N-th Node From End of List
+-----------------------------------
+QUESTION:
+Given the head of a linked list, remove the n-th node from the end of the list and return its head.
+
+Example 1:
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+
+Example 2:
+Input: head = [1], n = 1
+Output: []
+
+Constraints:
+The number of nodes in the list is sz.
+1 <= sz <= 30
+0 <= Node.val <= 100
+1 <= n <= sz
+
+SOLUTION (Python):
+def removeNthFromEnd(head, n):
+    dummy = ListNode(0, head)
+    first = second = dummy
+    for _ in range(n+1):
+        first = first.next
+    while first:
+        first = first.next
+        second = second.next
+    second.next = second.next.next
+    return dummy.next
+
+LeetCode: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+
+35. Binary Tree Inorder Traversal
+-----------------------------------
+QUESTION:
+Given the root of a binary tree, return the inorder traversal of its nodes' values.
+
+Example 1:
+Input: root = [1,null,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: root = []
+Output: []
+
+Constraints:
+The number of nodes in the tree is in the range [0, 100].
+-100 <= Node.val <= 100
+
+SOLUTION (Python):
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def inorderTraversal(root):
+    res, stack = [], []
+    while root or stack:
+        while root:
+            stack.append(root)
+            root = root.left
+        root = stack.pop()
+        res.append(root.val)
+        root = root.right
+    return res
+
+LeetCode: https://leetcode.com/problems/binary-tree-inorder-traversal/
+
+
+36. Symmetric Tree
+-----------------------------------
+QUESTION:
+Given the root of a binary tree, check whether it is a mirror of itself (symmetric around its center).
+
+Example 1:
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+
+Example 2:
+Input: root = [1,2,2,null,3,null,3]
+Output: false
+
+Constraints:
+The number of nodes in the tree is in the range [1, 1000].
+-100 <= Node.val <= 100
+
+SOLUTION (Python):
+def isSymmetric(root):
+    def isMirror(t1, t2):
+        if not t1 and not t2: return True
+        if not t1 or not t2: return False
+        return t1.val == t2.val and isMirror(t1.left,t2.right) and isMirror(t1.right,t2.left)
+    return isMirror(root.left, root.right) if root else True
+
+LeetCode: https://leetcode.com/problems/symmetric-tree/
+
+
+37. Maximum Depth of Binary Tree
+-----------------------------------
+QUESTION:
+Given the root of a binary tree, return its maximum depth.
+
+Example 1:
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+
+Example 2:
+Input: root = [1,null,2]
+Output: 2
+
+Constraints:
+The number of nodes in the tree is in the range [0, 10^4].
+-100 <= Node.val <= 100
+
+SOLUTION (Python):
+def maxDepth(root):
+    if not root: return 0
+    return 1 + max(maxDepth(root.left), maxDepth(root.right))
+
+LeetCode: https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+
+38. Convert Sorted Array to Binary Search Tree
+-----------------------------------
+QUESTION:
+Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+
+Example 1:
+Input: nums = [-10,-3,0,5,9]
+Output: [0,-3,9,-10,null,5]
+
+Example 2:
+Input: nums = [1,3]
+Output: [3,1]
+
+Constraints:
+1 <= nums.length <= 10^4
+-10^4 <= nums[i] <= 10^4
+nums is sorted in ascending order.
+
+SOLUTION (Python):
+def sortedArrayToBST(nums):
+    if not nums: return None
+    mid = len(nums)//2
+    root = TreeNode(nums[mid])
+    root.left = sortedArrayToBST(nums[:mid])
+    root.right = sortedArrayToBST(nums[mid+1:])
+    return root
+
+LeetCode: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+
+
+39. Path Sum
+-----------------------------------
+QUESTION:
+Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+
+Example 1:
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+Output: true
+
+Example 2:
+Input: root = [1,2,3], targetSum = 5
+Output: false
+
+Constraints:
+The number of nodes in the tree is in the range [0, 5000].
+-1000 <= Node.val <= 1000
+-1000 <= targetSum <= 1000
+
+SOLUTION (Python):
+def hasPathSum(root, targetSum):
+    if not root: return False
+    if not root.left and not root.right: return root.val == targetSum
+    return hasPathSum(root.left, targetSum - root.val) or hasPathSum(root.right, targetSum - root.val)
+
+LeetCode: https://leetcode.com/problems/path-sum/
+
+
+40. Maximum Path Sum
+-----------------------------------
+QUESTION:
+A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. The path does not need to pass through the root.
+
+The path sum of a path is the sum of the node's values.
+
+Given the root of a binary tree, return the maximum path sum of any path.
+
+Example 1:
+Input: root = [1,2,3]
+Output: 6
+
+Example 2:
+Input: root = [-10,9,20,null,null,15,7]
+Output: 42
+
+Constraints:
+The number of nodes in the tree is in the range [0, 3 * 10^4].
+-1000 <= Node.val <= 1000
+
+SOLUTION (Python):
+def maxPathSum(root):
+    max_sum = float('-inf')
+    def helper(node):
+        nonlocal max_sum
+        if not node: return 0
+        left = max(helper(node.left),0)
+        right = max(helper(node.right),0)
+        max_sum = max(max_sum, node.val + left + right)
+        return node.val + max(left,right)
+    helper(root)
+    return max_sum
+
+LeetCode: https://leetcode.com/problems/binary-tree-maximum-path-sum/
