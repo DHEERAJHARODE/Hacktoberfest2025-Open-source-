@@ -1,87 +1,78 @@
 import random
-import termcolor
 from termcolor import colored
-print(colored("*******************************","green"))
-print(colored("*******************************","green"))
-print(colored("************HANGMAN************",'blue'))
-print(colored("*******************************","green"))
-print(colored("*******************************","green"))
-name=input(colored("ENTER THE NAME TO PLAY HANGMAN: ",'blue'))
-print(colored("Hi {} welcome to HANGMAN".format(name),'red'))
-print(colored("Enter 1 for play easy leval HANGMAN","yellow"))
-print(colored("Enter 2 for play hard leval HANGMAN",'yellow'))
-choice=input(colored('Enter the choice:','blue'))
-if choice!='1' and choice!='2':
-    print("Wrong input")
-    exit(0)
-main_list=['MOVIE','FRUIT','PROGRAMMING_LANGUAGE']
-random.shuffle(main_list)
-if main_list[0]=='FRUIT':
-    fruit = ['APPLE', 'MANGO', 'GUAVA', 'LITCHI', 'BANANA', 'ORANGE', 'COCONUT', 'BLACKPLUM','JACKFRUIT','PINEAPPLE','BERRY' ]
-    random.shuffle(fruit)
-    answer = fruit[1]
-    compiler_answer = list(answer)
-    print(colored("Guess the name of fruit:", "green"))
-elif main_list[0]=='MOVIE':
-    movie = ['RACE3', 'BAGHI2', 'RAID', 'PARI', 'PARMANU', 'PADMAN', 'PADMAVAT']
-    random.shuffle(movie)
-    answer = movie[1]
-    compiler_answer = list(answer)
-    print(colored("Guess the name of movie(relise 2018):", "magenta"))
 
-elif main_list[0]=='PROGRAMMING_LANGUAGE':
-    programming_language = ['ANDROID', 'C++', 'JAVA', 'PYTHON', 'SHIFT', 'JAVASCRIPT', 'PHP', 'HTML', 'KOTLIN', 'JSON','AJAX','JQUERY']
-    random.shuffle(programming_language)
-    answer = programming_language[1]
-    compiler_answer = list(answer)
-    print(colored("Guess the name of programming_language:", "blue"))
+# Welcome and user input
+print(colored("*" * 31, "green"))
+print(colored("************HANGMAN************", "blue"))
+print(colored("*" * 31, "green"))
 
-display=[]
-display.extend(compiler_answer)
-ex_it=1
-count=0
-length=len(compiler_answer)
-if choice=='1':
-    for i in range(len(display)):
-        display[i]=" - "
-    q = []
-    for i in range(len(compiler_answer)):
-        q.append(i)
-    random.shuffle(q)
-    a = q[0]
-    guess=compiler_answer[a]
-    guess = guess.upper()
-    for i in range(len(compiler_answer)):
-        if compiler_answer[i] == guess:
-            display[i] = guess
-            length=length-1
-    print(colored("".join(display),"blue"))
-    print('\n')
-elif choice=='2':
-    for i in range(len(display)):
-        display[i]=" - "
-    print(colored(''.join(display),'blue'))
+name = input(colored("ENTER YOUR NAME TO PLAY HANGMAN: ", 'blue'))
+print(colored(f"Hi {name}, welcome to HANGMAN!", 'red'))
+
+# Choose difficulty level
+while True:
+    print(colored("Enter 1 for Easy Level", "yellow"))
+    print(colored("Enter 2 for Hard Level", "yellow"))
+    choice = input(colored("Enter your choice: ", 'blue'))
+    if choice in ['1', '2']:
+        break
+    print(colored("Invalid input! Please enter 1 or 2.", "red"))
+
+# Categories
+categories = ['MOVIE', 'FRUIT', 'PROGRAMMING_LANGUAGE']
+random.shuffle(categories)
+
+category = categories[0]
+if category == 'FRUIT':
+    word_list = ['APPLE', 'MANGO', 'GUAVA', 'LITCHI', 'BANANA', 'ORANGE', 'COCONUT', 'BLACKPLUM', 'JACKFRUIT', 'PINEAPPLE', 'BERRY']
+    print(colored("Guess the name of a fruit:", "green"))
+elif category == 'MOVIE':
+    word_list = ['RACE3', 'BAGHI2', 'RAID', 'PARI', 'PARMANU', 'PADMAN', 'PADMAVAT']
+    print(colored("Guess the name of a movie (release 2018):", "magenta"))
+else:
+    word_list = ['ANDROID', 'C++', 'JAVA', 'PYTHON', 'SHIFT', 'JAVASCRIPT', 'PHP', 'HTML', 'KOTLIN', 'JSON', 'AJAX', 'JQUERY']
+    print(colored("Guess the name of a programming language:", "blue"))
+
+random.shuffle(word_list)
+answer = word_list[0].upper()
+display = ["_" for _ in answer]
+length = len(answer)
+max_chances = 12 if choice == '1' else 8  # Easy: 12 chances, Hard: 8 chances
+used_letters = set()
+
+print(colored(" ".join(display), "blue"))
+print("\n")
+
+# Game loop
+chances = 0
+while "_" in display and chances < max_chances:
+    print(colored(f"Chances left: {max_chances - chances}", "yellow"))
+    guess = input(colored("Guess a letter: ", "yellow")).upper()
+
+    if len(guess) != 1 or not guess.isalpha():
+        print(colored("Please enter a single alphabetic character.", "red"))
+        continue
+
+    if guess in used_letters:
+        print(colored(f"You already guessed '{guess}'. Try another letter.", "red"))
+        continue
+
+    used_letters.add(guess)
+
+    if guess in answer:
+        for idx, char in enumerate(answer):
+            if char == guess:
+                display[idx] = guess
+        print(colored("Correct guess!", "green"))
+    else:
+        print(colored("Wrong guess!", "red"))
+        chances += 1
+
+    print(colored(" ".join(display), "blue"))
     print("\n")
 
-
-while count<length:
-    if ex_it<=12:
-        print("Chances left:", 13- ex_it)
-        ex_it+=1
-        guess=input(colored("Guess a letter: ",'yellow'))
-        guess=guess.upper()
-        for i in range(len(compiler_answer)):
-            if compiler_answer[i]==guess:
-                display[i]=guess
-                count+=1
-        print(colored("".join(display),"blue"))
-        print("\n")
-    else:
-        print(colored("Hi {} you loose the game".format(name),'red'))
-        print(colored("Play next time !","red"))
-        print(colored("The answer was: {}".format(answer),'green'))
-        exit(0)
-print(colored("Hi {} you guess the word sucessfully".format(name),'green'))
-print(colored("You won the match",'green'))
-
-
+# Game result
+if "_" not in display:
+    print(colored(f"Congratulations {name}! You guessed the word successfully.", "green"))
+else:
+    print(colored(f"Sorry {name}, you lost. The word was: {answer}", "red"))
