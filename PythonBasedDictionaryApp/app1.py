@@ -1,16 +1,18 @@
-# Software Developed by Shaksham Sinha
-# Date : 30th August 2019
-# Description : A basic console based Dictionary app
 
 import json
 from difflib import get_close_matches
+import tkinter as tk
+from tkinter import messagebox
 
-#loading data from data.json file
-data = json.load(open("data.json"))
+# Load data
+try:
+    with open("data.json", "r") as file:
+        data = json.load(file)
+except FileNotFoundError:
+    messagebox.showerror("Error", "data.json file not found!")
+    exit()
 
-# fucntion to find the word
-
-
+# Function to translate word
 def translate(word):
     word = word.lower()
     if word in data:
@@ -19,33 +21,61 @@ def translate(word):
         return data[word.title()]
     elif word.upper() in data:
         return data[word.upper()]
-    elif len(get_close_matches(word, data.keys(), cutoff=0.8)) > 0:
-        yn = input("Did you mean {} instead? Enter Y if yes N if No: ".format(
-            get_close_matches(word, data.keys())[0]))
-        if yn.upper() == "Y":
-            return data[get_close_matches(word, data.keys())[0]]
-        elif yn.upper() == "N":
-            return "The word dosent exist. Please double check it again"
+    else:
+        matches = get_close_matches(word, data.keys(), cutoff=0.8)
+        if matches:
+            yn = messagebox.askyesno(
+                "Did you mean?",
+                f"Did you mean '{matches[0]}' instead?"
+            )
+            if yn:
+                return data[matches[0]]
+            else:
+                return ["The word doesn't exist. Please double-check."]
         else:
-            return "We didn't understad your query."
+            return ["The word doesn't exist. Please double-check."]
 
+# Function to handle search
+def search_word():
+    word = entry.get()
+    output_box.delete(1.0, tk.END)
+    if word.strip() == "":
+        messagebox.showinfo("Input required", "Please enter a word to search.")
+        return
+    result = translate(word)
+    if isinstance(result, list):
+        for meaning in result:
+            output_box.insert(tk.END, f"- {meaning}\n")
     else:
-        return "The word dosent exit please double check again"
+        output_box.insert(tk.END, f"- {result}\n")
 
+# Function to clear input/output
+def clear_all():
+    entry.delete(0, tk.END)
+    output_box.delete(1.0, tk.END)
 
-print("Welcome to My Dictionary App :)")
+# Tkinter GUI
+root = tk.Tk()
+root.title("Python Dictionary App")
+root.geometry("600x400")
+root.configure(bg="lightblue")
 
-word = input("Enter the word to find its meaning : ")
-while word:
-    output = translate(word)  #calling the function with parameter "word" which is storing the word entered by user
-    if type(output) == list:
-        for i in output:
-            print(" - " + i)
-        print("enter another word or press enter to quit")
-        word = input("Enter the word to find its meaning : ")
-    else:
-        print(output)
-        print("enter another word or press enter to quit")
-        word = input("Enter the word to find its meaning : ")
+title = tk.Label(root, text="Python Dictionary App", font=("Arial", 20, "bold"), bg="lightblue")
+title.pack(pady=10)
 
+entry_label = tk.Label(root, text="Enter a word:", font=("Arial", 14), bg="lightblue")
+entry_label.pack(pady=5)
 
+entry = tk.Entry(root, font=("Arial", 14), width=30)
+entry.pack(pady=5)
+
+search_btn = tk.Button(root, text="Search", font=("Arial", 12), command=search_word, bg="green", fg="white")
+search_btn.pack(pady=5)
+
+clear_btn = tk.Button(root, text="Clear", font=("Arial", 12), command=clear_all, bg="red", fg="white")
+clear_btn.pack(pady=5)
+
+output_box = tk.Text(root, height=10, width=60, font=("Arial", 12))
+output_box.pack(pady=10)
+
+root.mainloop()
