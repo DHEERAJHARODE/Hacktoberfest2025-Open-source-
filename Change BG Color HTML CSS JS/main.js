@@ -1,16 +1,32 @@
 const button = document.querySelector('button');
 const h2El = document.querySelector('h2');
 const bgEl = document.querySelector('section');
-// const hexColorEl = [1,2,3,4,5,6,7,8,9,'A','B','c','D','E','F'];
+
+// Membuat transisi yang halus untuk perubahan background color
+bgEl.style.transition = "background-color 0.5s ease";
+
+// Menambahkan event listener untuk menyalin teks hex ketika h2 diklik
+h2El.addEventListener('click', () => {
+  const colorCode = h2El.innerText;
+  navigator.clipboard.writeText(colorCode).then(() => {
+    alert(`Copied ${colorCode} to clipboard!`);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+});
 
 button.addEventListener('click', () => {
   let color = '#';
+  
+  // Menghasilkan warna hex random
   color += Math.random().toString(16).slice(2, 8).toUpperCase();
-  // for(i=0; i<6; i++){
-  //   const number = Math.floor(Math.random()*hexColorEl.length);
-  //   color += hexColorEl[number];
-  // }
-  // console.log(color)
+
+  // Memastikan warna hex selalu 6 karakter
+  while (color.length < 7) {
+    color += '0';
+  }
+
+  // Menerapkan warna dan mengubah teks h2
   bgEl.style.backgroundColor = color;
-  h2El.innerText = color
+  h2El.innerText = color;
 });
