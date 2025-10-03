@@ -1,0 +1,163 @@
+#!/usr/bin/env python3
+"""
+Simple CLI TODO manager for Python 3.
+
+Features:
+ - add a todo
+ - list todos (all / pending / done)
+ - mark todo done
+ - remove todo
+ - persists to a JSON file (~/.todo_data.json by default)
+
+Usage examples:
+  python3 todo.py add "Buy groceries"
+  python3 todo.py list
+  python3 todo.py done 1
+  python3 todo.py remove 2
+  python3 todo.py list --filter pending
+"""
+
+from __future__ import annotations
+import argparse
+import json
+import os
+from dataclasses import dataclass, asdict
+from datetime import datetime
+from typing import List
+
+DEFAULT_DB_PATH = os.path.expanduser("~/.todo_data.json")
+
+
+@dataclass
+class Todo:
+    id: int
+    text: str
+    done: bool = False
+    created_at: str = ""
+    done_at: str = ""
+
+    def to_dict(self):
+        return asdict(self)
+
+
+def load_todos(path: str = DEFAULT_DB_PATH) -> List[Todo]:
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return [Todo(**item) for item in data]
+
+
+def save_todos(todos: List[Todo], path: str = DEFAULT_DB_PATH) -> None:
+    serial = [t.to_dict() for t in todos]
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(serial, f, indent=2)
+
+
+def next_id(todos: List[Todo]) -> int:
+    if not todos:
+        return 1
+    return max(t.id for t in todos) + 1
+
+
+def cmd_add(args):
+    todos = load_todos(args.db)
+    tid = next_id(todos)
+    now = datetime.utcnow().isoformat() + "Z"
+    todo = Todo(id=tid, text=args.text, created_at=now)
+    todos.append(todo)
+    save_todos(todos, args.db)
+    print(f"Added [{tid}]: {args.text}")
+
+
+def cmd_list(args):
+    todos = load_todos(args.db)
+    if args.filter == "pending":
+        todos = [t for t in todos if not t.done]
+    elif args.filter == "done":
+        todos = [t for t in todos if t.done]
+
+    if not todos:
+        print("No todos found.")
+        return
+
+    # Pretty print
+    for t in sorted(todos, key=lambda x: x.id):
+        status = "✓" if t.done else " "
+        created = t.created_at.split("T")[0] if t.created_at else ""
+        print(f"[{t.id:3}] [{status}] {t.text} (created: {created})")
+
+
+def cmd_done(args):
+    todos = load_todos(args.db)
+    found = False
+    for t in todos:
+        if t.id == args.id:
+            if t.done:
+                print(f"Todo [{t.id}] is already done.")
+                return
+            t.done = True
+            t.done_at = datetime.utcnow().isoformat() + "Z"
+            found = True
+            break
+    if not found:
+        print(f"No todo with id {args.id}")
+        return
+    save_todos(todos, args.db)
+    print(f"Marked [{args.id}] done.")
+
+
+def cmd_remove(args):
+    todos = load_todos(args.db)
+    new = [t for t in todos if t.id != args.id]
+    if len(new) == len(todos):
+        print(f"No todo with id {args.id}")
+        return
+    save_todos(new, args.db)
+    print(f"Removed todo [{args.id}].")
+
+
+def cmd_clear_done(args):
+    todos = load_todos(args.db)
+    new = [t for t in todos if not t.done]
+    removed = len(todos) - len(new)
+    save_todos(new, args.db)
+    print(f"Cleared {removed} done todos.")
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="Simple TODO CLI (Python 3)")
+    p.add_argument("--db", default=DEFAULT_DB_PATH, help="path to JSON DB file")
+
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    a_add = sub.add_parser("add", help="Add a new todo")
+    a_add.add_argument("text", help="Todo text")
+    a_add.set_defaults(func=cmd_add)
+
+    a_list = sub.add_parser("list", help="List todos")
+    a_list.add_argument("--filter", choices=["all", "pending", "done"], default="all")
+    a_list.set_defaults(func=cmd_list)
+
+    a_done = sub.add_parser("done", help="Mark todo done by id")
+    a_done.add_argument("id", type=int, help="id of todo")
+    a_done.set_defaults(func=cmd_done)
+
+    a_remove = sub.add_parser("remove", help="Remove todo by id")
+    a_remove.add_argument("id", type=int, help="id of todo")
+    a_remove.set_defaults(func=cmd_remove)
+
+    a_cleardone = sub.add_parser("clear-done", help="Remove all done todos")
+    a_cleardone.set_defaults(func=cmd_clear_done)
+
+    return p
+
+
+def main():
+    parser = build_parser()
+    args = parser.parse_args()
+    args.func(args)
+
+
+if __name__ == "__main__":
+    main()
