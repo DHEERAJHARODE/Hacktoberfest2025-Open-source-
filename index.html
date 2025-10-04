@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Animated Website</title>
+    <script src="javascript/jsfile.js"></script>
     <link rel="icon" href="media/wings 2 icon.ico">
     <link rel="stylesheet" href="css part/style1.css" type="text/css">
+    <link rel="stylesheet" href="css part/mystyle.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css">
 </head>
 <body>
     <div class="main">
         <div class="navbar">
             <img class="logo" src="media/wings 2 icon.ico" alt="wing2_img">
-            <button type="button">Sign Up</button>
+            <button type="button" onclick="show()">Sign Up</button>
         </div>
         <div class="content">
             <small>Welcome to our</small>
             <h1>World's<br/>Creative Studio</h1>
-            <button type="button">Take a tour</button>
+            <a id="btn" href="#" target="_blank">Take a tour</a>
         </div>
         <div class="side-bar">
             <i class="fa-solid fa-bars"></i>
@@ -33,7 +36,19 @@
                 <i class="fa-solid fa-share-nodes useful"></i>
                 <i class="fa-solid fa-circle-info useful"></i>
             </div> <!-- end useful-links -->
+
         </div> <!-- end side-bar -->
+        
+        <!-- New pop up  -->
+        <span id="popup">
+            <form id="frm">
+                Your name:
+                <input type="text" class="inp"> <br/>
+                Mail id:
+                <input type="mail" class="inp"><br/>
+                <input type="submit" id="sbmt" onclick="hide()">
+            </form>
+        </span>
 
         <div class="bubbles">
             <img src="media/bubble.png" alt="bubble_1">
