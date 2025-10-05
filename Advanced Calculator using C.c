@@ -2,7 +2,6 @@
 // Developer - Dernyt-TPE
 
 #include <stdio.h>
-// #include <conio.h> // Removed: non-standard, not used
 #include <math.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -149,8 +148,6 @@ void factorial() {
     flushInputBuffer();
     secondOptionTray();
 }
-
-//**************************************
 
 int main() {
     char choice = '\0';
