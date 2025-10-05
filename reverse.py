@@ -4,4 +4,4 @@ def reverse_string(s):
         reversed_s = char + reversed_s
     return reversed_s
 
-print(reverse_string("ChatGPT"))   # TPGtahC
+print(reverse_string("ABCD")) 
