@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+int main(){
+//simple interest
+   float p,r,t;
+   cout<<"enter the principle amount"<<endl;
+   cin>>p;
+   cout<<"enter the rate of interest"<<endl;
+  cin>>r;
+  cout<<"enter the time period in years"<<endl;
+  cin>>t;
+  cout<<"the simple interest is "<<(p*r*t)/100<<endl;
+  
+ }
+  
