@@ -68,6 +68,8 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
 **The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest 2022**
 
 <!-- # :handshake: Our Contributors
-<a href="https://github.com/hctnm2/Beginner-Hacktoberfest/graphs/contributors">
-<!--   <img src="https://contrib.rocks/image?repo=hctnm2/Beginner-Hacktoberfest" /> -->
-<!-- </a> --> 
+## Thanks to all Contributors <a name = "contributors"></a>
+
+<a href="https://github.com/1dharode/Hacktoberfest2022/graphs/contributors"> 
+<img src="https://contrib.rocks/image?repo=1dharode/Hacktoberfest2022" /> 
+</a>
