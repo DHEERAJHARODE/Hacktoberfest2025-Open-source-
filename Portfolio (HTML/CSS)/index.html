@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4dh35h P41</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=html" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/logo.png" type="image/icon type">
+</head>
+<div id="preloader">
+    <div class="loader">
+        <span></span>
+    </div>
+</div>
+<div id="main-content">
+    <header>
+        <div class="container">
+            <h1 class="logo"><a href="https://github.com/radheshpai87">R4dh35H</a></h1>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#languages">Languages</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm Radhesh Pai</h1>
+            <p>Creative Web Developer</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm currently a first-year BTech CSE (AIFT) student at Kalvium, with a growing interest in web development. I
+            have a foundational knowledge of HTML, CSS, and some experience in JavaScript. As I continue learning, I'm
+            eager to apply my skills and take on new projects that challenge me to grow as a developer.</p>
+    </section>
+
+    <section id="languages" class="languages-section">
+        <h2>Languages I'm Learning</h2>
+        <div class="languages">
+            <div class="language">
+                <img src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-html-markup-develop-layout-language-512.png"
+                    alt="HTML Icon">
+                <p>HTML</p>
+            </div>
+            <div class="language">
+                <img src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-css-style-develop-layout-language-512.png"
+                    alt="CSS Icon">
+                <p>CSS</p>
+            </div>
+            <div class="language">
+                <img src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-256.png"
+                    alt="JavaScript Icon">
+                <p>JavaScript</p>
+            </div>
+            <div class="language">
+                <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C++ Icon">
+                <p>C++</p>
+            </div>
+            <div class="language">
+                <img src="https://cdn-icons-png.flaticon.com/512/3665/3665923.png " alt="C Icon">
+                <p>C</p>
+            </div>
+            <div class="language">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python Icon">
+                <p>Python</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-container">
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>Brief description of the project.</p>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Brief description of the project.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, please fill out the form below:</p>
+        <form action="https://formspree.io/f/xdkookrp" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 My Portfolio</p>
+    </footer>
+</div>
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            document.getElementById('preloader').style.transition = 'opacity 1s ease';
+            document.getElementById('preloader').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('preloader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.getElementById('main-content').style.transition = 'opacity 1s ease';
+                document.getElementById('main-content').style.opacity = '1'; 
+            }, 1000);
+        }, 5000);
+    });
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('show');
+    });
+</script>
+</body>
+
+</html>

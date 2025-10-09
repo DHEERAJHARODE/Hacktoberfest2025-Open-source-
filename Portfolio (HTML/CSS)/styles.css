@@ -1,0 +1,521 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background-color: #000;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: #32cd32;
+  transition: color 0.3s ease;
+}
+
+/* General Reset for Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Preloader full screen black background */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000; /* Black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Keep it above all other content */
+  transition: opacity 1s ease; /* Smooth fade-out transition */
+  opacity: 1; /* Start with full opacity */
+}
+
+/* Main content initially hidden */
+#main-content {
+    display: none; /* Hidden by default */
+    opacity: 0; /* Hidden by opacity */
+}
+
+/* Centered Loader (your provided CSS) */
+.loader {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.55);
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: 40px;
+  background: transparent;
+  border: 1px dashed #444;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px dashed #444;
+  box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 75%;
+  height: 150%;
+  background: transparent;
+  transform-origin: top left;
+  animation: radar81 2s linear infinite;
+  border-top: 1px dashed #fff;
+}
+
+.loader span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: seagreen;
+  transform-origin: top left;
+  transform: rotate(-55deg);
+  filter: blur(40px) drop-shadow(40px 40px 40px seagreen);
+}
+
+@keyframes radar81 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide preloader and show the main content */
+#main-content {
+  display: none;
+}
+
+/* Navigation Bar */
+header {
+  background-color: #000;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Navbar stays on top */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Shadow for a floating effect */
+  transition: background 0.3s ease; /* Smooth background transition */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff; /* White logo */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Navigation Menu */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+/* Hover Effect */
+nav ul li a:hover {
+  background-color: #32cd32;
+  color: #000;
+  transform: scale(1.1); /* Slight scale effect on hover */
+  box-shadow: 0 4px 10px rgba(50, 205, 50, 0.5); /* Adds a glow effect */
+}
+
+/* Menu Toggle (Hamburger Icon) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: #fff; /* White bars for the hamburger */
+  border-radius: 3px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* Hidden on mobile by default */
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 20px 0;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.5rem;
+    border-radius: 0; /* Full width for mobile */
+    background-color: transparent;
+  }
+
+  .menu-toggle {
+    display: flex; /* Show the hamburger menu on mobile */
+  }
+
+  /* Menu Toggle Animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  nav ul.show {
+    display: flex; /* Show the menu when toggled */
+  }
+}
+
+/* Hero Section */
+#hero {
+  height: 100vh;
+  background: url("https://i.pinimg.com/originals/21/7d/a2/217da299cc918fad9b76eb99e4bb75b3.gif")
+    no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+  z-index: 1;
+}
+
+#hero h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  color: #32cd32;
+}
+
+#hero p {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #32cd32, #000);
+  color: #fff;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #000, #32cd32);
+}
+
+/* About Section */
+#about {
+  padding: 100px 20px;
+  background-color: #222;
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  color: #32cd32;
+  margin-bottom: 20px;
+}
+
+#about p {
+  font-size: 1.2rem;
+  color: #bbb;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Languages section styling */
+.languages-section {
+  margin: 50px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.languages-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  color: #00ff00; /* Green title to match the theme */
+}
+
+.languages {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.language {
+  text-align: center;
+  max-width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.language img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.language p {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  color: #aaa;
+}
+
+.language:hover {
+  transform: scale(1.1);
+}
+
+.language p:hover {
+  color: #00ff00; /* Green on hover */
+}
+
+/* Projects Section */
+#projects {
+  padding: 100px 20px;
+  background-color: #111;
+  text-align: center;
+}
+
+#projects h2 {
+  font-size: 2.5rem;
+  color: #32cd32;
+  margin-bottom: 50px;
+}
+
+.projects-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.project {
+  background-color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  color: #ccc;
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.05);
+}
+
+.project h3 {
+  color: #32cd32;
+  margin-bottom: 10px;
+}
+
+/* Contact Section */
+#contact {
+  padding: 100px 20px;
+  background-color: #000; /* Black background for contrast */
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: 2.5rem;
+  color: #32cd32;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds depth to the text */
+}
+
+#contact p {
+  font-size: 1.2rem;
+  color: #bbb;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+/* Form Styles */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: linear-gradient(
+    135deg,
+    rgba(50, 205, 50, 0.1),
+    rgba(148, 0, 211, 0.1)
+  ); /* Light gradient background */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #32cd32; /* Green border */
+  border-radius: 10px;
+  background-color: #222; /* Dark background */
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #9400d3; /* Purple border on focus */
+}
+
+textarea {
+  resize: none;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #32cd32, #000); /* Gradient button */
+  border: none;
+  padding: 15px 30px; /* Increased padding for button */
+  color: white;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease; /* Smooth background change */
+  margin-top: 20px; /* Space above button */
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+  background: linear-gradient(
+    135deg,
+    #000,
+    #32cd32
+  ); /* Inverted gradient on hover */
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  background-color: #111;
+  text-align: center;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 3rem;
+  }
+
+  .projects-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+  }
+}
