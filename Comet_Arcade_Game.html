@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop the Comet</title>
+    <!-- Load Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tone.js for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <!-- Load Orbitron font for arcade look -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    </style>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        'space-dark': '#0D1117',
+                        'comet-glow': '#4ade80', // green-400
+                        'star-light': '#fef3c7', // amber-100
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom Game CSS -->
+    <style>
+        /* Base styles for the "Space Arcade" theme */
+        body {
+            background-color: #0d1117; /* space-dark */
+            color: #fef3c7; /* star-light */
+            font-family: 'Orbitron', sans-serif;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        /* Game Board specific styling */
+        #game-board {
+            background: radial-gradient(circle at center, rgba(13, 17, 23, 0.95) 50%, rgba(0, 0, 0, 0.7) 100%);
+            box-shadow: 0 0 40px rgba(74, 222, 128, 0.5); /* Glowing border */
+            border: 3px solid #4ade80;
+            cursor: crosshair;
+            position: relative;
+            overflow: hidden;
+            /* Responsive sizing */
+            height: 70vh;
+            min-height: 300px;
+            max-width: 900px;
+            width: 95%;
+        }
+
+        /* Comet styling and animation */
+        .comet {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at center, #86efac 0%, #4ade80 50%, transparent 80%);
+            border-radius: 50%;
+            /* Strong, pulsing glow effect */
+            box-shadow: 0 0 15px #4ade80, 0 0 30px #4ade80, 0 0 45px #4ade80;
+            transition: transform 0.1s ease-out; /* Quick response on click */
+            z-index: 10;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        .comet:hover {
+            transform: scale(1.1);
+        }
+
+        /* Keyframes for the glowing/flicker effect */
+        @keyframes flicker {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.85; transform: scale(1.05); }
+        }
+
+        .hit {
+            /* Visual feedback on hit */
+            background: radial-gradient(circle at center, #facc15 0%, #ef4444 50%, transparent 80%) !important;
+            box-shadow: 0 0 20px #facc15, 0 0 40px #ef4444;
+            opacity: 0;
+            transition: all 0.2s ease-out;
+            transform: scale(1.5) !important;
+        }
+
+        /* Star background effect */
+        #game-board::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Simple starry pattern */
+            background:
+                radial-gradient(circle, #fff 1px, transparent 1px) 0 0 / 25px 25px,
+                radial-gradient(circle, #fff 0.5px, transparent 0.5px) 10px 10px / 25px 25px;
+            opacity: 0.1;
+        }
+
+        /* Button styling */
+        .game-button {
+            font-size: 1.25rem;
+            padding: 0.75rem 2rem;
+            cursor: pointer;
+            border: 2px solid #4ade80;
+            background: #1f2937;
+            color: #4ade80;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+            transition: all 0.15s ease-in-out;
+        }
+
+        .game-button:hover:not(:disabled) {
+            background: #4ade80;
+            color: #0D1117;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
+        }
+
+        .game-button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .game-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="p-4 flex flex-col items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-4xl flex flex-col items-center">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-comet-glow text-shadow-xl tracking-wider">
+            ☄️ POP THE COMET ☄️
+        </h1>
+
+        <!-- Score and Timer Display -->
+        <div class="w-full flex justify-around text-xl sm:text-2xl font-mono mb-4 p-4 rounded-lg bg-gray-800 border-2 border-gray-700 shadow-lg">
+            <span>SCORE: <span id="score-display" class="text-comet-glow">0</span></span>
+            <span>TIME: <span id="timer-display" class="text-red-400">30</span>s</span>
+        </div>
+
+        <!-- Game Board Area -->
+        <div id="game-board" class="rounded-xl mx-auto mb-6 w-full">
+            <!-- Comets will be injected here -->
+        </div>
+
+        <!-- Controls -->
+        <div class="flex space-x-4 mb-4">
+            <button id="start-button" class="game-button rounded-full">
+                Start Game
+            </button>
+            <button id="stop-button" class="game-button rounded-full hidden bg-red-800 border-red-500 text-red-300 hover:bg-red-500 hover:text-white" disabled>
+                Stop Game
+            </button>
+        </div>
+
+        <!-- Game Over / Start Message Modal -->
+        <div id="message-modal" class="hidden fixed inset-0 bg-space-dark bg-opacity-90 z-20 items-center justify-center" onclick="hideMessage()">
+            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-4 border-comet-glow max-w-md w-full mx-4" onclick="event.stopPropagation()">
+                <h2 id="modal-title" class="text-3xl font-bold mb-4 text-comet-glow">Welcome!</h2>
+                <p id="modal-message" class="text-star-light mb-6 text-lg">Click the green comets before they vanish! You have 30 seconds. Click anywhere outside this box to close.</p>
+                
+                <!-- GEMINI FEATURE SECTION -->
+                <button id="gemini-button" class="game-button rounded-lg w-full mb-4 hidden" onclick="startGeminiAnalysis()">
+                    ✨ Get a Space Fact & Strategy Tip ✨
+                </button>
+                <div id="gemini-results" class="hidden p-4 mt-4 text-sm bg-gray-700 rounded-lg border border-gray-600">
+                    <p class="text-gray-400">Analysis loading...</p>
+                </div>
+                <!-- END GEMINI FEATURE SECTION -->
+
+                <button class="game-button rounded-lg w-full" onclick="hideMessage()">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Game Logic -->
+    <script>
+        // Global state variables
+        let score = 0;
+        let timeLeft = 30; // 30 seconds game time
+        let gameInterval;
+        let targetSpawnInterval;
+        let isGameRunning = false;
+        const targetDuration = 1000; // Time in ms before a comet disappears
+
+        // --- Tone.js Setup for simple arcade sounds ---
+        let synth;
+        let noiseSynth;
+        
+        // This function is called on the first user interaction to bypass browser auto-play restrictions
+        function initAudio() {
+            try {
+                if (!synth) {
+                    Tone.start();
+                    // A simple synth for the 'pop' sound
+                    synth = new Tone.PolySynth(Tone.AMSynth).toDestination();
+                    synth.set({
+                        oscillator: { type: "square" },
+                        envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
+                    });
+
+                    // A noise burst for the 'miss' sound
+                    noiseSynth = new Tone.NoiseSynth({
+                        noise: { type: 'pink' },
+                        envelope: { attack: 0.005, decay: 0.05, sustain: 0, release: 0.05 }
+                    }).toDestination();
+                }
+            } catch (e) {
+                console.error("Tone.js failed to initialize:", e);
+            }
+        }
+
+        // Sound functions
+        function playHitSound() {
+            if (synth) {
+                synth.triggerAttackRelease("C5", "8n");
+            }
+        }
+
+        function playMissSound() {
+            if (noiseSynth) {
+                noiseSynth.triggerAttackRelease("16n");
+            }
+        }
+
+        // --- Core Game Functions ---
+
+        function updateDisplay() {
+            document.getElementById('score-display').textContent = score;
+            document.getElementById('timer-display').textContent = timeLeft;
+        }
+
+        function handleHit(event) {
+            if (!isGameRunning) return;
+
+            // Handle touch events by getting the element from touches if available
+            const comet = event.currentTarget;
+            const isMiss = comet.classList.contains('miss-handler');
+
+            // Clear the disappearance timeout if the comet is hit
+            clearTimeout(comet.dataset.missTimeoutId);
+
+            if (!isMiss) {
+                score += 1;
+                updateDisplay();
+                playHitSound();
+
+                // Visual feedback and removal
+                comet.classList.add('hit');
+                comet.onclick = null; // Disable further clicks
+                comet.ontouchstart = null; // Disable further touch
+
+                // Remove the element shortly after the animation
+                setTimeout(() => {
+                    comet.remove();
+                }, 200);
+            } else {
+                // This path is for missed comets that were about to be removed by the timeout
+                comet.remove();
+            }
+        }
+
+        function spawnTarget() {
+            const board = document.getElementById('game-board');
+            if (!board || !isGameRunning) return;
+
+            const boardRect = board.getBoundingClientRect();
+            const cometSize = 60; // Must match CSS
+
+            // Calculate maximum position to keep the comet entirely within the bounds
+            const maxX = boardRect.width - cometSize;
+            const maxY = boardRect.height - cometSize;
+
+            // Generate random position
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            const comet = document.createElement('div');
+            comet.classList.add('comet');
+            
+            // Apply positioning
+            comet.style.left = `${randomX}px`;
+            comet.style.top = `${randomY}px`;
+
+            // Attach click and touch handlers
+            comet.onclick = handleHit;
+            comet.ontouchstart = (e) => { e.preventDefault(); handleHit(e); };
+
+            board.appendChild(comet);
+
+            // Set a timeout to remove the comet if not hit (a "miss")
+            const missTimeout = setTimeout(() => {
+                if (comet.parentNode === board) {
+                    // Apply visual cue for the miss
+                    comet.style.opacity = '0.1';
+                    comet.classList.add('miss-handler');
+                    playMissSound(); // Play miss sound when target vanishes
+                    // Remove after sound/fade
+                    setTimeout(() => comet.remove(), 100);
+                }
+            }, targetDuration);
+
+            // Store the timeout ID on the element so we can clear it if it's hit
+            comet.dataset.missTimeoutId = missTimeout;
+        }
+
+        // --- Message Modal Functions ---
+
+        function showMessage(title, message) {
+            const modal = document.getElementById('message-modal');
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+
+            // Reset Gemini section visibility when modal is shown (unless it's the game over state)
+            if (title === "Welcome to Pop the Comet!") {
+                document.getElementById('gemini-button').classList.add('hidden');
+                document.getElementById('gemini-results').classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hideMessage() {
+            const modal = document.getElementById('message-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        
+        // --- Gemini API Configuration & Logic (New Section) ---
+        const API_KEY = ""; // Canvas will provide this key at runtime
+        const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent";
+
+        /**
+         * Handles fetch requests with exponential backoff for robustness.
+         */
+        async function fetchWithExponentialBackoff(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status === 429 && i < maxRetries - 1) {
+                        // Too Many Requests, wait and retry
+                        const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        continue;
+                    }
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response;
+                } catch (error) {
+                    if (i === maxRetries - 1) {
+                        throw new Error(`Fetch failed after ${maxRetries} attempts: ${error.message}`);
+                    }
+                    // Wait before retrying (exponential backoff)
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+        async function generateGeminiFactAndTip(finalScore) {
+            const resultsDiv = document.getElementById('gemini-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.innerHTML = '<p class="text-comet-glow animate-pulse">Analyzing score and searching space archives...</p>';
+
+            const systemPrompt = `You are an encouraging, retro arcade AI coach named 'ARC-9000'. Your task is to provide two things based on the user's game score: 
+            1. A single, fascinating fact about a celestial object (comet, asteroid, or meteor) using Google Search for grounding.
+            2. A concise, encouraging strategy tip for improving their score in a reaction-based clicker game. 
+            Format your response with 'Fact:' followed by the fact, and then 'Tip:' followed by the strategy tip. Do not use markdown headers, lists, or line breaks.`;
+
+            const userQuery = `My final score in Pop the Comet was ${finalScore}. Generate a celestial fact and give me a strategy tip.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            try {
+                const response = await fetchWithExponentialBackoff(API_URL + `?key=${API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+
+                    // 1. Parse Text
+                    let factText = "Could not find a specific fact.";
+                    let tipText = "Keep practicing to improve!";
+                    
+                    const factMatch = text.match(/Fact:\s*(.*?)(?=\s*Tip:|$)/i);
+                    const tipMatch = text.match(/Tip:\s*(.*)/i);
+
+                    if (factMatch && factMatch[1]) factText = factMatch[1].trim();
+                    if (tipMatch && tipMatch[1]) tipText = tipMatch[1].trim();
+                    
+                    // 2. Extract grounding sources
+                    let sources = [];
+                    const groundingMetadata = candidate.groundingMetadata;
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        sources = groundingMetadata.groundingAttributions
+                            .map(attribution => ({
+                                uri: attribution.web?.uri,
+                                title: attribution.web?.title,
+                            }))
+                            .filter(source => source.uri && source.title);
+                    }
+
+                    let sourceHtml = '';
+                    if (sources.length > 0) {
+                        sourceHtml = `<p class="mt-2 text-xs text-gray-400">Source: <a href="${sources[0].uri}" target="_blank" class="text-blue-300 hover:text-blue-200 underline">${sources[0].title}</a></p>`;
+                    }
+
+                    // 3. Render HTML
+                    resultsDiv.innerHTML = `
+                        <p class="font-bold text-comet-glow">ARC-9000 Analysis (Score: ${finalScore}):</p>
+                        <p class="mt-2 text-star-light"><span class="font-bold text-yellow-300">Fact:</span> ${factText}</p>
+                        <p class="mt-2 text-star-light"><span class="font-bold text-yellow-300">Tip:</span> ${tipText}</p>
+                        ${sourceHtml}
+                    `;
+
+                } else {
+                    resultsDiv.innerHTML = '<p class="text-red-400">ARC-9000 Error: Failed to generate analysis. Try again!</p>';
+                }
+
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                resultsDiv.innerHTML = '<p class="text-red-400">Network Error: Could not connect to ARC-9000.</p>';
+            }
+        }
+
+        function startGeminiAnalysis() {
+            // Disable button to prevent multiple calls
+            const geminiButton = document.getElementById('gemini-button');
+            geminiButton.disabled = true;
+            geminiButton.textContent = '✨ Analyzing...';
+            
+            // Call the API function
+            generateGeminiFactAndTip(score);
+        }
+
+        // --- Game Flow Functions ---
+
+        function endGame() {
+            isGameRunning = false;
+            clearInterval(gameInterval);
+            clearInterval(targetSpawnInterval);
+
+            // Clear all remaining targets
+            document.querySelectorAll('.comet').forEach(c => {
+                clearTimeout(c.dataset.missTimeoutId);
+                c.remove();
+            });
+
+            showMessage("Game Over!", `You popped ${score} comets! Press Restart to try again.`);
+            
+            // Show the Gemini button and hide previous results
+            document.getElementById('gemini-button').classList.remove('hidden');
+            document.getElementById('gemini-button').disabled = false;
+            document.getElementById('gemini-button').textContent = '✨ Get a Space Fact & Strategy Tip ✨';
+            document.getElementById('gemini-results').classList.add('hidden'); // Hide results until button is clicked
+
+            // Update Start/Stop buttons
+            document.getElementById('start-button').textContent = "Restart Game";
+            document.getElementById('start-button').disabled = false;
+            document.getElementById('stop-button').classList.add('hidden');
+            document.getElementById('stop-button').disabled = true;
+        }
+
+        function startGame() {
+            // Initialize audio on first click interaction
+            initAudio();
+
+            // Reset state
+            score = 0;
+            timeLeft = 30;
+            isGameRunning = true;
+            updateDisplay();
+            hideMessage();
+            
+            // Hide post-game elements
+            document.getElementById('gemini-button').classList.add('hidden');
+            document.getElementById('gemini-results').classList.add('hidden');
+
+            // Update Start/Stop buttons
+            document.getElementById('start-button').disabled = true;
+            document.getElementById('start-button').textContent = "Game Running (Click Comets!)";
+            document.getElementById('stop-button').classList.remove('hidden');
+            document.getElementById('stop-button').disabled = false;
+
+            // Game Timer (decrement time)
+            gameInterval = setInterval(() => {
+                timeLeft--;
+                updateDisplay();
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+
+            // Target Spawner (spawn new comets)
+            // Spawn rate starts high for a challenge
+            targetSpawnInterval = setInterval(spawnTarget, 400); 
+        }
+
+        // --- Event Listeners and Initial Setup ---
+
+        window.onload = function() {
+            // Attach the start game function to the button
+            document.getElementById('start-button').addEventListener('click', startGame);
+            
+            // Attach the stop game function to the button (it calls endGame)
+            document.getElementById('stop-button').addEventListener('click', endGame);
+            
+            // Show initial message
+            showMessage("Welcome to Pop the Comet!", "Click the green glowing targets (comets) as quickly as possible before they disappear! You have 30 seconds. Good luck!");
+        };
+    </script>
+</body>
+</html>
