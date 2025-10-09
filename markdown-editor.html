@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #252526;
+            --bg-tertiary: #2d2d30;
+            --text-primary: #d4d4d4;
+            --text-secondary: #858585;
+            --accent: #007acc;
+            --accent-hover: #1a8cd8;
+            --border: #3e3e42;
+            --success: #4ec9b0;
+            --warning: #ce9178;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        body.light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f3f3;
+            --bg-tertiary: #e8e8e8;
+            --text-primary: #1e1e1e;
+            --text-secondary: #616161;
+            --border: #d4d4d4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            width: 36px;
+            justify-content: center;
+        }
+
+        .markdown-toolbar {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .markdown-toolbar button {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            min-width: 32px;
+        }
+
+        .markdown-toolbar button:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .markdown-toolbar .separator {
+            width: 1px;
+            background: var(--border);
+            margin: 0 0.5rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .pane-header {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        #editor {
+            flex: 1;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: none;
+            padding: 1.5rem;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+        }
+
+        .preview-pane {
+            border-left: 1px solid var(--border);
+        }
+
+        #preview {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--bg-primary);
+        }
+
+        #preview h1, #preview h2, #preview h3, #preview h4, #preview h5, #preview h6 {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+
+        #preview h1 { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        #preview h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        #preview h3 { font-size: 1.25rem; }
+        #preview h4 { font-size: 1.1rem; }
+        #preview h5 { font-size: 1rem; }
+        #preview h6 { font-size: 0.875rem; color: var(--text-secondary); }
+
+        #preview p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        #preview a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        #preview a:hover {
+            text-decoration: underline;
+        }
+
+        #preview ul, #preview ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        #preview li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        #preview code {
+            background: var(--bg-tertiary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.875rem;
+        }
+
+        #preview pre {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        #preview pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        #preview blockquote {
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        #preview table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        #preview table th,
+        #preview table td {
+            border: 1px solid var(--border);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        #preview table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        #preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        #preview hr {
+            border: none;
+            border-top: 2px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .status-bar {
+            background: var(--bg-secondary);
+            padding: 0.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border);
+        }
+
+        .modal-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .preview-pane {
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .toolbar {
+                width: 100%;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-tertiary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-markdown"></i>
+                <span>Markdown Editor Pro</span>
+            </div>
+            <div class="toolbar">
+                <button class="btn" onclick="newDocument()">
+                    <i class="fas fa-file"></i>
+                    New
+                </button>
+                <button class="btn" onclick="saveAsMarkdown()">
+                    <i class="fas fa-download"></i>
+                    Save MD
+                </button>
+                <button class="btn" onclick="saveAsHTML()">
+                    <i class="fas fa-file-code"></i>
+                    Export HTML
+                </button>
+                <button class="btn btn-icon" onclick="toggleTheme()" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="markdown-toolbar">
+            <button onclick="insertMarkdown('# ', '')" title="Heading 1"><i class="fas fa-heading"></i></button>
+            <button onclick="insertMarkdown('**', '**')" title="Bold"><i class="fas fa-bold"></i></button>
+            <button onclick="insertMarkdown('*', '*')" title="Italic"><i class="fas fa-italic"></i></button>
+            <button onclick="insertMarkdown('~~', '~~')" title="Strikethrough"><i class="fas fa-strikethrough"></i></button>
+            <div class="separator"></div>
+            <button onclick="insertMarkdown('`', '`')" title="Code"><i class="fas fa-code"></i></button>
+            <button onclick="insertMarkdown('\n```\n', '\n```\n')" title="Code Block"><i class="fas fa-file-code"></i></button>
+            <div class="separator"></div>
+            <button onclick="insertMarkdown('- ', '')" title="List"><i class="fas fa-list-ul"></i></button>
+            <button onclick="insertMarkdown('1. ', '')" title="Ordered List"><i class="fas fa-list-ol"></i></button>
+            <button onclick="insertMarkdown('- [ ] ', '')" title="Checklist"><i class="fas fa-check-square"></i></button>
+            <div class="separator"></div>
+            <button onclick="insertMarkdown('[', '](url)')" title="Link"><i class="fas fa-link"></i></button>
+            <button onclick="insertMarkdown('![alt](', ')')" title="Image"><i class="fas fa-image"></i></button>
+            <button onclick="insertMarkdown('> ', '')" title="Quote"><i class="fas fa-quote-right"></i></button>
+            <button onclick="insertMarkdown('\n---\n', '')" title="Horizontal Rule"><i class="fas fa-minus"></i></button>
+            <div class="separator"></div>
+            <button onclick="insertTable()" title="Table"><i class="fas fa-table"></i></button>
+        </div>
+
+        <div class="main-content">
+            <div class="pane">
+                <div class="pane-header">Editor</div>
+                <textarea id="editor" placeholder="Start typing your markdown here..."></textarea>
+            </div>
+            <div class="pane preview-pane">
+                <div class="pane-header">Preview</div>
+                <div id="preview"></div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div>
+                <span id="wordCount">0 words</span> | 
+                <span id="charCount">0 characters</span> | 
+                <span id="lineCount">0 lines</span>
+            </div>
+            <div id="autoSaveStatus">Auto-saved</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+        const wordCount = document.getElementById('wordCount');
+        const charCount = document.getElementById('charCount');
+        const lineCount = document.getElementById('lineCount');
+        const autoSaveStatus = document.getElementById('autoSaveStatus');
+
+        // Configure marked
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            highlight: function(code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return hljs.highlight(code, { language: lang }).value;
+                    } catch (err) {}
+                }
+                return hljs.highlightAuto(code).value;
+            }
+        });
+
+        // Default content
+        const defaultMarkdown = `# Welcome to Markdown Editor Pro
+
+## Features
+
+This is a **powerful** and *beautiful* markdown editor with live preview. 
+
+### What you can do:
+
+- Write markdown in the left pane
+- See **live preview** on the right
+- Use the toolbar for quick formatting
+- Auto-save to localStorage
+- Export as Markdown or HTML
+- Toggle between dark and light themes
+
+### Code Example
+
+\`\`\`javascript
+function hello() {
+    console.log("Hello, World!");
+    return true;
+}
+\`\`\`
+
+### More Features
+
+> This is a blockquote. You can use it for important notes or citations.
+
+#### Task List
+
+- [x] Create markdown editor
+- [x] Add live preview
+- [ ] Add more awesome features
+
+#### Links and Images
+
+[Visit GitHub](https://github.com)
+
+---
+
+### Tables
+
+| Feature | Status |
+|---------|--------|
+| Live Preview | ✅ |
+| Syntax Highlighting | ✅ |
+| Export Options | ✅ |
+| Dark Mode | ✅ |
+
+Start editing to see your content update in real-time!`;
+
+        // Load saved content or use default
+        editor.value = localStorage.getItem('markdown-content') || defaultMarkdown;
+        updatePreview();
+
+        // Editor input event
+        editor.addEventListener('input', () => {
+            updatePreview();
+            updateStats();
+            autoSave();
+        });
+
+        // Tab key support
+        editor.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = editor.selectionStart;
+                const end = editor.selectionEnd;
+                editor.value = editor.value.substring(0, start) + '    ' + editor.value.substring(end);
+                editor.selectionStart = editor.selectionEnd = start + 4;
+            }
+        });
+
+        function updatePreview() {
+            const markdown = editor.value;
+            preview.innerHTML = marked.parse(markdown);
+            hljs.highlightAll();
+        }
+
+        function updateStats() {
+            const text = editor.value;
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+            const chars = text.length;
+            const lines = text.split('\n').length;
+
+            wordCount.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+            charCount.textContent = `${chars} character${chars !== 1 ? 's' : ''}`;
+            lineCount.textContent = `${lines} line${lines !== 1 ? 's' : ''}`;
+        }
+
+        let autoSaveTimeout;
+        function autoSave() {
+            autoSaveStatus.textContent = 'Saving...';
+            clearTimeout(autoSaveTimeout);
+            autoSaveTimeout = setTimeout(() => {
+                localStorage.setItem('markdown-content', editor.value);
+                autoSaveStatus.textContent = 'Auto-saved';
+                setTimeout(() => {
+                    autoSaveStatus.textContent = '';
+                }, 2000);
+            }, 1000);
+        }
+
+        function insertMarkdown(before, after) {
+            const start = editor.selectionStart;
+            const end = editor.selectionEnd;
+            const selectedText = editor.value.substring(start, end);
+            const replacement = before + (selectedText || 'text') + after;
+            
+            editor.value = editor.value.substring(0, start) + replacement + editor.value.substring(end);
+            
+            if (selectedText) {
+                editor.selectionStart = start;
+                editor.selectionEnd = start + replacement.length;
+            } else {
+                editor.selectionStart = editor.selectionEnd = start + before.length;
+            }
+            
+            editor.focus();
+            updatePreview();
+            updateStats();
+        }
+
+        function insertTable() {
+            const table = `\n| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |\n`;
+            
+            const start = editor.selectionStart;
+            editor.value = editor.value.substring(0, start) + table + editor.value.substring(start);
+            editor.selectionStart = editor.selectionEnd = start + table.length;
+            editor.focus();
+            updatePreview();
+            updateStats();
+        }
+
+        function newDocument() {
+            if (confirm('Create a new document? Any unsaved changes will be lost.')) {
+                editor.value = '';
+                updatePreview();
+                updateStats();
+                localStorage.removeItem('markdown-content');
+            }
+        }
+
+        function saveAsMarkdown() {
+            const blob = new Blob([editor.value], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'document.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function saveAsHTML() {
+            const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <style>
+        body {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre code {
+            background: transparent;
+            padding: 0;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+${preview.innerHTML}
+</body>
+</html>`;
+            
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'document.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const isDark = !document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            const icon = document.querySelector('.btn-icon i');
+            icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+            
+            // Update highlight.js theme
+            const hlTheme = document.querySelector('link[href*="highlight.js"]');
+            hlTheme.href = isDark 
+                ? 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css'
+                : 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css';
+        }
+
+        // Load theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                toggleTheme();
+            }
+            updateStats();
+        });
+    </script>
+</body>
+</html>
