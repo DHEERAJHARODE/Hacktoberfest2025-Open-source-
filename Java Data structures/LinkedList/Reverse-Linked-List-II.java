@@ -2,27 +2,25 @@
 // Author: Akshat Sharma
 // Description: Reverse a linked list between positions m and n.
 
-class ReverseLinkedListII {
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int val) { this.val = val; }
-    }
+class Solution {
+  public ListNode reverseBetween(ListNode head, int left, int right) {
+    if (left == 1)
+      return reverseN(head, right);
 
-    public ListNode reverseBetween(ListNode head, int left, int right) {
-        if (head == null) return null;
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode prev = dummy;
-        for (int i = 1; i < left; i++) prev = prev.next;
+    head.next = reverseBetween(head.next, left - 1, right - 1);
 
-        ListNode curr = prev.next;
-        for (int i = 0; i < right - left; i++) {
-            ListNode temp = curr.next;
-            curr.next = temp.next;
-            temp.next = prev.next;
-            prev.next = temp;
-        }
-        return dummy.next;
-    }
+    return head;
+  }
+
+  private ListNode reverseN(ListNode head, int n) {
+    if (n == 1)
+      return head;
+
+    ListNode newHead = reverseN(head.next, n - 1);
+    ListNode headNext = head.next;
+    head.next = headNext.next;
+    headNext.next = head;
+
+    return newHead;
+  }
 }
