@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reaction Grid Multi-Color</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      #instructions {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #555;
+      }
+      #grid {
+        display: grid;
+        grid-template-columns: repeat(5, 80px);
+        grid-gap: 10px;
+        justify-content: center;
+        margin: 20px auto;
+      }
+      .cell {
+        width: 80px;
+        height: 80px;
+        background-color: #ddd;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      #score {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Reaction Grid Multi-Color</h1>
+    <div id="instructions">
+      Click the colored square as fast as you can!<br />
+      Game starts slowly, speeds up gradually. Missing or not clicking in time
+      ends the game.
+    </div>
+    <div id="grid"></div>
+    <div id="score">Score: 0</div>
+    <button id="startStopBtn">Start Game</button>
+
+    <script>
+      const GRID_SIZE = 5;
+      const COLORS = ["#4caf50", "#f44336", "#2196f3", "#ff9800", "#9c27b0"];
+      let X = 200; // speed increment
+      let activeCell = null;
+      let score = 0;
+      let interval = 2000; // initial speed
+      let gameTimeout = null;
+      let gameActive = false;
+
+      const grid = document.getElementById("grid");
+      const scoreDisplay = document.getElementById("score");
+      const startStopBtn = document.getElementById("startStopBtn");
+
+      // Create grid
+      for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.addEventListener("click", () => handleClick(i));
+        grid.appendChild(cell);
+      }
+
+      // Start/Stop button
+      startStopBtn.addEventListener("click", () => {
+        if (gameActive) {
+          endGame("Game stopped!");
+        } else {
+          startGame();
+        }
+      });
+
+      function startGame() {
+        // Reset state
+        score = 0;
+        interval = 2000;
+        gameActive = true;
+        scoreDisplay.textContent = "Score: 0";
+        startStopBtn.textContent = "Stop Game";
+        document.getElementById("instructions").textContent =
+          "Click the colored square as fast as you can!";
+
+        nextTurn();
+      }
+
+      function handleClick(index) {
+        if (!gameActive) return;
+        if (activeCell === index) {
+          score++;
+          scoreDisplay.textContent = "Score: " + score;
+
+          // Gradually increase speed
+          if (X > 50) {
+            X = X - 10;
+          }
+          if (interval > 300) interval -= X;
+
+          // Clear previous timeout and go to next turn
+          clearTimeout(gameTimeout);
+          nextTurn();
+        } else {
+          endGame("Missed! Game Over.");
+        }
+      }
+
+      function nextTurn() {
+        if (!gameActive) return;
+
+        const cells = document.querySelectorAll(".cell");
+
+        // Clear previous highlight
+        if (activeCell !== null) {
+          cells[activeCell].style.backgroundColor = "#ddd";
+        }
+
+        // Pick new random cell and random color
+        activeCell = Math.floor(Math.random() * cells.length);
+        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        cells[activeCell].style.backgroundColor = color;
+
+        // Set timeout: if user doesn't click in time, game over
+        clearTimeout(gameTimeout);
+        gameTimeout = setTimeout(() => {
+          endGame("Too slow! Game Over.");
+        }, interval);
+      }
+
+      function endGame(message) {
+        gameActive = false;
+        clearTimeout(gameTimeout);
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach((cell) => (cell.style.backgroundColor = "#ddd"));
+        document.getElementById(
+          "instructions"
+        ).textContent = `${message} Final score: ${score}. Click Start Game to try again.`;
+        startStopBtn.textContent = "Start Game";
+      }
+    </script>
+  </body>
+</html>
