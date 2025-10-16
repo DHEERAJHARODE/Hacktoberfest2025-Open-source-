@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icon Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Dropbox Clone</title>
+  </head>
+  <body class="bg-gray-200">
+    <header class="sticky top-0 bg-white shadow z-50">
+      <!-- Ad -->
+      <div class="md:h-12 bg-blue-200 text-center underline p-3 text-blue-800 sm:text-[1rem] sm:h-18 md:text-normal lg:font-medium  cursor-pointer hover:no-underline">
+        Watch out Spring'25 release event on-demand to see how Dash delivers faster, more secure work 
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+
+      <!-- Navbar -->
+      <div class="flex flex-wrap items-center h-20 bg-gray-100 px-4">
+        <!-- Dropbox logo -->
+        <div class="py-4 px-2">
+          <img
+            src="https://logospng.org/download/dropbox/logo-dropbox-icone-1024.png"
+            class="h-12 cursor-pointer"
+            alt="Dropbox logo"
+          />
+        </div>
+
+        <!-- Heading -->
+        <div class="py-5 px-2">
+          <h1 class="font-semibold text-2xl">Dropbox</h1>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex flex-wrap items-center space-x-6 ml-4 hidden md:flex">
+          <p class="font-semibold cursor-pointer hover:text-blue-500">Products <i class="fa-solid fa-caret-down"></i></p>
+          <p class="font-semibold cursor-pointer hover:text-blue-500">Solutions <i class="fa-solid fa-caret-down"></i></p>
+          <p class="font-semibold cursor-pointer hover:text-blue-500">Enterprise</p>
+          <p class="font-semibold cursor-pointer hover:text-blue-500">Pricing</p>
+        </div>
+
+        <!-- Right side buttons -->
+        <div class="flex items-center ml-auto space-x-4 text-sm md:mt-2">
+          <i class="fa-solid fa-earth-americas"></i>
+          <p class="cursor-pointer hover:text-blue-500">Contact Sales</p>
+          <p class="cursor-pointer hover:text-blue-500">Get App <i class="fa-solid fa-caret-down"></i></p>
+          <p class="cursor-pointer hover:text-blue-500">Sign Up</p>
+          <p class="cursor-pointer hover:text-blue-500">Log In</p>
+          <button class="px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Get Started</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="flex md:flex-row sm:flex-col md:mt-10 lg:mt-0 sm:justify-items-center w-full">
+      <!-- Text Info -->
+      <div class="max-w-screen-xl mx-auto px-4 py-10 lg:py-32">
+        <div class="flex items-center space-x-3">
+          <button class="bg-blue-600 text-white py-1 px-4 rounded-2xl mt-2 md:text-normal sm:text-[1rem]">New</button>
+          <p class="text-blue-600 mt-3 font-bold text-xl sm:text-2xl">Dropbox Dash: Spring '25 release</p>
+        </div>
+
+        <div class="mt-6">
+          <p class="font-semibold text-3xl sm:text-4xl p-1">Find anything.</p>
+          <p class="font-semibold text-3xl sm:text-4xl p-1">Protect everything.</p>
+          <p class="font-light py-4 max-w-xl text-[1.2rem] sm:text-[1rem]">
+            Find, organize, and protect your work with Dropbox Dash. Now with advanced search for video, images,
+            and team members—plus generative AI capabilities across even more connected apps.
+          </p>
+
+          <!-- Buttons Div -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-10">
+            <button class="bg-blue-500 text-white py-3 px-5 rounded-2xl hover:bg-blue-600 cursor-pointer">
+              What's new with Dash <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="underline font-bold hover:text-blue-700">
+              Try Dropbox free <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Related Image -->
+      <div class="h-[550px] w-[550px] md:mx-auto sm:mt-3 sm:mb-3">
+        <img src="dropbox-video-frame.png"   alt="dropbox-video-frame">
+      </div>
+      
+    </div>
+
+    <!-- Ad Div -->
+    <div class="flex justify-center sm:my-2 md:mb-5 lg:my-8">
+      <div class="flex md:h-[130px] md:w-[85%] sm:w-[90%]  bg-black rounded-2xl cursor-pointer">
+        <img
+            src="https://logospng.org/download/dropbox/logo-dropbox-icone-1024.png"
+            class="h-20 cursor-pointer md:ml-6 md:mt-5 sm:ml-5 sm:mt-8"
+            alt="Dropbox logo"
+          />
+        <p class="text-white font-semibold md:text-3xl sm:text-2xl py-10 px-8">Check out our Spring'25 release!</p>
+        <button class="bg-blue-500 h-12 w-40 md:text-[1.1rem] sm:text-[1rem] rounded-lg cursor-pointer hover:bg-blue-400 mt-9 ml-auto mr-6">Watch now <i class="fa-solid fa-arrow-right"></i> </button>
+      </div>
+    </div>
+
+    <!-- Permissions Div -->
+    <div class="flex flex-col md:mt-20 sm:mt-8 p-10">
+      <div class="justify-items-center">
+        <div class="bg-gray-700 text-white h-9 w-35 py-1 px-4 rounded-lg"> <i class="fa-solid fa-lock"></i> Permissions</div>
+        <h3 class="m-3 font-semibold text-3xl">Protect all your content</h3>
+        <p class="md:w-[700px] sm:w-auto text-center text-gray-500"> Dash makes it easy to find files across apps and safeguard sensitive content. With AI-powered search and universal access controls, your team stays connected, efficient, and secure. </p>
+        <div class="m-5">
+          <button class="border border-black py-2 px-4 rounded-lg hover:bg-gray-200">Learn More <i class="fa-solid fa-arrow-right"></i> </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photos Section -->
+    <div class="flex flex-col lg:flex-row justify-center items-center gap-10 px-4 py-16">
+      <img 
+        src="videoframe_7846.png" 
+        alt="Video Frame" 
+        class="w-full max-w-2xl rounded-lg shadow-md object-contain" 
+      />
+      <img 
+        src="dropbox-dash-image.png" 
+        alt="Dropbox Dash" 
+        class="w-full max-w-md rounded-lg shadow-md object-contain hidden lg:block" 
+      />
+    </div>
+
+     
+    <!-- Footer -->
+    <footer class="bg-black w-full lg:h-[600px] sm:h-auto">
+      <!-- Lists Div -->
+      <div class="flex flex-wrap justify-evenly text-white sm:text-[0.7rem] md:text-normal lg:text-[1rem] md:gap-x-12 md:gap-y-6 py-10 md:ml-10 sm:ml-4 sm:gap-x-4 sm:gap-y-2">
+        <!-- Column 1 -->
+        <div>
+          <p class="font-semibold text-[1.5rem] my-3">Dropbox</p>
+          <ul>
+            <li class="hover:underline m-2"><a href="#">Desktop app</a></li>
+            <li class="hover:underline m-2"><a href="#">Mobile app</a></li>
+            <li class="hover:underline m-2"><a href="#">Integrations</a></li>
+            <li class="hover:underline m-2"><a href="#">Features</a></li>
+            <li class="hover:underline m-2"><a href="#">Solutions</a></li>
+            <li class="hover:underline m-2"><a href="#">Security</a></li>
+            <li class="hover:underline m-2"><a href="#">Early access</a></li>
+            <li class="hover:underline m-2"><a href="#">Templates</a></li>
+            <li class="hover:underline m-2"><a href="#">Free tools</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+          <p class="font-semibold text-[1.5rem] my-3">Products</p>
+          <ul>
+            <li class="hover:underline m-2"><a href="#">Plus</a></li>
+            <li class="hover:underline m-2"><a href="#">Professional</a></li>
+            <li class="hover:underline m-2"><a href="#">Business</a></li>
+            <li class="hover:underline m-2"><a href="#">Enterprise</a></li>
+            <li class="hover:underline m-2"><a href="#">Dash</a></li>
+            <li class="hover:underline m-2"><a href="#">Reclaim.ai</a></li>
+            <li class="hover:underline m-2"><a href="#">Dropbox Sign</a></li>
+            <li class="hover:underline m-2"><a href="#">DocSend</a></li>
+            <li class="hover:underline m-2"><a href="#">Plans</a></li>
+            <li class="hover:underline m-2"><a href="#">Product updates</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
+          <p class="font-semibold text-[1.5rem] my-3">Features</p>
+          <ul>
+            <li class="hover:underline m-2"><a href="#">Send large files</a></li>
+            <li class="hover:underline m-2"><a href="#">Send long videos</a></li>
+            <li class="hover:underline m-2"><a href="#">Cloud photo storage</a></li>
+            <li class="hover:underline m-2"><a href="#">Secure file transfer</a></li>
+            <li class="hover:underline m-2"><a href="#">Password manager</a></li>
+            <li class="hover:underline m-2"><a href="#">Cloud backup</a></li>
+            <li class="hover:underline m-2"><a href="#">Edit PDFs</a></li>
+            <li class="hover:underline m-2"><a href="#">Electronic signatures</a></li>
+            <li class="hover:underline m-2"><a href="#">Convert to PDF</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div>
+          <p class="font-semibold text-[1.5rem] my-3">Support</p>
+          <ul>
+            <li class="hover:underline m-2"><a href="#">Help center</a></li>
+            <li class="hover:underline m-2"><a href="#">Contact us</a></li>
+            <li class="hover:underline m-2"><a href="#">Privacy & terms</a></li>
+            <li class="hover:underline m-2"><a href="#">Cookies & CCPA preferences</a></li>
+            <li class="hover:underline m-2"><a href="#">Password manager</a></li>
+            <li class="hover:underline m-2"><a href="#">AI principles</a></li>
+            <li class="hover:underline m-2"><a href="#">Sitemap</a></li>
+            <li class="hover:underline m-2"><a href="#">Learning resources</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5 -->
+        <div>
+          <p class="font-semibold text-[1.5rem] my-3">Resources</p>
+          <ul>
+            <li class="hover:underline m-2"><a href="#">Blog</a></li>
+            <li class="hover:underline m-2"><a href="#">Customer stories</a></li>
+            <li class="hover:underline m-2"><a href="#">Resources library</a></li>
+            <li class="hover:underline m-2"><a href="#">Developers</a></li>
+            <li class="hover:underline m-2"><a href="#">Community forums</a></li>
+            <li class="hover:underline m-2"><a href="#">Referrals</a></li>
+            <li class="hover:underline m-2"><a href="#">Reseller partners</a></li>
+            <li class="hover:underline m-2"><a href="#">Integration partners</a></li>
+            <li class="hover:underline m-2"><a href="#">Find a partner</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 6 -->
+        <div>
+          <p class="font-semibold text-[1.5rem] my-3">Company</p>
+          <ul>
+            <li class="hover:underline m-2"><a href="#">About us</a></li>
+            <li class="hover:underline m-2"><a href="#">Jobs</a></li>
+            <li class="hover:underline m-2"><a href="#">Investor relations</a></li>
+            <li class="hover:underline m-2"><a href="#">Our impact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Logos/Links Div -->
+      <div class="flex h-10 space-x-4 text-2xl ml-20 cursor-pointer">
+        <!-- Twitter -->
+        <div class="block py-1 px-2 text-white hover:bg-gray-800">
+          <i class="fa-brands fa-x-twitter"></i>
+        </div>
+        
+        <!-- Facebook -->
+        <div class="block py-1 px-2 text-white hover:bg-gray-800">
+          <i class="fa-brands fa-facebook"></i>
+        </div>
+
+        <!-- Youtube -->
+        <div class="block py-1 px-2 text-white hover:bg-gray-800">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+
+      <hr class="w-20 ml-[100px] mt-2">
+
+      <!-- Language Div -->
+      <div class="bg-black text-white hover:underline ml-10 py-5 px-5 cursor-pointer">
+        <i class="fa-solid fa-earth-americas"></i> English (United States)
+      </div>
+
+    </footer>
+
+
+  </body>
+</html>
