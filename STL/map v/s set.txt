@@ -1,0 +1,15 @@
+| Feature                   | **`set`**                                                          | **`map`**                                                      |
+| :------------------------ | :----------------------------------------------------------------- | :------------------------------------------------------------- |
+| **Definition**            | Stores **unique keys** in a sorted order                           | Stores **key–value pairs** in a sorted order                   |
+| **Data Stored**           | Only **keys** (no associated value)                                | **Key–Value pairs** (`key → value`)                            |
+| **Access Syntax**         | `s.find(key)`                                                      | `m[key]` or `m.find(key)`                                      |
+| **Insertion**             | `s.insert(key)`                                                    | `m.insert({key, value})` or `m[key] = value`                   |
+| **Duplicates Allowed**    | ❌ No (use `multiset` for duplicates)                               | ❌ No duplicate keys (use `multimap` for duplicates)            |
+| **Order**                 | Sorted by key                                                      | Sorted by key                                                  |
+| **Underlying Structure**  | Typically implemented as a **self-balancing BST (Red-Black Tree)** | Same (self-balancing BST)                                      |
+| **Time Complexity (avg)** | O(log n) for insert, erase, find                                   | O(log n) for insert, erase, find                               |
+| **Access by Index**       | ❌ Not allowed                                                      | ❌ Not allowed (no indexing)                                    |
+| **Example Declaration**   | `set<int> s;`                                                      | `map<int, string> m;`                                          |
+| **Example Use**           | `s.insert(10);`                                                    | `m[1] = "Apple";`                                              |
+| **Iterator Type**         | `set<int>::iterator` points to a key                               | `map<int, string>::iterator` points to a **pair (key, value)** |
+| **Use Case**              | When you need a collection of unique, sorted elements              | When you need key–value associations with unique keys          |
