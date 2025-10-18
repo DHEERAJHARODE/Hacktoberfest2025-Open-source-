@@ -1,0 +1,96 @@
+1️⃣ Constructors
+Constructor	Description
+string()	Empty string
+string(const char* s)	From C-style string
+string(size_t n, char c)	n copies of c
+string(const string& str)	Copy constructor
+string(const string& str, size_t pos, size_t len)	Substring constructor
+string(const char* s, size_t n)	From first n chars of s
+string(string&& str)	Move constructor
+
+🧩 2️⃣ Basic Capacity Functions
+Function	Description
+size() / length()	Number of characters
+max_size()	Max possible size
+capacity()	Allocated storage
+empty()	Checks if string is empty
+reserve(n)	Reserve storage for at least n chars
+resize(n) / resize(n, c)	Change size (fill with c if growing)
+shrink_to_fit()	Reduce capacity to fit actual size
+
+✍️ 3️⃣ Modifiers (Mutating functions)
+Function	Description
+clear()	Remove all characters
+insert(pos, str)	Insert string at position
+insert(pos, s, n)	Insert first n chars of s
+insert(pos, n, c)	Insert n copies of char c
+erase(pos, len)	Erase substring
+push_back(c)	Append one character
+pop_back()	Remove last character
+append(str)	Append another string
+append(s, pos, len)	Append substring
+operator+=	Append using +=
+replace(pos, len, str)	Replace substring
+swap(str)	Swap two strings
+
+🔍 4️⃣ Element Access
+Function	Description
+operator[](index)	Direct (unchecked) access
+at(index)	Checked access (throws out_of_range)
+front()	First character
+back()	Last character
+data()	Returns pointer to char array
+c_str()	Returns C-style null-terminated string
+
+🔢 5️⃣ Searching Operations
+Function	Description
+find(str)	Find first occurrence
+find(str, pos)	From index pos
+rfind(str)	Find last occurrence
+find_first_of(chars)	Find any of chars
+find_last_of(chars)	Find last of chars
+find_first_not_of(chars)	Find first not in chars
+find_last_not_of(chars)	Find last not in chars
+
+✂️ 6️⃣ Substring and Comparison
+Function	Description
+substr(pos, len)	Extract substring
+compare(str)	Lexicographical compare (returns <0, 0, >0)
+compare(pos, len, str)	Compare substring
+Relational ops (==, !=, <, >, <=, >=)	Compare strings
+
+🔡 7️⃣ Iterators
+Function	Description
+begin() / end()	Forward iterators
+rbegin() / rend()	Reverse iterators
+cbegin() / cend()	Const forward iterators
+crbegin() / crend()	Const reverse iterators
+
+🧰 8️⃣ Other Useful Functions
+Function	Description
+stoi(str)	Convert string → int
+stol(str)	Convert string → long
+stoll(str)	Convert string → long long
+stof(str)	Convert string → float
+stod(str)	Convert string → double
+to_string(num)	Convert number → string
+
+⚙️ 9️⃣ Operators
+Operator	Meaning
++	Concatenation
++=	Append
+==, !=, <, >	Comparison
+[]	Access
+<<, >>	Stream input/output
+
+🧮 🔤 10️⃣ String Algorithms (from <algorithm>)
+
+These work directly on strings too:
+
+Algorithm	Example
+reverse(s.begin(), s.end())	Reverse string
+sort(s.begin(), s.end())	Sort characters
+count(s.begin(), s.end(), 'a')	Count char
+unique(s.begin(), s.end())	Remove consecutive duplicates
+find(s.begin(), s.end(), 'x')	Find character
+transform(s.begin(), s.end(), s.begin(), ::tolower)	Convert to lowercase
