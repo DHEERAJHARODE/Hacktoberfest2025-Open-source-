@@ -1,65 +1,48 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
- vector<int> spiralOrder(vector<vector<int>>& matrix) {
+
+vector<int> spiralOrder(vector<vector<int> >& matrix)
+{
     vector<int> ans;
-    int n = matrix.size();
-    int m = matrix[0].size();
-        
-    int top=0, bottom=n-1;
-    int left=0, right=m-1;
-        
-    while(top<=bottom && left<=right)
-    {
-        for(int i=left; i<=right; i++)
-        {
-            ans.push_back(matrix[top][i]);
+
+    if (matrix.size() == 0)
+        return ans;
+
+    int R = matrix.size(), C = matrix[0].size();
+    vector<vector<bool> > seen(R, vector<bool>(C, false));
+    int dr[] = { 0, 1, 0, -1 };
+    int dc[] = { 1, 0, -1, 0 };
+    int r = 0, c = 0, di = 0;
+    for (int i = 0; i < R * C; i++) {
+        ans.push_back(matrix[r]);
+        seen[r] = true;
+        int cr = r + dr[di];
+        int cc = c + dc[di];
+
+        if (0 <= cr && cr < R && 0 <= cc && cc < C
+            && !seen[cr][cc]) {
+            r = cr;
+            c = cc;
         }
-        top++;
-            
-        for(int i=top; i<=bottom; i++)
-        {
-            ans.push_back(matrix[i][right]);
+        else {
+            di = (di + 1) % 4;
+            r += dr[di];
+            c += dc[di];
         }
-        right--;
-            
-        if(top>bottom || left>right)
-        {
-            break;
-        }
-            
-        for(int i=right; i>=left; i--)
-        {
-            ans.push_back(matrix[bottom][i]);
-        }
-        bottom--;
-            
-        for(int i=bottom; i>=top; i--)
-        {
-            ans.push_back(matrix[i][left]);
-        }
-        left++;
     }
-        
     return ans;
 }
 
+// Driver code
 int main()
 {
-	int n,m;
-	cin>>n>>m;
+    vector<vector<int> > a{ { 1, 2, 3, 4 },
+                            { 5, 6, 7, 8 },
+                            { 9, 10, 11, 12 },
+                            { 13, 14, 15, 16 } };
 
-	vector<vector<int>> matrix(n, vector<int>(m));
-	for(int i=0; i<n; i++)
-	{
-		for(int j=0; j<m; j++)
-		{
-			cin>>matrix[i][j];
-		}
-	}
-	vector<int> ans = spiralOrder(matrix);
-	for(int i=0; i<ans.size(); i++)
-	{
-		cout<<ans[i]<<" ";
-	}
-	cout<<endl;
+    for (int x : spiralOrder(a)) {
+        cout << x << " ";
+    }
+    return 0;
 }
