@@ -1,134 +1,397 @@
-h1 {
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header Styles */
+.header {
     text-align: center;
-    font-size: 1.8em;
-    font-family: monospace;
-    padding: 0.7em;
-  }
-  
-  .keyboard {
-      text-align: center;
-      font-size: 14px;
-      font-family: sans-serif;
-  }
-  
-  .keyboard__row {
-      display: inline-block;
-      height: 3em;
-      margin: 0.2em;
-  }
-  
-  .keyboard__row--h1 {
-      height: 1.7em;
-      line-height: 1.4em;
-  }
-  
-  .keyboard__row--h3 {
-      height: 3.3em;
-  }
-  
-  .keyboard__row > * {
-      position: relative;
-      background: #333;
-      text-align: center;
-      color: #eee;
-      float: left;
-      border-radius: 0.3em;
-      margin: 0.2em;
-      padding: 0.2em;
-      width: 3.3em;
-      height: 100%;
-      box-sizing: border-box;
-      cursor: pointer;
-      -webkit-user-select: none;
-      border: 1px solid #444;
-      box-shadow: 0 0.2em 0 0.05em #222;
-      border-bottom-color: #555;
-  }
-  
-  .keyboard__row--h1 > div {
-      width: 3.5em;
-  }
-  
-  .keyboard__row > div[data-pressed],
-  .keyboard__row > div:active {
-      background: #2a2a2a;
-      color: #aaa;
-      position: relative;
-      top: 0.2em;
-      box-shadow: 0 0 0 0.05em black;
-  }
-  
-  .key--w3 {
-      width: 4.6em;
-  }
-  
-  .key--w4 {
-      width: 6em;
-  }
-  
-  .key--w5 {
-      width: 6.5em;
-  }
-  
-  .key--w6 {
-      width: 8.3em;
-  }
-  
-  .key--space {
-      width: 18em;
-  }
-  
-  .key--double > * {
-      padding-top: 0.1em;
-  }
-  
-  .key--letter {
-      line-height: 2.8em;
-  }
-  
-  .key--bottom-left > * {
-      position: absolute;
-      text-align: left;
-      bottom: 0.4em;
-      left: 0.4em;
-  }
-  
-  .key--bottom-right > * {
-      position: absolute;
-      text-align: right;
-      bottom: 0.4em;
-      right: 0.4em;
-  }
-  
-  .key--fn > * {
-      font-size: 0.6em;
-      line-height: 1em;
-      padding-top: 1.2em;
-      padding-right: 0.2em;
-      text-align: right;
-      float: right;
-  }
-  
-  .key--word > * {
-      font-size: 0.8em;
-  }
-  
-  .key--arrow--tall > *,
-  .key--arrow > * {
-      font-size: 0.5em;
-      line-height: 3em;
-  }
-  
-  .key--arrow {
-      height: 1.8em;
-      margin-top: 1.7em;
-      line-height: 0.5em;
-  }
-  
-  .key--arrow--tall > * {
-      padding-top: 0.2em;
-  }
-  
-  .keyboard > .keyboard__row {
-      text-align: center;
-  }
+    margin-bottom: 40px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.header p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Keyboard Styles */
+.keyboard {
+    background: linear-gradient(145deg, #2c3e50, #34495e);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.keyboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.keyboard__row {
+    display: flex;
+    justify-content: center;
+    height: 3.5em;
+    margin: 0.3em 0;
+    gap: 0.3em;
+}
+
+.keyboard__row--h1 {
+    height: 2em;
+    margin-bottom: 0.5em;
+}
+
+.keyboard__row--h3 {
+    height: 4em;
+    margin-top: 0.5em;
+}
+
+.keyboard__row > * {
+    position: relative;
+    background: linear-gradient(145deg, #4a5568, #2d3748);
+    text-align: center;
+    color: #e2e8f0;
+    border-radius: 8px;
+    margin: 0;
+    padding: 0.3em;
+    width: 3.5em;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.keyboard__row > *:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(145deg, #5a6578, #3d4858);
+}
+
+.keyboard__row > *[data-pressed],
+.keyboard__row > *:active {
+    transform: translateY(2px);
+    background: linear-gradient(145deg, #2d3748, #1a202c);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    color: #a0aec0;
+}
+
+/* Key Type Styles */
+.key--w3 { width: 5em; }
+.key--w4 { width: 6.5em; }
+.key--w5 { width: 7em; }
+.key--w6 { width: 9em; }
+.key--space { width: 20em; }
+
+.key--double {
+    flex-direction: column;
+    font-size: 0.9em;
+}
+
+.key--double > * {
+    padding: 0.1em 0;
+    line-height: 1.2;
+}
+
+.key--letter {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #f7fafc;
+}
+
+.key--fn {
+    font-size: 0.7em;
+    font-weight: 500;
+    color: #cbd5e0;
+}
+
+.key--word {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #a0aec0;
+}
+
+.key--arrow {
+    font-size: 1.2em;
+    color: #4a5568;
+}
+
+.key--arrow--tall {
+    flex-direction: column;
+    font-size: 0.8em;
+}
+
+.key--arrow--tall > * {
+    padding: 0.1em 0;
+}
+
+/* Special Key Styles */
+.key--bottom-left,
+.key--bottom-right {
+    position: relative;
+}
+
+.key--bottom-left > *,
+.key--bottom-right > * {
+    position: absolute;
+    bottom: 0.4em;
+    font-size: 0.7em;
+}
+
+.key--bottom-left > * {
+    left: 0.4em;
+    text-align: left;
+}
+
+.key--bottom-right > * {
+    right: 0.4em;
+    text-align: right;
+}
+
+/* Musical Key Highlighting */
+.key--musical {
+    background: linear-gradient(145deg, #ff6b6b, #ee5a52) !important;
+    color: white !important;
+    box-shadow: 
+        0 4px 8px rgba(255, 107, 107, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.key--musical:hover {
+    background: linear-gradient(145deg, #ff5252, #e53e3e) !important;
+    box-shadow: 
+        0 6px 12px rgba(255, 107, 107, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.key--musical[data-pressed],
+.key--musical:active {
+    background: linear-gradient(145deg, #e53e3e, #c53030) !important;
+    transform: translateY(3px) scale(0.95) !important;
+    box-shadow: 
+        0 2px 4px rgba(255, 107, 107, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Controls */
+.controls {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: white;
+}
+
+.volume-control {
+    margin-bottom: 20px;
+}
+
+.volume-control label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.volume-control input[type="range"] {
+    width: 200px;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+    outline: none;
+    -webkit-appearance: none;
+    margin: 0 10px;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.volume-control input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#volume-value {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #4ecdc4;
+}
+
+.instrument-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.instrument-info p {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .keyboard {
+        padding: 15px;
+        font-size: 12px;
+    }
+    
+    .keyboard__row > * {
+        width: 3em;
+        font-size: 0.9em;
+    }
+    
+    .key--w3 { width: 4em; }
+    .key--w4 { width: 5.5em; }
+    .key--w5 { width: 6em; }
+    .key--w6 { width: 7.5em; }
+    .key--space { width: 15em; }
+    
+    .instrument-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .volume-control input[type="range"] {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .keyboard {
+        padding: 10px;
+        font-size: 10px;
+    }
+    
+    .keyboard__row > * {
+        width: 2.5em;
+        font-size: 0.8em;
+    }
+    
+    .key--w3 { width: 3.5em; }
+    .key--w4 { width: 4.5em; }
+    .key--w5 { width: 5em; }
+    .key--w6 { width: 6.5em; }
+    .key--space { width: 12em; }
+}
+
+/* Animation for key press */
+@keyframes keyPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.key-press-animation {
+    animation: keyPress 0.2s ease-in-out;
+}
+
+/* Glow effect for active keys */
+.key-glow {
+    box-shadow: 
+        0 0 20px rgba(255, 107, 107, 0.6),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
