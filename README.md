@@ -1,73 +1,90 @@
-# Hactoberfest 2024
-<img src=https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg />
-A beginner-friendly project to help you in open-source contribution. Made specifically for contribution in HACKTOBERFEST 2024! Hello World Programs and Algorithms! Please leave a star to support this project! 
-![](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
+# Hactoberfest 2025
+ 🌟 Code, Contribute, Celebrate! Your Open Source Adventure Starts Here 🚀
 
-# This All programs For beginner 
-Enjoy All
-Hacktoberfest has a simple and plain moto.
+>Link : https://hacktoberfest.com
 
-# Beginner-Hacktoberfest
-Need Your first pr for hacktoberfest 2k23 ? come on in 
+# 🔍 What's Hacktoberfest 2025?
 
----
+Hacktoberfest is a month-long celebration of open source that encourages people of all levels to contribute to projects, learn, and connect with the community. It’s run by DigitalOcean with community partners and includes workshops, events, and ways to get involved beyond just code.
 
-# ❓ What's Hacktoberfest 2024?
+# 📅 Key dates & rules (short and sweet)
 
-Hacktoberfest is the easiest way to get into open source! Hacktoberfest is a month long festival of open source code presented by [Digital Ocean](https://www.digitalocean.com/) and [DEV](https://www.dev.to/) this year in 2023.
+WHEN: October 1 — October 31, 2025.
 
-During the entire month of October 2022, all you have to do is contribute to any open source projects and open at least 4 pull requests. Yes, any project and any kind of contributions. It can be a be a bug fix, improvement, or even a documentation change! And win a T-Shirt and awesome stickers.
+REGISTRATION WINDOW: Register on the official site between September 15 and October 31 to be tracked for rewards. 
 
-If you’ve never contributed to open source before, this is the perfect time to get started because Hacktoberfest provides a large list of available contribution opportunities (and yes, there are always plenty for beginners too).
+GOAL to “complete” Hacktoberfest: Submit 6 high-quality pull/merge requests (on eligible repositories) between Oct 1 and Oct 31. PRs must be merged or labeled hacktoberfest-accepted by maintainers to count. 
 
----
+ElILIGIBLE REPOSITORIES: Projects must opt in (look for the hacktoberfest topic on GitHub or GitLab). 
 
-# 👕 Why Should I Contribute?
+# 🧭 How to participate — step by step
 
-Hacktoberfest has a simple and plain moto.
+➡ Register at the official Hacktoberfest site and connect your GitHub or GitLab account. 
 
-> Support open source and earn a limited edition T-shirt!
+➡ Find projects that have the hacktoberfest topic or mark issues as good first issue / help wanted. You can contribute to code, docs, translation, designs, tests, etc. 
 
-So, yes! You can win a T-Shirt and few awesome stickers to attach on your laptop. On plus side, you will get into beautiful world of open source and get the international exposure.  
-**Wait there's more!**
+➡ Fork the repo, create a branch, make your changes, and open a PR (or Merge Request).
 
+➡ Follow contribution guidelines of the project (README, CONTRIBUTING.md). 
 
----
+➡ Make your PR clear: what you changed, why, and link to the issue if relevant.
 
-# 👍 This is Awesome! How Can I Contribute?
+➡ Engage with maintainers — respond to feedback and update your PR if requested. PRs must be accepted (merged) or labeled to count. 
 
-It's very easy. You don't need to be an expert in coding and programming. Here are the steps you need to follow to create your -(maybe)- EXAMPLE first pull request within few minutes.
-1. **Star this repository.**
-2. **Navigate To index.html or main.css do so crazy contribution file**
-3. **Edit the file and insert the line of text in the specified location in the format as given in comment .**
-4. **Now click on Propose button.**
-5. **Create a new pull request.**
-6. **Wait for your Pull Request to be reviewed and merged!**
-7. **Enjoy and welcome to Hacktoberfest 2023 and Keep Contributing :)**
+➡ Track progress on your Hacktoberfest dashboard (after registration) — badges often update as you get accepted PRs.
 
-> You Can Upload Coded Projects In the Codes Directory 
+# 🛠️ Quick checklist before opening a PR
 
+👉🏻 Did you read the project’s CONTRIBUTING.md?
 
----
-## Code Of Conduct
-**Examples of behavior that contributes to creating a positive environment :**
-- Using welcoming and inclusive language
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Being respectful of differing viewpoints and experiences
+ 👉🏻 Is your change one logical commit (or well-described commits)?
 
+ 👉🏻 Does the PR description explain what and why?
 
+ 👉🏻 Did you run tests / linters if the project requests them?
 
-**Examples of unacceptable behavior by participants include:**
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
----
+👉🏻 Is the repository opted into Hacktoberfest
 
-## 🎯Objectives
-**The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest 2022**
+# 💡 Tips for beginners
 
-<!-- # :handshake: Our Contributors
-<a href="https://github.com/hctnm2/Beginner-Hacktoberfest/graphs/contributors">
-<!--   <img src="https://contrib.rocks/image?repo=hctnm2/Beginner-Hacktoberfest" /> -->
-<!-- </a> --> 
+✍🏻️ Start with documentation fixes or small typo fixes — maintainers often accept these quickly.
+
+✍🏻️ Search for tags: good first issue, beginner, help wanted.
+
+✍🏻️ Read past PRs in the repo to see coding style and how maintainers react.
+
+✍🏻️ Be polite and patient — maintainers are volunteers. If a PR isn’t merged quickly, ask how to improve it.
+
+✍🏻️ Don’t spam trivial PRs across many repos; focus on quality over quantity (the event enforces quality to keep things healthy).
+
+# 🎁 Rewards & swag
+
+Hacktoberfest often offers digital badges that evolve as you complete accepted PRs, plus occasional physical swag (like T-shirts 👕 or stickers🤖) depending on availability and eligibility. Register to unlock your participant badge and to track progress.
+
+# 📜 Code of Conduct & ethics
+
+👔 Respect maintainers and other contributors. Follow project contribution rules.
+
+👔 Avoid creating spammy/low-quality PRs just to meet the quota — that harms projects and may disqualify your contributions. Event organizers encourage meaningful contributions and respect for maintainers.
+
+# ❓ FAQ (fast answers)
+
+**Q: Can I contribute to private repos?**
+
+A: No — contributions need to be on public repositories hosted on GitHub or GitLab that are opted into Hacktoberfest. 
+hacktoberfest.com
++1
+
+**Q: What counts as 1 PR — a merged PR or closed PR?**
+
+A: A PR usually needs to be merged, or a maintainer must mark it hacktoberfest-accepted for it to count. Check the dashboard after registration. 
+hacktoberfest.com
++1
+
+**Q: Can non-coders participate?**
+
+A: Absolutely — documentation, translations, design, testing, and tutorials all count if the repository accepts them.
+
+#✅ Final pep talk
+
+Hacktoberfest is less about swag and more about learning, giving back, and joining a welcoming community. Don’t stress if your first PR gets feedback — that’s how we learn. Jump in, be kind, and have fun building! 🚀❤️
