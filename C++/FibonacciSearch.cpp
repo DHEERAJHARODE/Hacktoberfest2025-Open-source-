@@ -1,72 +1,76 @@
-
-#include<iostream>
- 
+#include <iostream>
+#include <vector>
 using namespace std;
- 
-void FibonacciSearch(int *a, int start, int end, int *fab, int index, int item)
-{
-	int i, mid;
- 
-	// Assigning middle of the array using Fibonacci element.
-	mid = start+fab[index-2];
- 
-	// Return if item found at mid index.
-	if(item == a[mid])
-	{
-		cout<<"\n item found at "<<mid<<" index.";
-		return;
-	}
-	// Return if item found at start index.
-	else if(item == a[start])
-	{
-		cout<<"\n item found at "<<start<<" index.";
-		return;
-	}
-	// Return if item found at end index.
-	else if(item == a[end])
-	{
-		cout<<"\n item found at "<<end<<" index.";
-		return;
-	}
-	// If mid becomes start or end of the sub-array then element not found.
-	else if(mid == start || mid == end)
-	{
-		cout<<"\nElement not found";
-		return;
-	}
-	// According to the item value choose the partion to proceed further.
-	else if(item > a[mid])
-		FibonacciSearch(a, mid, end, fab, index-1, item);
-	else
-		FibonacciSearch(a, start, mid, fab, index-2, item);
+
+// Function to perform Fibonacci Search
+int fibonacciSearch(const vector<int>& arr, int x) {
+    int n = arr.size();
+
+    // Initialize Fibonacci numbers
+    int fibMMm2 = 0;      // (m-2)'th Fibonacci No.
+    int fibMMm1 = 1;      // (m-1)'th Fibonacci No.
+    int fibM = fibMMm2 + fibMMm1;  // m'th Fibonacci No.
+
+    // fibM is the smallest Fibonacci number greater than or equal to n
+    while (fibM < n) {
+        fibMMm2 = fibMMm1;
+        fibMMm1 = fibM;
+        fibM = fibMMm2 + fibMMm1;
+    }
+
+    // Marks the eliminated range from front
+    int offset = -1;
+
+    // While there are elements to inspect
+    while (fibM > 1) {
+        // Check if fibMMm2 is a valid index
+        int i = min(offset + fibMMm2, n - 1);
+
+        if (arr[i] < x) {
+            // Move 1 Fibonacci down
+            fibM = fibMMm1;
+            fibMMm1 = fibMMm2;
+            fibMMm2 = fibM - fibMMm1;
+            offset = i;
+        }
+        else if (arr[i] > x) {
+            // Move 2 Fibonacci down
+            fibM = fibMMm2;
+            fibMMm1 = fibMMm1 - fibMMm2;
+            fibMMm2 = fibM - fibMMm1;
+        }
+        else
+            return i; // Element found
+    }
+
+    // Compare last element
+    if (fibMMm1 && arr[offset + 1] == x)
+        return offset + 1;
+
+    // Not found
+    return -1;
 }
- 
-int main()
-{
-	int n, i, biter, fab[20], a[20]={1, 9, 18, 24, 27, 35, 38, 41, 49, 53, 55, 66, 67, 72, 75, 77, 81, 89, 90, 97};
-	char ch;
- 
-	fab[0] = 0;
-	fab[1] = 1;
-	i = 1;
-	while(fab[i] < 20)
-	{
-		i++;
-		fab[i] = fab[i-1]+fab[i-2];
-	}
- 
-	up:
-	cout<<"\nEnter the Element to be searched: ";
-	cin>>n;
- 
-	// Implement Fibonacci search.
-	FibonacciSearch(a, 0, 19, fab, i, n);
- 
-	// Ask user to enter choice for further searching.
-	cout<<"\n\n	Do you want to search more...enter choice(y/n)?";
-	cin>>ch;
-	if(ch == 'y' || ch == 'Y')
-		goto up;
- 
-	return 0;
+
+int main() {
+    vector<int> arr = {1, 9, 18, 24, 27, 35, 38, 41, 49, 53, 55, 66, 67, 72, 75, 77, 81, 89, 90, 97};
+
+    int key;
+    char choice;
+
+    do {
+        cout << "\nEnter the element to be searched: ";
+        cin >> key;
+
+        int index = fibonacciSearch(arr, key);
+
+        if (index >= 0)
+            cout << "Element found at index: " << index << endl;
+        else
+            cout << "Element not found.\n";
+
+        cout << "\nDo you want to search more (y/n)? ";
+        cin >> choice;
+    } while (choice == 'y' || choice == 'Y');
+
+    return 0;
 }
