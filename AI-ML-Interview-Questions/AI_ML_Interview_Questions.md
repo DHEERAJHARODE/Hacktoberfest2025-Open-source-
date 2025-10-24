@@ -90,3 +90,167 @@ This file contains a compact set of starter interview questions and short answer
 ---
 
 If you add more questions, follow the same short format (Question → Answer → Explanation → Reference). When creating a PR, mention how many Q&A you added and link to the issue template or issue file if applicable.
+
+---
+
+### Q11 — What is a confusion matrix?
+
+**Answer:** A confusion matrix summarizes classification results with counts of true positives, true negatives, false positives, and false negatives.
+
+**Explanation:** It helps compute metrics like accuracy, precision, recall, and F1-score and is useful for multiclass evaluation.
+
+---
+
+### Q12 — What is ROC AUC?
+
+**Answer:** ROC AUC is the Area Under the Receiver Operating Characteristic curve; it measures a classifier's ability to separate classes across thresholds.
+
+**Explanation:** AUC ranges from 0 to 1; 0.5 is random guessing, higher is better and it's threshold-independent.
+
+---
+
+### Q13 — What causes vanishing and exploding gradients?
+
+**Answer:** Vanishing/exploding gradients occur in deep networks when repeated multiplications during backpropagation make gradients extremely small or large, preventing learning or causing instability.
+
+**Explanation:** Remedies include proper weight initialization, batch normalization, residual connections, and using ReLU-like activations.
+
+---
+
+### Q14 — What is batch normalization and why use it?
+
+**Answer:** Batch normalization rescales and recenters layer inputs using batch statistics to stabilize and accelerate training.
+
+**Explanation:** It allows higher learning rates, reduces sensitivity to initialization, and can act as mild regularization.
+
+---
+
+### Q15 — What is dropout?
+
+**Answer:** Dropout randomly zeroes neuron activations during training to prevent co-adaptation and reduce overfitting.
+
+**Explanation:** At inference, activations are scaled appropriately; dropout is often used in fully connected layers.
+
+---
+
+### Q16 — Difference between CNN and RNN?
+
+**Answer:** CNNs use convolutional filters to capture spatial/local patterns (images); RNNs process sequential data, maintaining state across time steps.
+
+**Explanation:** Use CNNs for images/structured grids and RNNs (or transformers) for sequences like text or time series.
+
+---
+
+### Q17 — What is attention (in transformers)?
+
+**Answer:** Attention computes weighted combinations of values based on similarity between queries and keys, allowing models to focus on relevant parts of the input.
+
+**Explanation:** Self-attention lets each token attend to others; transformers scale this with multi-head attention for richer representations.
+
+---
+
+### Q18 — What is transfer learning?
+
+**Answer:** Transfer learning reuses a pretrained model or its features on a new task, often fine-tuning on smaller datasets to speed up training and improve performance.
+
+**Explanation:** Common in vision (ImageNet-pretrained backbones) and NLP (BERT/Transformer fine-tuning).
+
+---
+
+### Q19 — What is data augmentation and why use it?
+
+**Answer:** Data augmentation applies label-preserving transformations (rotations, flips, noise) to increase dataset size and variety.
+
+**Explanation:** It reduces overfitting and improves model robustness, especially when original data is limited.
+
+---
+
+### Q20 — What is ensembling and why does it help?
+
+**Answer:** Ensembling combines multiple models' predictions (e.g., bagging, boosting, stacking) to improve accuracy and robustness.
+
+**Explanation:** Ensembles reduce variance and can correct individual model biases; Random Forests and Gradient Boosting are common examples.
+
+---
+
+### Q21 — What is gradient clipping?
+
+**Answer:** Gradient clipping caps gradients to a fixed threshold to prevent exploding gradients during optimization.
+
+**Explanation:** Commonly used in RNN training where long sequences can cause large gradients.
+
+---
+
+### Q22 — What are activation functions and why choose ReLU?
+
+**Answer:** Activation functions introduce non-linearity. ReLU is simple (max(0,x)), sparsifies activations, and reduces vanishing-gradient issues compared to sigmoid/tanh.
+
+**Explanation:** Variants like Leaky ReLU and GELU address ReLU's dying-neuron problem.
+
+---
+
+### Q23 — When to use cross-entropy vs MSE loss?
+
+**Answer:** Use cross-entropy for classification with probabilities (softmax/sigmoid) and MSE (mean squared error) for regression tasks predicting continuous values.
+
+**Explanation:** Cross-entropy aligns with maximum likelihood for categorical outcomes and handles class probabilities better.
+
+---
+
+### Q24 — What is learning rate scheduling?
+
+**Answer:** Learning rate scheduling adjusts the optimizer's learning rate during training (step decay, cosine annealing, warmup) to improve convergence.
+
+**Explanation:** Warmup + decay often stabilizes large models and improves final accuracy.
+
+---
+
+### Q25 — What is early stopping?
+
+**Answer:** Early stopping halts training when validation performance stops improving to avoid overfitting.
+
+**Explanation:** Use a patience parameter to avoid stopping on temporary fluctuations.
+
+---
+
+### Q26 — What is transfer vs fine-tuning?
+
+**Answer:** Transfer typically uses pretrained features as fixed inputs (feature extraction), while fine-tuning updates pretrained model weights on the new task.
+
+**Explanation:** Fine-tuning often yields better performance if you have enough labeled data; otherwise use feature extraction.
+
+---
+
+### Q27 — What is a learning curve?
+
+**Answer:** A learning curve plots model performance (train/validation) versus training size or epochs, showing trends like overfitting or underfitting.
+
+**Explanation:** Use it to diagnose whether more data or model complexity is needed.
+
+---
+
+### Q28 — What is Kullback–Leibler (KL) divergence?
+
+**Answer:** KL divergence measures how one probability distribution diverges from a reference distribution; used in variational inference and as a regularizer.
+
+**Explanation:** KL is asymmetric and non-negative; small KL means distributions are similar.
+
+---
+
+### Q29 — Difference between MAP and MLE?
+
+**Answer:** MLE maximizes the likelihood of observed data w.r.t. parameters; MAP (maximum a posteriori) adds a prior and maximizes the posterior.
+
+**Explanation:** MAP is MLE with regularization derived from the prior; useful when prior knowledge exists.
+
+---
+
+### Q30 — What is model calibration?
+
+**Answer:** Calibration measures whether predicted probabilities match observed frequencies (e.g., among predictions with 0.8 confidence, ~80% are correct).
+
+**Explanation:** Techniques like temperature scaling and isotonic regression can improve calibration for probabilistic models.
+
+---
+
+When you push this change, the open PR will update automatically. Good practice: mention in the PR description that you added 20 new Q&A and list any sources you relied on.
