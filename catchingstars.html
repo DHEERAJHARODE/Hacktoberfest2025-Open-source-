@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Catch the Falling Stars</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(#0f172a, #1e293b);
+    color: #fff;
+    font-family: sans-serif;
+  }
+
+  #player {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 80px;
+    height: 20px;
+    background: #38bdf8;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    transition: left 0.05s;
+  }
+
+  .star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: gold;
+    border-radius: 50%;
+  }
+
+  #hud {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+  }
+
+  #score {
+    color: #4ade80; /* green */
+  }
+
+  #missed {
+    color: #f87171; /* red */
+  }
+
+  #game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(15, 23, 42, 0.9);
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    display: none;
+  }
+
+  #game-over h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  #final-score {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  #play-again {
+    background: #38bdf8;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  #play-again:hover {
+    background: #0ea5e9;
+  }
+</style>
+</head>
+<body>
+  <div id="player"></div>
+
+  <div id="hud">
+    <div id="score">Score: 0</div>
+    <div id="missed">Missed: 0</div>
+  </div>
+
+  <div id="game-over">
+    <h1>Game Over</h1>
+    <div id="final-score"></div>
+    <button id="play-again">Play Again</button>
+  </div>
+
+  <script>
+    const player = document.getElementById("player");
+    const scoreDisplay = document.getElementById("score");
+    const missedDisplay = document.getElementById("missed");
+    const gameOverScreen = document.getElementById("game-over");
+    const finalScoreDisplay = document.getElementById("final-score");
+    const playAgainBtn = document.getElementById("play-again");
+
+    let playerX = window.innerWidth / 2;
+    let stars = [];
+    let score = 0;
+    let missed = 0;
+    let gameOver = false;
+
+    // Move player with mouse
+    document.addEventListener("mousemove", (e) => {
+      playerX = e.clientX;
+    });
+
+    // Create a new falling star
+    function makeStar() {
+      if (gameOver) return;
+      const s = document.createElement("div");
+      s.className = "star";
+      s.style.left = Math.random() * (window.innerWidth - 20) + "px";
+      s.style.top = "0px";
+      document.body.appendChild(s);
+      stars.push(s);
+    }
+
+    // Main game loop
+    function gameLoop() {
+      if (gameOver) return;
+
+      player.style.left = playerX - 40 + "px";
+
+      for (let i = stars.length - 1; i >= 0; i--) {
+        const s = stars[i];
+        s.style.top = parseFloat(s.style.top) + 4 + "px";
+
+        const playerRect = player.getBoundingClientRect();
+        const starRect = s.getBoundingClientRect();
+
+        // Collision detection
+        if (
+          starRect.bottom >= playerRect.top &&
+          starRect.right >= playerRect.left &&
+          starRect.left <= playerRect.right
+        ) {
+          score++;
+          scoreDisplay.textContent = "Score: " + score;
+          s.remove();
+          stars.splice(i, 1);
+          continue;
+        }
+
+        // Missed star
+        if (parseFloat(s.style.top) > window.innerHeight) {
+          missed++;
+          missedDisplay.textContent = "Missed: " + missed;
+          s.remove();
+          stars.splice(i, 1);
+
+          if (missed >= 3) {
+            endGame();
+            return;
+          }
+        }
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    // End the game
+    function endGame() {
+      gameOver = true;
+      finalScoreDisplay.textContent = "Final Score: " + score;
+      gameOverScreen.style.display = "block";
+    }
+
+    // Restart the game
+    playAgainBtn.addEventListener("click", () => {
+      location.reload();
+    });
+
+    // Start game
+    setInterval(makeStar, 700);
+    gameLoop();
+  </script>
+</body>
+</html>
