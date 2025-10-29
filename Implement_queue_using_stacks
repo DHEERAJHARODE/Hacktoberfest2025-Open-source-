@@ -1,0 +1,54 @@
+#define MAX_CALL 100
+
+
+typedef struct {
+    int *in;        
+    int *out;     
+    int idx_in;  
+    int idx_out;  
+} MyQueue;
+
+
+MyQueue* myQueueCreate() {
+    MyQueue *queue = (MyQueue *)malloc(sizeof(MyQueue));
+    if (queue == NULL) {
+        return NULL;
+    }
+    queue->in = (int *)malloc(MAX_CALL * sizeof(int));
+    queue->out = (int *)malloc(MAX_CALL * sizeof(int));
+    queue->idx_in = -1;
+    queue->idx_out = -1;
+
+    return queue;
+}
+
+void myQueuePush(MyQueue* obj, int x) {
+    obj->in[++obj->idx_in] = x;
+}
+int myQueuePeek(MyQueue* obj) {
+    if (obj->idx_out < 0) {
+        while (obj->idx_in >= 0) {
+            obj->out[++obj->idx_out] = obj->in[obj->idx_in--];
+        }
+    }
+
+    return obj->idx_out < 0 ? -1 : obj->out[obj->idx_out];
+}
+int myQueuePop(MyQueue* obj) {
+    int front = myQueuePeek(obj);
+
+    if (front != -1) {
+        obj->idx_out--;
+    }
+
+    return front;
+}
+bool myQueueEmpty(MyQueue* obj) {
+    return obj->idx_in == -1 && obj->idx_out == -1;
+}
+
+void myQueueFree(MyQueue* obj) {
+    free(obj->in);
+    free(obj->out);
+    free(obj);
+}
