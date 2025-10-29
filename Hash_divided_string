@@ -1,0 +1,18 @@
+char* stringHash(char* s, int k) {
+ int n=strlen(s);
+ int length=n/k;
+ char* result=(char*)malloc(length+1);
+ if(!result){
+    return NULL;
+ }
+ int index=0,i,j,sum;
+ for(i=0;i<n;i+=k){
+    sum=0;
+    for(j=i;j<i+k;j++){
+        sum+=s[j]-'a';
+    }
+    result[index++]=(sum%26)+'a';
+ }
+ result[index]='\0';
+ return result;
+}
