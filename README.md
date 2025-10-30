@@ -47,6 +47,11 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
 
 > You Can Upload Coded Projects In the Codes Directory 
 
+## Available Projects
+
+- **Simple Calculator (`simple_calculator.py`)** - A safe AST-based calculator with CLI and REPL modes
+  - Usage: `python simple_calculator.py --expr "(2+3)*4"` or `python simple_calculator.py` for interactive mode
+  - Run tests: `python simple_calculator.py --test`
 
 ---
 ## Code Of Conduct
