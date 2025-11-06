@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h> // For malloc, free
+#include <string.h> // For string manipulation functions
+#include <math.h>   // For mathematical functions
+
+// Function to calculate factorial
+long long calculateFactorial(int n) {
+    if (n < 0) {
+        printf("Factorial of negative numbers is not defined.\n");
+        return -1; // Error indicator
+    }
+    long long result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+// Function to check if a number is prime
+int isPrime(int n) {
+    if (n <= 1) return 0; // 0 and 1 are not prime
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return 0; // Not prime
+    }
+    return 1; // Prime
+}
+
+// Function to reverse a string
+void reverseString(char* str) {
+    int length = strlen(str);
+    for (int i = 0; i < length / 2; i++) {
+        char temp = str[i];
+        str[i] = str[length - 1 - i];
+        str[length - 1 - i] = temp;
+    }
+}
+
+int main() {
+    // --- Section 1: Basic Arithmetic and Data Types ---
+    printf("--- Section 1: Basic Arithmetic and Data Types ---\n");
+    int a = 10;
+    long b = 10000000000L; // Using 'L' for long literal
+    long long c = 9000000000000000000LL; // Using 'LL' for long long literal
+    double d = 3.1415926535;
+    long double e = 1.234567890123456789L; // Using 'L' for long double literal
+
+    printf("Value of int a: %d\n", a);
+    printf("Value of long b: %ld\n", b);
+    printf("Value of long long c: %lld\n", c);
+    printf("Value of double d: %.10f\n", d);
+    printf("Value of long double e: %.18Lf\n", e);
+
+    // --- Section 2: Control Flow (Loops and Conditionals) ---
+    printf("\n--- Section 2: Control Flow (Loops and Conditionals) ---\n");
+    printf("Printing numbers from 1 to 5 using a for loop:\n");
+    for (int i = 1; i <= 5; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+
+    printf("Checking if 7 is prime: %s\n", isPrime(7) ? "Yes" : "No");
+    printf("Checking if 10 is prime: %s\n", isPrime(10) ? "Yes" : "No");
+
+    // --- Section 3: Arrays and Pointers ---
+    printf("\n--- Section 3: Arrays and Pointers ---\n");
+    int numbers[] = {10, 20, 30, 40, 50};
+    int* ptr = numbers; // Pointer to the first element of the array
+
+    printf("Elements of the array using pointer arithmetic:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", *(ptr + i));
+    }
+    printf("\n");
+
+    // --- Section 4: String Manipulation ---
+    printf("\n--- Section 4: String Manipulation ---\n");
+    char myString[] = "Hello, World!";
+    printf("Original string: %s\n", myString);
+    reverseString(myString);
+    printf("Reversed string: %s\n", myString);
+
+    // --- Section 5: Dynamic Memory Allocation ---
+    printf("\n--- Section 5: Dynamic Memory Allocation ---\n");
+    int* dynamicArray = (int*)malloc(5 * sizeof(int));
+    if (dynamicArray == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    printf("Populating dynamic array:\n");
+    for (int i = 0; i < 5; i++) {
+        dynamicArray[i] = (i + 1) * 100;
+        printf("%d ", dynamicArray[i]);
+    }
+    printf("\n");
+    free(dynamicArray); // Free allocated memory
+
+    // --- Section 6: Function Calls and Complex Logic ---
+    printf("\n--- Section 6: Function Calls and Complex Logic ---\n");
+    int numFactorial = 7;
+    long long factResult = calculateFactorial(numFactorial);
+    if (factResult != -1) {
+        printf("Factorial of %d is: %lld\n", numFactorial, factResult);
+    }
+
+    printf("Square root of 25: %.2f\n", sqrt(25.0));
+    printf("Power of 2 to the 5: %.0f\n", pow(2.0, 5.0));
+
+    return 0;
+}
