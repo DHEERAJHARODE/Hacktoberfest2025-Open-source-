@@ -1,73 +1,107 @@
-# Hactoberfest 2024
-<img src=https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg />
-A beginner-friendly project to help you in open-source contribution. Made specifically for contribution in HACKTOBERFEST 2024! Hello World Programs and Algorithms! Please leave a star to support this project! 
+# 🎉 Hacktoberfest 2025
+
+<img src="https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg" width="400" />
+
+A beginner-friendly project to help you get started with **open-source contributions** — made especially for **Hacktoberfest 2025**!  
+Submit your Hello World programs and beginner algorithms — and don’t forget to ⭐ **star this repository** to support the project.
+
 ![](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
 
-# This All programs For beginner 
-Enjoy All
-Hacktoberfest has a simple and plain moto.
+---
 
-# Beginner-Hacktoberfest
-Need Your first pr for hacktoberfest 2k23 ? come on in 
+
+## 🌱 For Beginners
+
+This repository contains beginner-friendly programs and sample projects.  
+Enjoy learning and contributing — Hacktoberfest has a simple and plain motto:
+
+> **Support open source and grow together.**
 
 ---
 
-# ❓ What's Hacktoberfest 2024?
+## 💻 Beginner-Hacktoberfest
 
-Hacktoberfest is the easiest way to get into open source! Hacktoberfest is a month long festival of open source code presented by [Digital Ocean](https://www.digitalocean.com/) and [DEV](https://www.dev.to/) this year in 2023.
-
-During the entire month of October 2022, all you have to do is contribute to any open source projects and open at least 4 pull requests. Yes, any project and any kind of contributions. It can be a be a bug fix, improvement, or even a documentation change! And win a T-Shirt and awesome stickers.
-
-If you’ve never contributed to open source before, this is the perfect time to get started because Hacktoberfest provides a large list of available contribution opportunities (and yes, there are always plenty for beginners too).
+Need your first PR for **Hacktoberfest 2025**? Come on in! 🚀
 
 ---
 
-# 👕 Why Should I Contribute?
+## ❓ What's Hacktoberfest 2025?
 
-Hacktoberfest has a simple and plain moto.
+**Hacktoberfest** is the easiest way to start contributing to open source!  
+It’s a **month-long celebration of open source** presented by [DigitalOcean](https://www.digitalocean.com/) and [DEV](https://dev.to/).
 
-> Support open source and earn a limited edition T-shirt!
+During **October 2025**, all you have to do is:
+- Contribute to open source projects 🧑‍💻  
+- Open **at least 4 pull requests**  
+- Earn awesome **swag (T-shirt + stickers)** 🎁  
 
-So, yes! You can win a T-Shirt and few awesome stickers to attach on your laptop. On plus side, you will get into beautiful world of open source and get the international exposure.  
-**Wait there's more!**
+Your contributions can be:
+- Bug fixes 🐛 
+- Improvements or features ⚙️ 
+- Documentation updates 📝 
 
+If you’re new to open source, Hacktoberfest is the perfect time to start — there are always plenty of **beginner-friendly issues** to work on!
+
+---
+
+## 👕 Why Should I Contribute?
+
+Hacktoberfest’s simple motto:
+
+> **Support open source and earn a limited edition T-shirt! 👕**
+
+By participating, you’ll:
+- Get cool swag 🎁 
+- Learn new coding skills 💡 
+- Gain exposure to the open-source world 🌍 
+- Join an amazing developer community 🤝
 
 ---
 
-# 👍 This is Awesome! How Can I Contribute?
+## 👍 How Can I Contribute?
 
-It's very easy. You don't need to be an expert in coding and programming. Here are the steps you need to follow to create your -(maybe)- EXAMPLE first pull request within few minutes.
-1. **Star this repository.**
-2. **Navigate To index.html or main.css do so crazy contribution file**
-3. **Edit the file and insert the line of text in the specified location in the format as given in comment .**
-4. **Now click on Propose button.**
-5. **Create a new pull request.**
-6. **Wait for your Pull Request to be reviewed and merged!**
-7. **Enjoy and welcome to Hacktoberfest 2023 and Keep Contributing :)**
+You don’t need to be an expert to contribute!  
+Follow these easy steps to make your **first pull request**:
 
-> You Can Upload Coded Projects In the Codes Directory 
+1. ⭐ **Star this repository.**  
+2. 🧭 **Navigate** to a file like `index.html` or `main.css`.  
+3. ✍️ **Edit** the file and add your code as instructed in comments.  
+4. 💾 **Click on “Propose changes.”**  
+5. 🔁 **Create a pull request (PR).**  
+6. ✅ **Wait for it to be reviewed and merged!**  
+7. 🎉 **Enjoy and welcome to Hacktoberfest 2025 — keep contributing!**
 
+> You can also upload your coded projects to the **Codes** directory.
 
 ---
-## Code Of Conduct
-**Examples of behavior that contributes to creating a positive environment :**
-- Using welcoming and inclusive language
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Being respectful of differing viewpoints and experiences
 
+## 🧭 Code of Conduct
 
+### ✅ Positive Behavior
+- Use welcoming and inclusive language  
+- Accept constructive criticism gracefully  
+- Focus on what’s best for the community  
+- Be respectful of different viewpoints  
 
-**Examples of unacceptable behavior by participants include:**
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
+### 🚫 Unacceptable Behavior
+- Trolling, insults, or harassment  
+- Personal or political attacks  
+- Publishing private information without consent  
+
+Let’s keep the community positive and beginner-friendly! 💖
+
 ---
 
-## 🎯Objectives
-**The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest 2022**
+## 🎯 Objectives
 
-<!-- # :handshake: Our Contributors
+The main goal of this repository is to **help beginners make their first contribution during Hacktoberfest 2025**.  
+Let’s learn, share, and celebrate open source together! 💪
+
+---
+
+<!-- # 🤝 Our Contributors
 <a href="https://github.com/hctnm2/Beginner-Hacktoberfest/graphs/contributors">
-<!--   <img src="https://contrib.rocks/image?repo=hctnm2/Beginner-Hacktoberfest" /> -->
-<!-- </a> --> 
+  <img src="https://contrib.rocks/image?repo=hctnm2/Beginner-Hacktoberfest" />
+</a>
+-->
+
