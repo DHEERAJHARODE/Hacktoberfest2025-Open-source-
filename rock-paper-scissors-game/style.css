@@ -1,0 +1,124 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Monument Extended", Arial, Helvetica, sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+section {
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 80vw;
+}
+
+.intro h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  max-width: 55vw;
+  margin: 0 auto;
+}
+@media screen and (max-width:725px) {
+  
+}
+.match {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -2rem;
+}
+
+.match h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.match .hands {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* .player-hand,
+.computer-hand{
+
+} */
+.match .hands .player-hand {
+  transform: scaleX(-1);
+}
+
+.options {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.options button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 2px 16px;
+  height: 38px;
+  min-height: 38px;
+  border: none;
+  color: #fff;
+  background-color: rgb(88, 101, 242);
+  transition: background-color 0.17s ease, color 0.17s ease;
+}
+
+button:hover {
+  background-color: rgb(71, 82, 196);
+}
+
+@media screen and (max-width: 810px) {
+  .score{
+    max-width: 60vw;
+  }
+.player-hand,
+.computer-hand{
+  width: 215px;
+}
+h2.result{
+  font-size: 1.3rem;
+}
+h2.winner{
+  font-size: 1.5rem;
+}
+}
+
+@media screen and (max-width: 550px) {
+  .score{
+    max-width: 70vw;
+  }
+  .hands{
+    gap: 1rem;
+  }
+.player-hand,
+.computer-hand{
+  width: 170px;
+}
+h2.result{
+  font-size: 1.2rem;
+}
+h2.winner{
+  font-size: 1.5rem;
+}
+}
