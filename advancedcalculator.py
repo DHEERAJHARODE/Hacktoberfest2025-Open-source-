@@ -7,6 +7,8 @@ allowed_symbol = [
     "(",
     ")",
     "e"
+    "%"
+    "^"
 ]
 
 while True:
