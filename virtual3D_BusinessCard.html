@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Virtual Business Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="business-card">
+            <div class="card front">
+                <h1>Shital Karek</h1>
+                <p>Software Engineer</p>
+                <p>Web Developer</p>
+                <a href="https://www.linkedin.com/in/shitalkarek" target="_blank">LinkedIn</a>
+            </div>
+            <div class="card back">
+                <h2>About Me</h2>
+                <p>Passionate about web development and technology. Always eager to learn and grow in the field.</p>
+                <h3>Skills:</h3>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>React.js</li>
+                    <li>Node.js</li>
+                    <li>HTML & CSS</li>
+                </ul>
+                <div class="socials">
+                    <a href="https://github.com/shitalkarek" target="_blank">GitHub</a>
+                    <a href="https://www.instagram.com/shitalkarek" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e9ecef; /* Light gray background */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Card Container */
+.card-container {
+    perspective: 1500px; /* Deep perspective for 3D effect */
+}
+
+/* Business Card */
+.business-card {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d; /* Maintain 3D space */
+    transition: transform 0.6s;
+}
+
+/* Card Faces */
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back when facing away */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 
+                inset 0 0 10px rgba(255, 255, 255, 0.5); /* Layered shadows for depth */
+    overflow: hidden;
+}
+
+/* Front Side Styles */
+.front {
+    background: linear-gradient(135deg, #007BFF, #0056b3); /* Gradient background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: transform 0.4s, background-color 0.4s; /* Smooth transition */
+}
+
+.front h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.front p {
+    margin-bottom: 10px;
+}
+
+.front a {
+    color: #FFD700; /* Gold color for links */
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.front a:hover {
+    color: #FFEA00; /* Brighter gold on hover */
+}
+
+/* Back Side Styles */
+.back {
+    background: linear-gradient(135deg, #FFFFFF, #f8f9fa); /* Soft gradient */
+    color: #333;
+    transform: rotateY(180deg); /* Flip the back */
+    padding: 20px;
+}
+
+/* Back Content */
+.back h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.back ul {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.back li {
+    margin: 5px 0;
+}
+
+/* Social Links */
+.socials {
+    margin-top: 15px;
+}
+
+.socials a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s, transform 0.3s; /* Added transform transition */
+}
+
+.socials a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Hover Effect */
+.card-container:hover .business-card {
+    transform: rotateY(180deg); /* Flip the card on hover */
+}
+
+/* Add some depth to the card */
+.card-container:hover .card {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), 
+                inset 0 0 15px rgba(255, 255, 255, 0.5); /* Increase shadow depth on hover */
+}
