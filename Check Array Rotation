@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+//function 
+int arrayRotateCheck(int *input, int size)
+{int i;
+ int temp;
+ int rotindx;
+ if(size==0){
+     return 0;
+ }
+ else{
+    for(i=1, temp=input[0] ; i<size; i++){
+        if(input[i]>=temp){
+            continue;
+        }
+        else{
+            rotindx=i;
+            break;
+        }
+    }
+ return rotindx;}
+}
+
+int main()
+{int t;
+    cin>>t;
+    for(int i=0; i<t; i++){
+    int arr[100000];
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+   cout<< arrayRotateCheck(arr, n);
+    
+}
+    return 0;
+}
