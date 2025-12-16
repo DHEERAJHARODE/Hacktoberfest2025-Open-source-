@@ -129,6 +129,11 @@ def main():
 
             display_message("YOU LOST!",RED)
             break
+            
+        if hangman_status == 9:
+
+            display_message("YOU LOST!",ORANGE)
+            break
 
 
 
