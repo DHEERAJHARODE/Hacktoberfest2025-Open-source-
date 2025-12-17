@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Palindrome {
     public static boolean isPalindrome(int n) {
       int temp = n;
@@ -14,8 +16,10 @@ public class Palindrome {
       return false;
     }
     public static void main(String[] args){
-        int N = 124321;
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
         boolean res = isPalindrome(N);
         System.out.print(res);
+        sc.close();
     }
 }
