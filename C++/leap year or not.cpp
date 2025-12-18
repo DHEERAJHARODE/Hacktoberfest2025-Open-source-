@@ -7,12 +7,23 @@ int main()
     int yr;
     cout<<"Enter the Year: ";
     cin>>yr;
-    if((yr%4==0) && (yr%100!=0))
-        cout<<"\nIt is a Leap Year";
-    else if(yr%400==0)
-        cout<<"\nIt is a Leap Year";
+    
+   if(yr % 4 == 0)
+   { 
+       if(yr % 100 == 0)
+       {
+           if(yr % 400 == 0)
+                cout << "It is a Leap year ";
+           else
+               cout <<"\nIt is not a Leap Year";            
+       }
+       else 
+        cout << " It is a Leap Year ";
+   }
     else
-        cout<<"\nIt is not a Leap Year";
-    cout<<endl;
+        cout << " It is not a leap year ";
+    
+    cout << endl;
+    
     return 0;
 }
