@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+void towerOfHanoi(int n, char f_rod, char t_rod,
+				char a_rod)
+{
+	if (n == 0) {
+		return;
+	}
+	towerOfHanoi(n - 1, f_rod, a_rod, t_rod);
+	cout << "Move disk " << n << " rod " << f_rod
+		<< " to rod " << t_rod << endl;
+	towerOfHanoi(n - 1, a_rod, t_rod, f_rod);
+}
+int main()
+{
+	int N = 3;
+	towerOfHanoi(N, 'A', 'b', 'C');
+	return 0;
+}
+// This is code is contributed by Gaurav shah
