@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #display_color{
+        height: 200px; 
+        width: 350px;
+    }
+</style>
+<body>
+    <div id="display_color">
+    </div>
+    <button onclick="color('red')">Red</button>
+    <button onclick="color('green')">Green</button>
+    <button onclick="color('yellow')">Yellow</button>
+
+    <script>
+        function color(colour){
+            document.getElementById("display_color").style.background=colour
+        }
+    </script>
+</body>
+</html>
