@@ -1,4 +1,4 @@
-# Hactoberfest 2024
+# Hactoberfest-2024
 <img src=https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg />
 A beginner-friendly project to help you in open-source contribution. Made specifically for contribution in HACKTOBERFEST 2024! Hello World Programs and Algorithms! Please leave a star to support this project! 
 ![](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
@@ -12,7 +12,7 @@ Need Your first pr for hacktoberfest 2k23 ? come on in
 
 ---
 
-# ❓ What's Hacktoberfest 2024?
+# ❓ What's Hacktoberfest-2024?
 
 Hacktoberfest is the easiest way to get into open source! Hacktoberfest is a month long festival of open source code presented by [Digital Ocean](https://www.digitalocean.com/) and [DEV](https://www.dev.to/) this year in 2023.
 
@@ -65,7 +65,7 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
 ---
 
 ## 🎯Objectives
-**The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest 2022**
+**The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest-2024**
 
 <!-- # :handshake: Our Contributors
 <a href="https://github.com/hctnm2/Beginner-Hacktoberfest/graphs/contributors">
