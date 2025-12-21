@@ -1,0 +1,63 @@
+# Function to print the Tic-Tac-Toe board
+def print_board(board):
+    print(f"{board[0]} | {board[1]} | {board[2]}")
+    print("--+---+--")
+    print(f"{board[3]} | {board[4]} | {board[5]}")
+    print("--+---+--")
+    print(f"{board[6]} | {board[7]} | {board[8]}")
+
+# Function to check if a player has won
+def check_win(board, player):
+    # Check rows, columns, and diagonals
+    win_conditions = [(0, 1, 2), (3, 4, 5), (6, 7, 8),  # Rows
+                      (0, 3, 6), (1, 4, 7), (2, 5, 8),  # Columns
+                      (0, 4, 8), (2, 4, 6)]  # Diagonals
+    for condition in win_conditions:
+        if board[condition[0]] == board[condition[1]] == board[condition[2]] == player:
+            return True
+    return False
+
+# Function to check if the board is full
+def check_full(board):
+    return all([space != ' ' for space in board])
+
+# Main function to play the game
+def play_game():
+    board = [' ' for _ in range(9)]  # Initialize the empty board
+    current_player = 'X'  # 'X' always starts
+    
+    while True:
+        print_board(board)
+        print(f"Player {current_player}'s turn. Enter a position (1-9):")
+        
+        # Get valid input
+        while True:
+            try:
+                position = int(input()) - 1
+                if board[position] == ' ':
+                    break
+                else:
+                    print("Position already taken, choose another one.")
+            except (IndexError, ValueError):
+                print("Invalid input. Enter a number between 1 and 9.")
+        
+        board[position] = current_player  # Place player's mark on the board
+
+        # Check if the current player won
+        if check_win(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+        
+        # Check if the board is full (tie)
+        if check_full(board):
+            print_board(board)
+            print("It's a tie!")
+            break
+
+        # Switch player
+        current_player = 'O' if current_player == 'X' else 'X'
+
+# Start the game
+if __name__ == "__main__":
+    play_game()
