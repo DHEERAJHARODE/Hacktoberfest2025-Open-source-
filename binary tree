@@ -1,0 +1,134 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* A binary tree node has data,
+pointer to left child and a
+pointer to right child */
+struct Node
+{
+	int data;
+	struct Node* left, * right;
+};
+
+/* Helper function that allocates a
+new node */
+struct Node* newNode(int data)
+{
+	struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+	node->data = data;
+	node->left = node->right = NULL;
+	return (node);
+}
+
+// Function to insert nodes in level order
+struct Node* insertLevelOrder(int arr[], struct Node* root,
+					int i, int n)
+{
+	// Base case for recursion
+	if (i < n)
+	{
+		struct Node* temp = newNode(arr[i]);
+		root = temp;
+
+		// insert left child
+		root->left = insertLevelOrder(arr,
+				root->left, 2 * i + 1, n);
+
+		// insert right child
+		root->right = insertLevelOrder(arr,
+				root->right, 2 * i + 2, n);
+	}
+	return root;
+}
+
+void transform_tree(int old[], int new[], int included[], int n){
+
+    int j = 0;
+    for (int i = 0; i < n ;i++) {
+        included[i] = -1; 
+        new[i] = -1;
+    }
+    
+    int m = (n-1) / 2;
+    
+    new[m] = old[m];
+    included[m] = 1;
+    j++;
+    
+    new[m-1] = old[m-1];
+    included[m-1] = 1;
+    j++;
+    
+    new[m+1-m] = old[m+1];
+    included[m+1] = 1;
+    j++;
+    
+    new[m+1] = old[1];
+    included[1] = 1;
+    j++;
+    
+    new[0] = old[n - 1];
+    included[n-1] = 1;
+    j++;
+    
+    for(int i = 0; i < n; i++){
+        if (included[i] == -1){
+            new[j] = old[i];
+            j++;
+            included[i] = 1;
+        }
+    }
+}
+
+// Function to print tree nodes in
+// InOrder fashion
+void inOrder(struct Node* root)
+{
+	if (root != NULL)
+	{
+		inOrder(root->left);
+        printf("%d ",root->data);
+		inOrder(root->right);
+	}
+}
+
+// Function to print tree nodes in
+// PostOrder fashion
+void postOrder(struct Node* root)
+{
+	if (root != NULL)
+	{
+		postOrder(root->left);
+	    postOrder(root->right);
+        printf("%d ",root->data);
+	
+	}
+}
+
+// Driver program to test above function
+int main()
+{
+    int n;
+    printf("Enter the number of elements in binary tree: ");
+    scanf("%d",&n);
+    
+    int *arr = (int*)malloc(sizeof(int)*n);
+    
+    printf("Enter the elements for tree: ");
+    for (int i = 0; i < n ;i++) scanf("%d",&arr[i]);
+    
+    int *new = (int*)malloc(sizeof(int)*n);
+    int *included = (int*)malloc(sizeof(int)*n);
+    
+	struct Node* root = insertLevelOrder(arr, root, 0, n);
+	printf("------------------------------------------------------------\n");
+	printf("Before transformation, the inOrder transversal of tree is\n");
+	inOrder(root);
+	printf("\n------------------------------------------------------------\n");
+	printf("After transformation, the postOrderorder transversal of tree is\n");
+	transform_tree(arr, new, included, n);
+	root = insertLevelOrder(new, root, 0, n);
+	postOrder(root);
+	
+	return 0;
+}
