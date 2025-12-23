@@ -1,0 +1,60 @@
+/*PROBLEM STATEMENT : In a linked list of size n, where n is even, the ith node (0-indexed) of the linked list is known as the twin of the (n-1-i)th node, if 0 <= i <= (n / 2) - 1.
+
+For example, if n = 4, then node 0 is the twin of node 3, and node 1 is the twin of node 2. These are the only nodes with twins for n = 4.
+The twin sum is defined as the sum of a node and its twin.
+
+Given the head of a linked list with even length, return the maximum twin sum of the linked list
+
+
+INTUITION: consider linked list with 4 nodes. we first run the loop from 0 to (n/2)-1. in that loop we traverse the linked list till the (n/2)-1, while putting the values of nodes in a stack. so by the end of that loop, our pointer will point at (n/2) node. so if list is 1->2->3->4, the our pointer pointer will point at 3 and our stack will look like this.
+|       |
+|       |
+|   2   |
+|   1   |
+---------
+
+you can see that our top element is the twin of the node at which our pointer is currently pointing.
+so we run another loop till the stack is not empty. in that loop we will find the sum of top element in stack and the node value at which the pointer points, then move pointer to the next node, pop the element from stack and check if the sum greater than the current maximum value. By the end of this loop, we will end with maximum twin sum.*/
+
+//CODE:
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        int sum=0,i=0,n=0,limit,max=INT_MIN;
+        ListNode*temp = head;
+        while(temp){
+            n++;
+            temp=temp->next;
+        }
+        limit=(n/2)-1;
+        stack<int> temp_val;
+        temp=head;
+        for(i=0;i<=limit;i++){
+            temp_val.push(temp->val);
+            temp=temp->next;
+        }
+        while(!temp_val.empty()){
+            sum=temp->val+temp_val.top();
+            temp_val.pop();
+            temp=temp->next;
+            if(sum>max){
+                max=sum;
+            }
+
+        }
+        return max;
+        
+    }
+};
+
