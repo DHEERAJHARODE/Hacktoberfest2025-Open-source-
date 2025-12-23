@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding:0; 
+}
+
+.text{
+    position: fixed;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    left: 50%;
+    top : 10px;
+    text-shadow : 0 2px 5px rgba(0, 0, 0, .3);
+    transform: translateX(-50%);
+}
