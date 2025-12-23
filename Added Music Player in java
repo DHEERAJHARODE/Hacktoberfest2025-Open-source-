@@ -1,0 +1,19 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
+
+public class MusicPlayer {
+
+    public static void main(String[] args) {
+        try {
+            File audioFile = new File("path/to/your/audiofile.mp3");
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(audioFile));
+            System.out.println("Playing: " + audioFile.getName());
+            clip.start();
+            Thread.sleep(clip.getMicrosecondLength() / 1000);
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
