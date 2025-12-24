@@ -1,0 +1,16 @@
+<html>
+    <head></head>
+    <body>
+        <h1 id="count">0</h1>
+        <button onclick="add()">Add</button>
+        <script>
+            let countEl = document.getElementById("count")
+            let count = 0
+            function add() {
+                count++
+                console.log(count)
+                countEl.textContent = count
+            }
+        </script>
+    </body>
+</html>
