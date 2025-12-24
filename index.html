@@ -2,48 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Website</title>
-    <link rel="icon" href="media/wings 2 icon.ico">
-    <link rel="stylesheet" href="css part/style1.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="main">
-        <div class="navbar">
-            <img class="logo" src="media/wings 2 icon.ico" alt="wing2_img">
-            <button type="button">Sign Up</button>
-        </div>
-        <div class="content">
-            <small>Welcome to our</small>
-            <h1>World's<br/>Creative Studio</h1>
-            <button type="button">Take a tour</button>
-        </div>
-        <div class="side-bar">
-            <i class="fa-solid fa-bars"></i>
+<body style="background-color:#212121; color:#fff;">
+ 
+  
+    <div id="wrapper">
+      <h1>Number guessing game</h1>
+    <p>Try and guess a random number between 1 and 100.</p>
+    <p>You have 10 attempts to guess the right number.</p>
+    </br>
+        <form class="form">
+            <label2 for="guessField" id="guess">Guess a number</label>
+            <input type="text" id="guessField" class="guessField">
+            <input type="submit" id="subt" value="Submit guess" class="guessSubmit">
+        </form>
 
-            <div class="social-links">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-twitter"></i>
-            </div> <!-- social-links -->
-
-            <div class="useful-links">
-                <i class="fa-solid fa-share-nodes useful"></i>
-                <i class="fa-solid fa-circle-info useful"></i>
-            </div> <!-- end useful-links -->
-        </div> <!-- end side-bar -->
-
-        <div class="bubbles">
-            <img src="media/bubble.png" alt="bubble_1">
-            <img src="media/bubble.png" alt="bubble_2">
-            <img src="media/bubble.png" alt="bubble_3">
-            <img src="media/bubble.png" alt="bubble_4">
-            <img src="media/bubble.png" alt="bubble_5">
-            <img src="media/bubble.png" alt="bubble_6">
-            <img src="media/bubble.png" alt="bubble_7">
+        <div class="resultParas">
+            <p >Previous Guesses: <span class="guesses"></span></p>
+            <p >Guesses Remaining: <span class="lastResult">10</span></p>
+            <p class="lowOrHi"></p>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
