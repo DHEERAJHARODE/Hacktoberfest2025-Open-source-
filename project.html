@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <script>
+        let a;
+        let date;
+        let time;
+        setInterval(() => {
+            a = new Date();
+            const options = {weekday:"long", year:"numeric", month:"long", day:"numeric"};
+            date= a.toLocaleDateString(undefined,options);
+            let time = (('0'+a.getHours()).slice(-2))+ ":" + (('0'+a.getMinutes()).slice(-2)) + ":" + (('0'+a.getSeconds()).slice(-2));
+            document.getElementById('time').innerHTML = time + "<br> on " + date;
+        }, 1000);
+        
+    </script>
+    <style>
+      .body{
+        font-family: 'Times New Roman', Times, serif;
+        
+      }
+      .image{
+        border-radius: 30px;
+
+      }
+      .foot{
+        display: flex;
+        color: white;
+        
+      }
+      #copy{
+        display: block;
+        color: white;
+        display: flex;
+      }
+      #Bros{
+        
+      }
+      
+    </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img class="image " src="sachin.jpg" alt="image" width="2%" >
+    <a class="navbar-brand" href="#">Clock</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container my-4" >
+    <div class="jumbotron">
+        <h1 class="display-4">Current time is: <span id=time></span></is:spam></h1>
+        <p class="lead">we have got you covered</p>
+        <hr class="my-4">
+        <p>We are here to show you the time for different countries</p>
+        <div>
+          <a  id="Bros" class="btn btn-primary btn-lg" href="#" role="button">Browser Times</a>
+          <div class="spinner-grow" role="status" >
+            <span class="sr-only">Loading...</span>
+        </div>
+          </div>
+      </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <img class="image2" src="R.png" alt="image" width="10%">
+        <a class="nav-item nav-link active" href="#" display="flex"><b>Clock</b> <span class="sr-only">(current)</span></a>
+        <img src="utube.png" alt="utube" width="6%" height="6%">
+        <a class="nav-item nav-link" href="https://www.youtube.com/index" target="blank">YOUTUBE</a>&nbsp;&nbsp;&nbsp;
+        <img src="images/twitter.png" alt="twitter" width="4%" height="4%">
+        <a class="nav-item nav-link" href="https://twitter.com/?lang=en-in" target="blank">TWITTER</a>&nbsp;&nbsp;&nbsp;
+        <img src="images/instagram.png" alt="twitter" width="4%" height="4%">
+        <a class="nav-item nav-link" href="https://www.instagram.com/" target="blank">INSTAGRAM</a>&nbsp;&nbsp;&nbsp;
+        <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><img src="c.png" alt="copyright" width="15em" height="15em">Sachin Mondal</a>
+      </div>
+    </div>
+  </nav>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
