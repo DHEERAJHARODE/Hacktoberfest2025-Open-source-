@@ -19,6 +19,7 @@ void bubbleSort(vector<int> v)
         if (t == 0)
         {
             cout << "Already sorted" << endl;
+            break;
         }
     }
 
