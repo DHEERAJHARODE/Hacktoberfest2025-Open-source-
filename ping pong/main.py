@@ -9,7 +9,7 @@ from scoreboard import ScoreBoard
 
 my_screen = t.Screen()
 my_screen.setup(width=800,height=600)
-my_screen.bgcolor("black")
+my_screen.bgcolor("blue")
 my_screen.title("my ping pong game ")
 my_screen.tracer(0)
 
