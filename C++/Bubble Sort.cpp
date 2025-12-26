@@ -1,10 +1,10 @@
 #include<iostream>
 using namespace std;
 void swapping(int &a, int &b) {      //swap the content of a and b
-   int temp;
-   temp = a;
+   int temp1;
+   temp1 = a;
    a = b;
-   b = temp;
+   b = temp1;
 }
 //displaying sorted array
 void display(int *array, int size) {
