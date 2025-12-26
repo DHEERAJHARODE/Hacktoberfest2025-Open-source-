@@ -1,0 +1,86 @@
+
+body{
+    background-color: black;
+}
+
+/* container */
+
+
+
+/* head */
+.head{
+    font-style: italic;
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+}
+
+/* buttons */
+.keys{
+    background-color: white;
+    color: black;
+    font-size: 3rem;
+    height: 100px;
+    margin: 0px;
+    
+}
+.btn{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    width: fit-content;
+}
+.btn button{
+    margin: 1rem;
+}
+
+.pressed{
+    color: white;
+    background-color: black;
+}
+
+/* p tag in btn */
+.blk{
+    font-weight: bolder;
+}
+/* checked */
+#check{
+    height: 100px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+/* media queries */
+@media  screen and (max-width:700px) {
+   
+
+    .head {
+        font-size: 1.1rem;
+        text-align: right;
+       
+    }
+   
+   .btn{
+    width: 100%;
+    margin: 5px;
+   }
+    .keys{
+        height: 100px;
+       font-size: 1rem;
+       width: 5px;
+       margin: 0.5px;
+       /* transform: rotate(0deg); */
+    }
+   
+    .main{
+        padding: 70px 0;
+    }
+    
+}
+
+
+
+
