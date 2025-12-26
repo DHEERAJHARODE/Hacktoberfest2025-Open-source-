@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.3/xlsx.full.min.js"></script>
+      <style>
+      .box{
+          width:700px;
+          height:700px;
+          background-color:LightGray;
+          }
+       .border{
+          width:650px;
+          height:650px;
+          margin :25px;
+          border-left:2px solid black;
+          border-bottom:2px solid black;
+          }
+          .section1{
+          position:absolute;
+          top:15px;
+          width:650px;
+          height:650px;
+          margin:10px;
+          }
+          .section2{
+          position:absolute;
+          top: 15px;
+          left: 250px;
+          width:650px;
+          height:650px;
+          margin:10px;
+          }
+       .bars{
+          position:absolute;
+          bottom:0;
+          height:500px;
+          width:30px;
+
+          }
+          .bars1{
+          position:absolute;
+          bottom:0;
+          height:500px;
+          width:30px;
+
+          }
+          .bars2{
+          position:absolute;
+          bottom:0;
+          height:500px;
+          width:30px;
+
+          }
+      </style>
+  </head>
+  <body>
+    <div class="box">
+        <div class="border">
+            <div class="section1">
+                <div class="bars"  Style="background-color:blue;left:0px;">${data[0]}</div>
+                <div class="bars1" Style="background-color:green;left:32px;">${data[0]}</div>
+                <div class="bars2" Style="background-color:yellow;left:64px;">${data[0]}</div>
+                <div class="bars2" Style="background-color:purple;left:96px;">${data[0]}</div>
+                <div class="bars2" Style="background-color:red;left:128px;">${data[0]}</div>
+            </div>
+            <div class="section2">
+                <div class="bars"  Style="background-color:blue;left:0px;">${data[0]}</div>
+                <div class="bars1" Style="background-color:green;left:32px;">${data[0]}</div>
+                <div class="bars2" Style="background-color:yellow;left:64px;">${data[0]}</div>
+                <div class="bars2" Style="background-color:purple;left:96px;">${data[0]}</div>
+                <div class="bars2" Style="background-color:red;left:128px;">${data[0]}</div>
+            </div>
+        </div>
+
+    </div>
+  <script>
+
+      
+var data=[
+ {
+  "Column1": "Plants",
+  "City A": 40,
+  "City B": 48,
+  "City C": 76,
+  "City D": 76,
+  "City E": 54,
+  "City F": 87,
+  "City G": 41
+ },
+ {
+  "Column1": "Houses",
+  "City A": 40,
+  "City B": 54,
+  "City C": 55,
+  "City D": 65,
+  "City E": 65,
+  "City F": 98,
+  "City G": 87
+ },
+ {
+  "Column1": "Shops",
+  "City A": 55,
+  "City B": 76,
+  "City C": 56,
+  "City D": 56,
+  "City E": 45,
+  "City F": 65,
+  "City G": 51
+ },
+ {
+  "Column1": "Cars",
+  "City A": 87,
+  "City B": 66,
+  "City C": 44,
+  "City D": 38,
+  "City E": 55,
+  "City F": 76,
+  "City G": 39
+ },
+ {
+  "Column1": "Offices",
+  "City A": 79,
+  "City B": 65,
+  "City C": 78,
+  "City D": 87,
+  "City E": 43,
+  "City F": 76,
+  "City G": 69
+ },
+ {
+  "Column1": "Water Bodies",
+  "City A": 65,
+  "City B": 34,
+  "City C": 55,
+  "City D": 66,
+  "City E": 45,
+  "City F": 79,
+  "City G": 61
+ },
+ {
+  "Column1": "Bikes",
+  "City A": 63,
+  "City B": 25,
+  "City C": 54,
+  "City D": 59,
+  "City E": 43,
+  "City F": 76,
+  "City G": 74
+ },
+ {
+  "Column1": "Parks",
+  "City A": 32,
+  "City B": 87,
+  "City C": 67,
+  "City D": 65,
+  "City E": 43,
+  "City F": 54,
+  "City G": 87
+ }
+]
+      console.log(data);
+   
+  </script>
+  </body>
+</html>
