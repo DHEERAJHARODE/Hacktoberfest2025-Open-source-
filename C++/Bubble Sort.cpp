@@ -27,15 +27,19 @@ void bubbleSort(int *array, int size) {
 }
 int main() {
    int n;
+   //Taking inputs from user
    cout << "Enter the number of elements: ";
    cin >> n;
    int arr[n];     //create an array with given number of elements
    cout << "Enter elements:" << endl;
+   // taking input from user to make an array
    for(int i = 0; i<n; i++) {
       cin >> arr[i];
    }
    cout << "Array before Sorting: ";
+   // calling function to print array
    display(arr, n);
+   // calling bubblesort function to sort the array using bubblesort algorithm
    bubbleSort(arr, n);
    cout << "Array after Sorting: ";
    display(arr, n);
