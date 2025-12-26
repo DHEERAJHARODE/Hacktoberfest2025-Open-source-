@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Slab', serif;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    background: linear-gradient(35deg, rgb(237, 162, 239), rgb(30, 126, 160));
+    width: 100%;
+    height: 100vh;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.ttv{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+    margin-top: 8vh;
+    font-size: 28px;
+    word-spacing: 8px;
+   
+}
+.head{
+    color: rgb(213, 85, 85);
+    margin-left: 5px;
+    /* padding-left: 15px; */
+    border-bottom: 3px solid rgb(244, 223, 223);
+}
+.input{
+    width: 100%;
+height: 40vh;
+margin-top: 3vh;
+
+}
+.input textarea{
+    background: linear-gradient(135deg,rgb(255, 254, 254),rgb(186, 112, 224));
+width: 100%;
+height: 100%;
+border-radius: 10px;
+resize: none;
+padding: 10px;
+font-size: 20px;
+}
+textarea::placeholder{
+color: gray;
+}
+.result{
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    width: 100%;
+    align-items: center;
+}
+.result button{
+    background: linear-gradient(15deg,hsl(345, 61%, 61%),rgb(177, 39, 177));
+width: fit-content;
+padding-left: 15px;
+padding-right: 15px;
+padding-top: 5px;
+padding-bottom: 5px;
+height: fit-content;
+border: none;
+cursor: pointer;
+border-radius: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 1vw;
+font-size: 25px;
+
+}
+button img{
+    width: 18px;
+}
+select{
+    width: 80%;
+    height: 5vh;
+    border-radius: 20px;
+    background: rgb(245, 217, 254);
+    padding: 5px;
+    appearance: none;
+    background-image: url(dropdown.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 98%;
+}

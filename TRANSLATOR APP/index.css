@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inclusive Sans', sans-serif;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4vh;
+}
+body{
+    background: linear-gradient(135deg,rgb(255, 169, 183),rgb(111, 111, 235));
+    width: 100%;
+    height: 100vh;
+}
+.mainContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: -4vh;
+    border-radius: 10px;
+    max-height: 80%;
+    min-width: 50%;
+    gap:1vw;
+    background: linear-gradient(135deg,rgb(246, 220, 220),rgb(255, 199, 208));
+}
+textarea::placeholder{
+    /* pointer-events: none; */
+    margin: auto;
+    padding: 6px;
+    font-weight: bold;
+
+/* font-size: 18px; */
+}
+textarea{
+    background-color: rgb(245, 244, 242);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 3px solid black;
+    resize: none;
+padding: 20px;
+font-size: 15px;
+font-weight: bold;
+}
+.text-input{
+    /* border: 3px solid black; */
+    border-radius: 10px;
+}
+
+.textToTranslate,.translatedText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+padding: 20px;
+}
+.controls ul{
+    list-style: none;
+margin-top: 2vh;
+
+}
+.control li{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-left:15px;
+padding-right:15px;
+padding-bottom: 12px;
+
+}
+.control .icons i{
+    width: 60px;
+    cursor: pointer;
+ 
+
+}
+.exchange{
+    list-style: none;
+    cursor: pointer;
+}
+select{
+    width: 8vw;
+    height: 4vh;
+    border-radius: 10px;
+    font-size: 19px;
+    background: NONE;
+    border: none;
+    outline: none;
+cursor: pointer;
+}
+.tbtn{
+    width: 85%;
+    background: linear-gradient(135deg,rgb(255, 169, 183),rgb(111, 111, 235));
+
+   /* background-color: rgb(20, 88, 223); */
+height: 6vh;
+font-size: 20px;
+font-weight: bold;
+padding: 5px;
+border: none;
+border-radius: 10px;
+margin-bottom: 2vh;
+margin-top: 3vh;
+color: white;
+cursor: pointer;
+}
+.col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 85vh;
+    background: linear-gradient(135deg,rgb(246, 220, 220),rgb(255, 199, 208));
+margin-bottom: 1vh;
+}
+h1{
+    margin-bottom: 2vh;
+}
+@media (max-width:539px) {
+    select{
+        width: fit-content;
+        padding: 1px;
+        height: 4vh;
+        border-radius: 10px;
+        font-size: 11px;
+        
+    }
+    .control .icons i{
+        width: 30px;
+    }
+    .control li{
+        /* display: flex; */
+        /* align-items: center; */
+        /* justify-content: space-between; */
+        padding-left:10px;
+        padding-right:12px;
+        padding-bottom: 11px;
+        padding-top: 5px;
+        
+        }
+       .fa-volume-high{
+        padding-bottom: 20px;
+       }
+}
+@media (max-width:363px){
+    .mainContent{
+        
+    width: fit-content;
+    padding: 6px;
+    margin-top: -1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+       
+    }
+    textarea{
+        width: 80%;
+        height: 80%;
+        margin-left: 5vw;
+    }
+    .textToTranslate{
+        margin-right: -3vh;
+    }
+    .translatedText{
+        margin-left: -4vh;
+    }
+    .col{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 75vh;
+        background: linear-gradient(135deg,rgb(246, 220, 220),rgb(255, 199, 208));
+    margin-bottom: 1vh;
+    }
+}
