@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="86" fill="none" xmlns:v="https://vecta.io/nano">
+<style><![CDATA[.B{color-interpolation-filters:sRGB}.C{flood-opacity:0}]]></style>
+<g filter="url(#A)"><path d="M28.737 22.085l-6.566 7.708a2.81 2.81 0 0 0-.671 1.822V62.19A2.81 2.81 0 0 0 24.31 65h28.449a2.81 2.81 0 0 0 2.81-2.81V23.907a2.81 2.81 0 0 0-2.81-2.81H30.876a2.81 2.81 0 0 0-2.139.988z" fill="url(#D)"/>
+</g>
+<path d="M20.802 9.906l-9.347 10.973a4 4 0 0 0-.955 2.594V67a4 4 0 0 0 4 4H55a4 4 0 0 0 4-4V12.5a4 4 0 0 0-4-4H23.847a4 4 0 0 0-3.045 1.406z" fill="#d6dcdc"/><g filter="url(#B)">
+<path d="M23 24V14l-3.333 7.2L13 24h10z" fill="#0097a0"/></g>
+<g opacity=".6" filter="url(#C)">
+<path d="M24 20V9l-2.333 7.92L17 20h7z" fill="#00d6da"/>
+</g>
+<path d="M24 23.431V10.055c0-1.393-1.733-2.034-2.639-.976L10.949 21.226c-.804.938-.193 2.391 1.039 2.473l10.946.73A1 1 0 0 0 24 23.431z" fill="#e3e8e8"/>
+<path d="M22 39h27.5M22 45h27.5M22 51h17" stroke="#a1afaf" stroke-width="2" stroke-linecap="round"/>
+<defs>
+<filter id="A" x=".5" y=".098" width="76.068" height="85.902" filterUnits="userSpaceOnUse" class="B">
+<feFlood class="C"/>
+<feBlend in="SourceGraphic"/>
+<feGaussianBlur stdDeviation="10.5"/>
+</filter>
+<filter id="B" x="4.95" y="5.95" width="26.1" height="26.1" filterUnits="userSpaceOnUse" class="B">
+<feFlood class="C"/>
+<feBlend in="SourceGraphic"/>
+<feGaussianBlur stdDeviation="4.025"/>
+</filter>
+<filter id="C" x="9.897" y="1.897" width="21.206" height="25.206" filterUnits="userSpaceOnUse" class="B">
+<feFlood class="C"/>
+<feBlend in="SourceGraphic"/>
+<feGaussianBlur stdDeviation="3.551"/></filter>
+<linearGradient id="D" x1="11.5" y1="39.5" x2="52.5" y2="58.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8aeff0"/>
+<stop offset="1" stop-color="#0097a0"/>
+</linearGradient>
+</defs>
+</svg>
