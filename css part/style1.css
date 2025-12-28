@@ -108,6 +108,16 @@ i.fa-bars {
     padding: 5px;
     transition: .5s;
 }
+.fa-linkedin:hover {
+    color: white;
+    margin: 0 0 20px -25px;
+    background-color: rgb(42, 158, 230);
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 30px;
+    padding: 5px;
+    transition: .5s;
+}
 .useful {
     margin: 0 0 20px 0px;
 }
