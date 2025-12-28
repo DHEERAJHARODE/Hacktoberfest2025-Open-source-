@@ -1,0 +1,92 @@
+.hide{
+    display: none;
+}
+.score{
+    background-color: black;
+    height: 150px;
+    width: 100%;
+    font-family: fantasy;
+    font-size: 1.2em;
+    text-align: center;
+    color: white;
+
+}
+
+.startScreen{
+
+        text-align: center;
+        padding: 15px;
+        margin: auto;
+        width: 30%;
+        position: absolute;
+        background-color: black;
+        top: 150px;
+        left: 30%;
+        color: white;
+        z-index: 1;
+        cursor: pointer;
+}
+.enemy{
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    width: 65px;
+    height: 150px;
+    background-color: black;
+    background-image: url(newcar2.png);
+    background-size: cover;
+}
+.car{
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    width: 67px;
+    height: 150px;
+    background-color: black;
+    background-image: url(newcar1.png);
+    background-size: cover;
+
+
+}
+.line1{
+    position: absolute;
+    height : 100px;
+    width : 10px;
+    margin-left: 125px;
+    background-color: white;
+}
+.line2{
+    position: absolute;
+    height : 100px;
+    width : 10px;
+    margin-left: 250px;
+    background-color: white;
+}
+.line3{
+    position: absolute;
+    height : 100px;
+    width : 10px;
+    margin-left: 375px;
+    background-color: white;
+}
+.gameArea{
+    background-color: black;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+
+    width: 500px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 25%;
+    bottom: auto;
+    margin: auto;
+}
+body{ 
+    background-image: url(newtree.png);
+    background-color: lightgreen;
+    
+    background-repeat: repeat;
+    /* background-repeat: repeat-y; */
+    background-size: 110px;
+}
