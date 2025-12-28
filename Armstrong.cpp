@@ -25,5 +25,6 @@ int main() {
     else
         cout << num << " is not an Armstrong number.";
 
+    
     return 0;
 }
