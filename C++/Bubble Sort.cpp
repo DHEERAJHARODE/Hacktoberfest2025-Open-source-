@@ -1,30 +1,26 @@
 #include<iostream>
 using namespace std;
-void swapping(int &a, int &b) {      //swap the content of a and b
-   int temp;
-   temp = a;
-   a = b;
-   b = temp;
-}
 //displaying sorted array
 void display(int *array, int size) {
    for(int i = 0; i<size; i++)
       cout << array[i] << " ";
    cout << endl;
 }
-void bubbleSort(int *array, int size) {
-   for(int i = 0; i<size; i++) {
-      int swaps = 0;         //flag to detect any swap is there or not
-      for(int j = 0; j<size-i-1; j++) {
-         if(array[j] > array[j+1]) {       //when the current item is bigger than next
-            swapping(array[j], array[j+1]);
-            swaps = 1;    //set swap flag
-         }
-      }
-      if(!swaps)
-         break;       // No swap in this pass, so array is sorted
-   }
+
+void bubbleSort(int arr[], int n){
+    //base case
+    if(n==0 || n==1)
+    return ;
+
+    for(int i=0; i<n-1; i++){
+        if(arr[i]>arr[i+1]){
+            swap(arr[i], arr[i+1]); //used swap function 
+        }
+    }
+
+    bubbleSort(arr, n-1);
 }
+
 int main() {
    int n;
    cout << "Enter the number of elements: ";
