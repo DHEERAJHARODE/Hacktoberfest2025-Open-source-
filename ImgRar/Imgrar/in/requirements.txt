@@ -1,0 +1,5 @@
+pytesseract==0.3.10
+pngquant==1.0.7
+jupyterlab==3.2.8
+jupyterlab-pygments==0.1.2
+jupyterlab-server==2.10.3                                                                                                                                                                                                  
