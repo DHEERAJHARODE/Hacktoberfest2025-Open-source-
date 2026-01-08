@@ -1,0 +1,662 @@
+#:import sm kivy.uix.screenmanager
+ScreenManagement:
+    transition: sm.FadeTransition()
+    MainScreen:
+    FirstScreen:
+    SecondScreen:
+    SecondScreen2:
+    ThirdScreen:
+    FareScreen1:
+    FareScreen2:
+    FareScreen3:
+    FareScreen4:
+
+#mainscreen code
+
+<MainScreen>:
+    name:'main'
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.10
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Mumbai Metro Indicator'
+                font_size: 30
+                size: self.texture_size
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.3, 0.3
+            pos_hint: {"x":0.01, "y":0.6}
+            padding: 20
+            spacing: 20
+            Button:
+                text: 'Line 1'
+                font_size: 30
+                background_normal: 'line1.JPG'
+                background_down: 'line1.JPG'
+                on_release: app.root.current = "first"
+            
+                               
+#firstscreen code
+#after clicking Line1 Button
+
+<FirstScreen>:
+    tabba: tabba
+    name: 'first'
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.10
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Metro Indicator'
+                font_size: 30
+                size: self.texture_size
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.90
+            Tabba:
+                id: tabba
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.10
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "main"
+                font_size: 25
+
+
+<Tabba>:
+    do_default_tab: False
+    tab_width: self.parent.width / 3
+    background_color: (255, 255, 255, 1.0)
+
+    TabbedPanelItem:
+        text: 'LINE 1'
+
+        Tabs:
+        BoxLayout:
+            RstDocument:
+                text: '\n'.join(("Choose Direction -->"))
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'GHATKOPAR'
+                on_press: root.btn1()
+                on_press: app.root.current = "second"
+                font_size: 25
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'VERSOVA'
+                on_press: root.btn2()
+                on_release: app.root.current = "second2"
+                font_size: 25
+
+    TabbedPanelItem:
+        text: 'FARE'
+        Tabs:
+
+        GridLayout:
+            cols:1
+            rows:4
+            size_hint: 1, 0.90
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'Fare Chart :Single Journey'
+                on_press: app.root.current = "faresingle"
+                font_size: 25
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'Fare Chart :Return Journey'
+                
+                on_release: app.root.current = "farereturn"
+                font_size: 25
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'Fare Chart - 45 Trip Pass'
+                
+                on_release: app.root.current = "faretrip"
+                font_size: 25
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'Fare Chart - Store Value Pass'
+                
+                on_release: app.root.current = "farestore"
+                font_size: 25
+
+    TabbedPanelItem:
+        text: 'MAP'
+        Tabs:
+        BoxLayout:
+            size_hint: 1, 0.90
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 20
+            spacing: 20
+            Image:
+                source:'MetroMap.JPG'
+                
+<Tabs>:
+    grid: grid
+    ScrollView:
+        do_scroll_y: True
+        do_scroll_x: False
+        size_hint: (1, None)
+        height: root.height
+        GridLayout:
+            id: grid
+            cols: 1
+            spacing: 10
+            padding: 10
+            size_hint_y: None
+            height: 2500
+
+#secondscreen code
+#after getting GHATKOPAR as input
+
+<SecondScreen>:
+
+    name: 'second'
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.10
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'You Are At?'
+                font_size: 30
+                size: self.texture_size
+
+
+
+        BoxLayout:
+
+            orientation: 'vertical'
+            size_hint: 1, 0.90
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'VERSOVA'
+                font_size:20
+                on_press: root.btn3("VERSOVA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'D N NAGAR'
+                font_size:20
+                on_press: root.btn3("D N NAGAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'AZAD NAGAR'
+                font_size:20
+                on_press: root.btn3("AZAD NAGAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'ANDHERI'
+                font_size:20
+                on_press: root.btn3("ANDHERI")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'WESTERN EXP HIGHWAY'
+                font_size:20
+                on_press: root.btn3("WESTERN EXP HIGHWAY")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'CHAKALA(JB NAGAR)'
+                font_size:20
+                on_press: root.btn3("CHAKALA(JB NAGAR)")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'AIRPORT ROAD'
+                font_size:20
+                on_press: root.btn3("AIRPORT ROAD")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'MAROL NAKA'
+                font_size:20
+                on_press: root.btn3("MAROL NAKA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'SAKI NAKA'
+                font_size:20
+                on_press: root.btn3("SAKI NAKA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'ASALPHA'
+                font_size:20
+                on_press: root.btn3("ASALPHA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'JAGRUTI NAGAR'
+                font_size:20
+                on_press: root.btn3("JAGRUTI NAGAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'GHATKOPAR'
+                font_size:20
+                on_press: root.btn3("GHATKOPAR")
+                on_release: app.root.current = "third"
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.3, 0.05
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "first"
+                font_size: 25
+
+
+#secondscreen2 code
+#after getting VERSOVA as input
+
+<SecondScreen2>:
+
+    name: 'second2'
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.10
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'You Are At?'
+                font_size: 30
+                size: self.texture_size
+
+
+
+        BoxLayout:
+            
+            orientation: 'vertical'
+            size_hint: 1, 0.90
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'GHATKOPAR'
+                font_size:20
+                on_press: root.btn3("GHATKOPAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'JAGRUTI NAGAR'
+                font_size:20
+                on_press: root.btn3("JAGRUTI NAGAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'ASALPHA'
+                font_size:20
+                on_press: root.btn3("ASALPHA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'SAKI NAKA'
+                font_size:20
+                on_press: root.btn3("SAKI NAKA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'MAROL NAKA'
+                font_size:20
+                on_press: root.btn3("MAROL NAKA")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'AIRPORT ROAD'
+                font_size:20
+                on_press: root.btn3("AIRPORT ROAD")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'CHAKALA(JB NAGAR)'
+                font_size:20
+                on_press: root.btn3("CHAKALA(JB NAGAR)")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'WESTERN EXP HIGHWAY'
+                font_size:20
+                on_press: root.btn3("WESTERN EXP HIGHWAY")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'ANDHERI'
+                font_size:20
+                on_press: root.btn3("ANDHERI")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'AZAD NAGAR'
+                font_size:20
+                on_press: root.btn3("AZAD NAGAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'D N NAGAR'
+                font_size:20
+                on_press: root.btn3("D N NAGAR")
+                on_release: app.root.current = "third"
+
+            Button:
+                background_color: (0, 0, 1, 1)
+                text: 'VERSOVA'
+                font_size:20
+                on_press: root.btn3("VERSOVA")
+                on_release: app.root.current = "third"
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.3, 0.05
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "first"
+                font_size: 25
+
+
+#thirdscreen code 
+#after getting both inputs from users
+<ThirdScreen>:
+    name:'third'
+    
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: 0.05
+        pos_hint: {'top': 1.0}
+        
+        Label:
+            background_color: (80, 1, 0, 1.0)
+            text: "SCHEDULE"
+
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: 1, 0.95
+        
+        RecycleView:
+            data: [{'text':"{} \n{}".format(time, train)} for time,train in root.rows]
+            viewclass: "Button"
+            RecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1.0, 0.05
+        pos_hint: {'bottom': 1.0}
+        Button:
+            text: "Get Schedule"
+            on_press: root.get_data()
+            
+            
+                
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 0.3, 0.05
+        pos_hint: {'bottom': 1.0}
+        Button:
+            background_color: (80, 1, 0, 1.0)
+            text: 'Back'
+            on_release: root.clear_screen()
+            on_press: app.root.current = "first"
+            font_size: 25
+
+#farescreen code 
+#for cheacking ticket prices
+
+<FareScreen1>:
+    name:'faresingle'
+    orientation: "vertical"
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+    
+
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 20
+            spacing: 20
+            canvas:
+                Color:
+                    rgba: (255, 255, 255, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            
+            Image:
+                source:'SingleFare.JPG'
+        BoxLayout:
+            size_hint_y: 0.05
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text : 'Single Journey Fare'
+                font_size: 30
+                size: self.texture_size
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.3, 0.05
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "first"
+                font_size: 25
+    
+<FareScreen2>:
+    name:'farereturn'
+    orientation: "vertical"
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 10
+            spacing: 10
+            canvas:
+                Color:
+                    rgba: (255, 255, 255, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Image:
+                source:'ReturnFare.JPG'
+        BoxLayout:
+            size_hint_y: 0.05
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text : 'Return Journey Fare'
+                font_size: 30
+                size: self.texture_size
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.3, 0.05
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "first"
+                font_size: 25
+
+<FareScreen3>:
+    name:'faretrip'
+    orientation: "vertical"
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 20
+            spacing: 20
+            canvas:
+                Color:
+                    rgba: (255, 255, 255, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Image:
+                source:'TripPass.JPG'
+        
+        BoxLayout:
+            size_hint_y: 0.05
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text : '45 Trip Pass Fair'
+                font_size: 30
+                size: self.texture_size
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.3, 0.05
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "first"
+                font_size: 25
+
+<FareScreen4>:
+    name:'farestore'
+    orientation: "vertical"
+    FloatLayout:
+        background_color: (255, 255, 255, 1.0)
+        BoxLayout:
+            orientation: "vertical"
+            size: root.width, root.height
+            padding: 20
+            spacing: 20
+            canvas:
+                Color:
+                    rgba: (255, 255, 255, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Image:
+                source:'StoreValuePass.JPG'
+
+        BoxLayout:
+            size_hint_y: 0.05
+            pos_hint: {'top': 1.0}
+            canvas:
+                Color:
+                    rgba: (0.98, 0.4, 0, 1.0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text : 'Store Value Pass Fair '
+                font_size: 30
+                size: self.texture_size
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.3, 0.05
+            pos_hint: {'bottom': 1.0}
+            Button:
+                background_color: (80, 1, 0, 1.0)
+                text: 'Back'
+                on_release: app.root.current = "first"
+                font_size: 25
+        
+    
+
+
+
+
+
+
+
