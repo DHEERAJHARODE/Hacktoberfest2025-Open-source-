@@ -1,0 +1,12 @@
+def is_palindrome(s):
+    # Normalize the string: remove non-alphanumeric characters and convert to lowercase
+    normalized_str = ''.join(char.lower() for char in s if char.isalnum())
+    # Check if the string reads the same forward and backward
+    return normalized_str == normalized_str[::-1]
+
+# Example usage
+input_string = "A man, a plan, a canal, Panama!"
+if is_palindrome(input_string):
+    print(f'"{input_string}" is a palindrome.')
+else:
+    print(f'"{input_string}" is not a palindrome.')
