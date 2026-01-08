@@ -1,0 +1,4 @@
+- In order to run this program 'requests' package must be installed.
+- Also, a valid API key based on your account must be used. To create an account go [here](https://www.alphavantage.co/)
+- After API key is generated, note it down properly so that it can be used.
+- Valid stock symbol must be used. Refer for stock symbols [here](https://stockanalysis.com/stocks/)
