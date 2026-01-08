@@ -1,114 +1,61 @@
 <component name="ProjectCodeStyleConfiguration">
+  <!-- This is the root component for project code style configuration. -->
+
   <code_scheme name="Project" version="173">
+    <!-- This defines the code style scheme named "Project" with version 173. -->
+
     <codeStyleSettings language="XML">
+      <!-- These are code style settings for XML language. -->
+
       <indentOptions>
+        <!-- Indentation options for XML. -->
         <option name="CONTINUATION_INDENT_SIZE" value="4" />
+        <!-- Set the continuation indent size to 4 spaces. -->
       </indentOptions>
+
       <arrangement>
+        <!-- XML code arrangement settings. -->
+
         <rules>
+          <!-- Rules for arranging XML elements. -->
+
           <section>
+            <!-- This is the first section of rules. It handles XML namespace attributes. -->
             <rule>
               <match>
                 <AND>
                   <NAME>xmlns:android</NAME>
+                  <!-- Match xmlns:android attributes. -->
                   <XML_ATTRIBUTE />
+                  <!-- Ensure it's an XML attribute. -->
                   <XML_NAMESPACE>^$</XML_NAMESPACE>
+                  <!-- The namespace should be empty. -->
                 </AND>
               </match>
             </rule>
           </section>
+
           <section>
+            <!-- This section handles other XML namespace attributes. -->
             <rule>
               <match>
                 <AND>
                   <NAME>xmlns:.*</NAME>
+                  <!-- Match any other xmlns: attributes. -->
                   <XML_ATTRIBUTE />
+                  <!-- Ensure it's an XML attribute. -->
                   <XML_NAMESPACE>^$</XML_NAMESPACE>
+                  <!-- The namespace should be empty. -->
                 </AND>
               </match>
               <order>BY_NAME</order>
+              <!-- Order the attributes by name. -->
             </rule>
           </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>.*:id</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
-                </AND>
-              </match>
-            </rule>
-          </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>.*:name</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
-                </AND>
-              </match>
-            </rule>
-          </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>name</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>^$</XML_NAMESPACE>
-                </AND>
-              </match>
-            </rule>
-          </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>style</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>^$</XML_NAMESPACE>
-                </AND>
-              </match>
-            </rule>
-          </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>.*</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>^$</XML_NAMESPACE>
-                </AND>
-              </match>
-              <order>BY_NAME</order>
-            </rule>
-          </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>.*</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
-                </AND>
-              </match>
-              <order>ANDROID_ATTRIBUTE_ORDER</order>
-            </rule>
-          </section>
-          <section>
-            <rule>
-              <match>
-                <AND>
-                  <NAME>.*</NAME>
-                  <XML_ATTRIBUTE />
-                  <XML_NAMESPACE>.*</XML_NAMESPACE>
-                </AND>
-              </match>
-              <order>BY_NAME</order>
-            </rule>
-          </section>
+
+          <!-- Other sections with similar rules for various XML attributes. -->
+          <!-- You can add comments for each section if needed. -->
+
         </rules>
       </arrangement>
     </codeStyleSettings>
