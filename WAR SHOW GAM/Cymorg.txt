@@ -1,0 +1,3 @@
+This will only take a minute.
+Enable 2FA now. You'll be able to continue on with your work right after.
+Two-factor authentication adds an additional layer of account security. It is a proven method of keeping you safe from hackers and account takeover, even if your password is stolen or compromised.
