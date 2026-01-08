@@ -1,0 +1,119 @@
+*{
+    font-family: montserrat;
+}
+body{
+    background: f1fbff;
+}
+.section-padding{
+    padding: 100px 0;
+}
+.carouseL-item{
+    height: 100vh;
+    min-height: 300px;
+}
+.carouseL-caption{
+    bottom: 220px;
+    z-index: 2;
+}
+.carouseL-caption h5{
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+.carouseL-caption p{
+    width: 60%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+}
+.carouseL-inner::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+}
+.navbar-nav a{
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.navbar-Light .navbar-brand{
+    color: #000;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.navbar-Light .navbar-brand:focus,
+.navbar-Light .navbar-brand:hover{
+    color: #000;
+}
+.navbar-Light .navbar-nav .navbar-Link{
+    color: #000;
+}
+.w-100{
+    height: 100vh;
+}
+
+.services .card-body i{
+    font-size: 50px;
+}
+
+.team .card-body i{
+    font-size: 20px;
+}
+.portfolio .card{
+    box-shadow: 15px 15px 15px rgba(0,0,0,0.15);
+}
+.team .card{
+    box-shadow: 15px 15px 15px rgba(0,0,0,0.15);
+}
+
+
+/* === responsive css === */
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .carouseL-caption{
+        bottom: 370px;
+    }
+    .carouseL-caption p{
+         width: 100%;
+    }
+    .card{
+        margin-bottom: 30px;
+    }
+    .img-area img{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .navbar-nav{
+        text-align: center;
+    }
+    .carouseL-caption{
+        bottom: 125px;
+    }
+    .carouseL-caption h5{
+        font-size: 17px;
+    }
+    .carouseL-caption a{
+        padding: 10px 15px;
+    }
+    .carouseL-caption p{
+        width: 100%;
+        line-height: 1.6;
+        font-size: 12px;
+    }
+    .about-text{
+        padding-top: 50px;
+    }
+    .card{
+        margin-bottom: 30px;
+    }
+}
