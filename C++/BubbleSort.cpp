@@ -1,46 +1,45 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-void bubbleSort(vector<int> v)
+ 
+// An optimized version of Bubble Sort
+void bubbleSort(int arr[], int n)
 {
-    int i = 0, t = 0;
-
-    for (int i = 0; i < v.size() - 1; i++)
-    {
-        for (int j = 0; j < v.size() - i - 1; j++)
+   int i, j;
+   bool swapped;
+   for (i = 0; i < n-1; i++)
+   {
+     swapped = false;
+     for (j = 0; j < n-i-1; j++)
+     {
+        if (arr[j] > arr[j+1])
         {
-            if (v[j] > v[j + 1])
-            {
-                swap(v[j], v[j + 1]);
-                t++;
-            }
+           swap(arr[j], arr[j+1]);
+           swapped = true;
         }
-        if (t == 0)
-        {
-            cout << "Already sorted" << endl;
-        }
-    }
-
-    for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << " ";
-    }
+     }
+ 
+     // IF no two elements were swapped
+     // by inner loop, then break
+     if (swapped == false)
+        break;
+   }
 }
-
+ 
+// Function to print an array
+void printArray(int arr[], int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+        cout <<" "<< arr[i];
+}
+ 
+// Driver program
 int main()
 {
-    int size;
-    cin >> size;
-
-    vector<int> v1(size);
-
-    for (auto &i : v1)
-    {
-        cin >> i;
-    }
-
-    bubbleSort(v1);
-
+    int arr[] = {5, 3, 1, 9, 8, 2, 4, 7};
+    int N = sizeof(arr)/sizeof(arr[0]);
+    bubbleSort(arr, N);
+    cout <<"Sorted array: \n";
+    printArray(arr, N);
     return 0;
 }
