@@ -28,7 +28,7 @@ void bubbleSort(vector<int> v)
     }
 }
 
-int main()
+int main(void)      //Execution of every program starts from main() fuction.
 {
     int size;
     cin >> size;
