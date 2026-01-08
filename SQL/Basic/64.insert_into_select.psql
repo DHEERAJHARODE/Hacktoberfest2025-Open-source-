@@ -1,0 +1,77 @@
+การนำข้อมูลจากตารางไปเพิ่มยังอีกตารางด้วย insert into ... select ... *** ต้องมีคอลัมเหมือนกัน ***
+-- insert into (append rows to another table)
+drop table if exists emp_male;
+drop table if exists emp_female;
+drop table if exists emp_combine;
+
+select * from employee limit 5;
+
+-- create emp_male table
+select fname, lname, gender, height_m 
+    into emp_male 
+    from employee 
+    where gender='m' limit 5;
+
+select * from emp_male;
+
+-- create emp_female table
+select fname, lname, gender, height_m 
+    into emp_female 
+    from employee 
+    where gender='f' limit 10;
+
+select * from emp_female;
+
+-- emp_male and emp_female table
+select * from emp_male;
+select * from emp_female;
+
+-- combine emp_male and emp_female tables
+-- create emp_combine table from emp_male, สร้างตารางemp_combine จาก ตาราง emp_male
+select * 
+    into emp_combine
+    from emp_male;
+
+select * from emp_combine;
+
+-- insert rows from emp_female into emp_combine
+insert into emp_combine
+    select * from emp_female;
+
+select * from emp_combine;
+
+-- delete rows where gender='f'
+delete from emp_combine where gender = 'f';
+
+-- insert specific column(s), เลือกเฉพาะคอลัม fname อย่างเดียว
+insert into emp_combine(fname)
+    select fname from emp_female;
+
+-- delete rows from emp_combine where gender is null
+delete from emp_combine where gender is null;
+
+-- insert into with filter 
+select * from emp_female where height_m > 1.7;
+
+insert into emp_combine
+    select * from emp_female where height_m > 1.7;
+
+select * from emp_combine;
+
+-- drop existing emp_combine
+drop table emp_combine;
+
+
+select * 
+    into emp_combine
+    from emp_male;
+
+select * from emp_combine;
+
+-- add emp_id (serial column)
+alter table emp_combine add column emp_id serial primary key;
+select * from emp_combine;
+
+insert into emp_combine
+    select * from emp_female;
+select * from emp_combine;

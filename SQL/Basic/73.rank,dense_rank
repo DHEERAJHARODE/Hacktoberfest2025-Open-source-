@@ -1,0 +1,56 @@
+-- การสร้างคอลัมน์แสดงลำดับที่ rank(), dense_rank()
+
+
+-- create ps4 table
+drop table if exists ps4;
+select * 
+    into ps4
+from game where platform ilike 'ps4' and critic_score is not null;
+
+-- select all rows from ps4
+select * from ps4;
+
+-- rank() by critic_score
+select name, critic_score, 
+    rank() over (order by critic_score desc)
+from ps4;
+
+-- compare rank() vs dense_rank()
+select name, critic_score, 
+    rank() over (order by critic_score desc) as rank,
+    dense_rank() over (order by critic_score desc) as dense_rank
+from ps4;
+
+select * from ps4;
+
+-- use window alias
+select name, critic_score, 
+    rank() over w as rank,
+    dense_rank() over w as dense_rank
+from ps4
+window w as (order by critic_score desc); -- เหมาะสำหรับที่มี order ซำ้ๆกัน
+
+select * from ps4;
+
+-- partition by year_of_release
+select year_of_release, name, critic_score, 
+    rank() over w as rank,
+    dense_rank() over w as dense_rank
+from ps4
+window w as (partition by year_of_release order by critic_score desc);
+
+-- partition by year_of_release and genre
+select year_of_release, genre, name, critic_score, 
+    rank() over w as rank,
+    dense_rank() over w as dense_rank
+from ps4
+window w as (partition by year_of_release, genre order by critic_score desc);
+
+-- compare rank() with row_number()
+select * from ps4;
+select year_of_release, genre, name, critic_score, 
+    row_number() over w as row_number,
+    rank() over w as rank,
+    dense_rank() over w as dense_rank
+from ps4
+window w as (partition by year_of_release order by critic_score desc);
