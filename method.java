@@ -4,6 +4,7 @@ public class FirstClass{
         String s1="    simply dummy text   ";
         char s2[]={'H','e','l','l','o'};
         String s3="";
+        //Copying all the values of s2 in s3 from index 0 till index 5.
         s3=s3.copyValueOf(s2,0,5);
         System.out.println(s.toUpperCase());//Convert in UPPERCASE
         System.out.println(s.toLowerCase());//Conver in lowercase
@@ -20,7 +21,8 @@ public class FirstClass{
         System.out.println(Math.sqrt(225));
         System.out.println(Math.abs(-7.321));//Returns absolute value
         System.out.println(Math.random()); //Random number 0 - 1
-        int randomnum=(int)(Math.random()*101);//It prints random number 0 - 100           
+        int randomnum=(int)(Math.random()*101);//It prints random number 0 - 100   
+        //Printing the randomnum as output.
         System.out.println(randomnum);
 
     }
