@@ -1,0 +1,12 @@
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\bin\Debug\net6.0\PrimeFactorsLib.deps.json
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\bin\Debug\net6.0\PrimeFactorsLib.dll
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\bin\Debug\net6.0\PrimeFactorsLib.pdb
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.csproj.AssemblyReference.cache
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.AssemblyInfoInputs.cache
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.AssemblyInfo.cs
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.csproj.CoreCompileInputs.cache
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.dll
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\refint\PrimeFactorsLib.dll
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\PrimeFactorsLib.pdb
+C:\Users\beef_\Desktop\bookSource\PrimeFactors\PrimeFactorsLib\obj\Debug\net6.0\ref\PrimeFactorsLib.dll
