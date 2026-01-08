@@ -1,0 +1,169 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Profile - {{user_profile.user.username}}</title>
+   <!-- <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> -->
+    
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/color.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	
+	</div>
+	
+	<section>
+			<div class="feature-photo">
+				<figure><img src="{% static 'images/resources/timeline-1.jpg' %}" alt=""></figure>
+				<form action="/follow/" method="POST">
+					{% csrf_token %}
+					<div class="add-btn">
+						<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
+						<span style="color: white; font-size: 27px;"><b>{{user_post_length}} Post</b></span>
+						<span style="color: white; font-size: 27px;"><b>{{user_followers}} followers</b></span>
+						<span style="color: white; font-size: 27px;"><b>{{user_following}} following</b></span>
+						
+						<input type="hidden" value="{{user.username}}" name="follower">
+						<input type="hidden" value="{{user_object.username}}" name="user">
+						
+						{% if user_object.username == user.username %}
+						<a style="background-color: #ffc0cb; border: #ffc0cb;" href="{% url 'setting' %}">Account Settings</a>
+						{% else %}
+						<button type="submit" style="background-color: #ffc0cb; border: #ffc0cb;">{{button_text}}</button>
+						
+						{% endif %}
+					</div>
+				</form>
+
+				<!-- <form class="edit-phto">
+					<i class="fa fa-camera-retro"></i>
+					<label class="fileContainer">
+						Upload Cover Photo
+					<input type="file"/>
+					</label>
+				</form> -->
+				<div class="container-fluid">
+					<div class="row merged">
+						<div class="col-lg-2 col-sm-3">
+							<div class="user-avatar">
+								<figure>
+									<img src="{{user_profile.profileimg.url}}" style="height: 250px; width: 100%;" alt="">
+									<form class="edit-phto">
+										<i class="fa fa-camera-retro"></i>
+										<label class="fileContainer">
+											<a href="#account-settings">Upload Profile Photo</a>
+										</label>
+									</form>
+								</figure>
+							</div>
+						</div>
+						<div class="col-lg-10 col-sm-9">
+							<div class="timeline-info">
+								<ul>
+									<li class="admin-name">
+									  <h5 style="color: black;white-space: nowrap; width: 110px; font-size: 27px;"><b>@{{user_profile.user.username}}</b><!--<i class="fa fa-check-circle" style="color: #48dbfb;" aria-hidden="true"></i>--></h5>
+									  <!--<span>Group Admin</span>-->
+									</li>
+									<!--<li>
+										<a class="" href="javascript:void(0)" title="" data-ripple="">Go live!</a>
+										<a class="" href="javascript:void(0)" title="" data-ripple="">Music</a>
+										<a class="" href="emporium/index-3.html" title="" data-ripple="">Emporium</a>
+										<a class="" href="fitness/index.html" title="" data-ripple="">Health Inspection</a>
+										<a class="" href="settings/account-setting.html" title="" data-ripple="">Settings</a>
+										<a class="" href="javascript:void(0)" title="" data-ripple="">Upload</a>
+										<a class="" href="time-line.html" title="" data-ripple="">time line</a>
+										<a class="" href="timeline-photos.html" title="" data-ripple="">Photos</a>
+										<a class="" href="timeline-videos.html" title="" data-ripple="">Videos</a>
+										<a class="" href="timeline-friends.html" title="" data-ripple="">Friends</a>
+										<a class="" href="timeline-groups.html" title="" data-ripple="">Groups</a>
+										<a class="" href="about.html" title="" data-ripple="">about</a>
+										<a class="" href="#" title="" data-ripple="">more</a>
+
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- top area -->
+		<section>
+			<div class="bio">
+				{{user_profile.bio}}
+			</div>
+		</section>
+		
+	<section>
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row" id="page-contents">
+							<div class="col-lg-3">
+								<aside class="sidebar static">
+									
+									
+									
+								</aside>
+							</div><!-- sidebar -->
+							
+
+
+
+
+
+
+
+
+
+							<div class="col-lg-6">
+								<div class="central-meta">
+									<ul class="photos">
+					
+										
+								{% for post in user_post %}
+								<li>
+									<a class="strip" href="{{post.image.url}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+										<img src="{{post.image.url}}" style="height: 250px; width: 300px;" alt=""></a>
+								</li>
+								{% endfor %}
+						
+										
+										
+									</ul>
+									<!--<div class="lodmore"><button class="btn-view btn-load-more"></button></div>-->
+								</div><!-- photos -->
+							</div><!-- centerl meta -->
+							<div class="col-lg-3">
+								<aside class="sidebar static">
+									
+								</aside>
+							</div><!-- sidebar -->
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	
+	
+	<script data-cfasync="false" src="{% static '../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script><script src="{% static 'js/main.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+
+</body>	
+
+
+</html>

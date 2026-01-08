@@ -1,0 +1,1803 @@
+/*--- big screen ----*/
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .edit-phto {
+        left: 369px;
+    }
+    .user-avatar {
+        margin-top: -225px;
+    }
+    #people-list figure {
+        width: 14.7%;
+    }
+    .photos > li {
+        min-width: 211px;
+        width: 211px;
+    }
+    
+    .page-infos > span {
+        font-weight: 600;
+    }
+    .editing-interest form input {
+        width: 73.5%;
+    }
+    .peoples {
+        width: 230px;
+    }
+    .peoples-mesg-box {
+        width: 72%;
+    }
+    .sidebar .widget ul.recent-photos li {
+        width: 18.9%;
+    }
+    .timeline-info > ul li a::after {
+        bottom: -17px;
+    }
+    .videobg-meta{left: 400px;}
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1400px) {
+    .user-avatar {
+        top: -33px;
+    }
+    #people-list figure {
+        width: 18.5%;
+    }
+    .chat-box {
+        right: 294px;
+    }
+    .edit-phto {
+        left: 315px;
+        bottom: 125px;
+    }
+    .add-btn {
+        bottom: 125px;
+    }
+}
+
+@media screen and (max-width: 1281px) and (min-width: 1024px) {
+    .photos > li {
+        min-width: 32.2%;
+        width: 32.2%;
+    }
+    .timeline-info {
+        line-height: 51px;
+    }
+    .timeline-info .admin-name > span {
+        line-height: 0;
+    }
+    footer .widget-title h4 {
+        font-size: 14px;
+    }
+    .timeline-info .admin-name > h5 {
+        font-size: 20px;
+    }
+    .sidebar .widget li > a {
+        font-size: 14px;
+    }
+    .user-avatar {
+        width: 80.2%
+    }
+    .chat-box {
+        right: 230px;
+    }
+    .post-meta .detail {
+        width: 62%;
+    }
+    .pepl-info {
+        width: 87%;
+    }
+    .liked-pages > li {
+        min-width: 32.4%;
+        max-width: 32.4%;
+    }
+    .peoples-mesg-box {
+        width: 63.4%;
+    }
+    .conversation-head > span {
+        width: 82%;
+    }
+    .sidebar .widget ul.recent-photos li {
+        width: 31.7%;
+    }
+    .row.widget-page {
+        padding: 0;
+    }
+}
+
+
+/*--- tablet landscape ---*/
+
+@media screen and (max-width: 1024px) {
+    .topbar {
+        padding: 0 18px;
+    }
+    .top-area > ul.main-menu > li {
+        margin-right: 20px;
+        padding-right: 20px;
+    }
+    .top-area > ul.main-menu > li::after {
+        right: 5px;
+    }
+    .add-btn {
+        bottom: 148px;
+    }
+    .edit-phto {
+        bottom: 148px;
+    }
+    .pepl-info {
+        width: 88.4%;
+        padding-left: 5px;
+    }
+    .nearly-pepls > figure {
+        min-width: 40px;
+        max-width: 40px;
+        width: 40px;
+    }
+    .pepl-info > h4 {
+        font-size: 13px;
+        margin-bottom: 0;
+        width: 25%;
+    }
+    form .form-group.half {
+        width: 47.6%;
+    }
+    .editing-interest form input {
+        width: 79%;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .sidebar .widget ul.recent-photos li {
+        width: 32%;
+    }
+    .widget-page .sidebar .widget ul.recent-photos li {
+        width: 31.7%;
+    }
+    .peoples-mesg-box {
+        width: 64%;
+    }
+    .peoples {
+        width: 150px;
+    }
+    .peoples > li figure {
+        max-width: 25px;
+        min-width: 25px;
+        width: 25px;
+    }
+    .conversation-head > span {
+        width: 74%;
+    }
+    .followers > li figure {
+        max-width: 40px;
+        min-width: 40px;
+        width: 40px;
+    }
+    .top-area > ul.main-menu {
+        margin-left: 0;
+    }
+    .liked-pages > li {
+        width: 48.8%;
+        min-width: 48.8%;
+        max-width: 48.8%;
+    }
+    .photos > li {
+        min-width: 210px;
+        width: 210px;
+    }
+    .inbox-sec {
+        margin-left: 0;
+    }
+    .inbox-panel-head {
+        padding: 10px;
+    }
+    .linked-image {
+        width: 36%;
+        margin-right: 15px;
+    }
+    .post-meta .detail {
+        width: 60%;
+    }
+    .timeline-info > ul li {
+        margin-right: 38px;
+    }
+    .user-avatar {
+        margin-top: -90px;
+    }
+    .chat-box {
+        bottom: 0;
+        right: 0;
+        top: auto;
+    }
+    footer .widget-title h4 {
+        font-size: 14px;
+    }
+    .user-avatar .edit-phto {
+        padding: 5px;
+        top: auto;
+        left: 0 !important;
+    }
+    .photos > li {
+        min-width: 31.9%;
+        width: 31.9%;
+    }
+    .edit-phto {
+        left: 218px !important;
+    }
+    .user-avatar {
+        width: 100%;
+    }
+    .inbox-panel-head > img {
+        margin-right: 10px;
+    }
+    .user-setting {
+        left: -50px;
+    }
+    .post-meta .detail > span {
+        font-size: 20px;
+    }
+    .pepl-info > em {
+        vertical-align: bottom;
+        margin-left: 25px;
+    }
+    .career-page .purify {
+        margin-top: 10px;
+        text-align: left;
+        width: 100%;
+    }
+    .career-page .post-filter-sec > form {
+        width: 100%;
+    }
+    .career-page .purify .chosen-container {
+        width: 35.5% !important;
+    }
+    .post-filter-sec > form {
+        width: 100%;
+    }
+    .purify {
+        margin-top: 15px;
+        text-align: left;
+        width: 100%;
+    }
+    .l-post-meta {
+        padding: 20px;
+    }
+    .l-post .l-post-meta > h4 {
+        font-size: 20px;
+    }
+    .right-pading {
+        padding-right: 0;
+    }
+    .left-pading {
+        padding-left: 0;
+    }
+    .baner-inf {
+        width: 62%;
+    }
+    .baner-inf > span {
+        font-size: 45px;
+        margin-right: 20px;
+    }
+    .baner-mockup {
+        margin-top: -40px;
+        width: 30%;
+    }
+    .detail-meta > h2 {
+        max-width: 100%;
+    }
+    .fixed-sidebar {
+        width: 50px;
+    }
+    .salary-area {
+        margin-top: 40px;
+        text-align: left;
+    }
+    .company-intro {
+        margin-top: 30px;
+    }
+
+}
+
+
+/*--- tablet view ---*/
+
+@media screen and (max-width: 980px) {
+    .gap {
+        padding: 40px 0;
+    }
+    p {
+        font-size: 14px;
+    }
+    .topbar,
+    .side-panel {
+        display: none;
+    }
+    .responsive-header {
+        display: block;
+    }
+    .timeline-info > ul li {
+        margin-right: 15px;
+    }
+    .timeline-info > ul li:last-child {
+        margin-right: 0px;
+    }
+    .timeline-info .admin-name > h5 {
+        font-size: 17px;
+    }
+    .timeline-info > ul li a {
+        font-size: 11px;
+        margin-right: 13px;
+    }
+    .user-avatar {
+        width: 90%;
+        margin-top: -87px;
+    }
+    .edit-phto {
+        padding: 5px 10px;
+    }
+    .edit-phto {
+        left: 278px !important;
+        bottom: 140px;
+    }
+    .add-btn {
+        bottom: 140px;
+    }
+    .timeline-info > ul li a {
+        font-size: 13px;
+        margin-right: 30px;
+    }
+    .btn-view.btn-load-more {
+        margin-bottom: 50px;
+    }
+    .central-meta button.btn-view {
+        margin-bottom: 0;
+    }
+    #people-list figure {
+        width: 9%;
+    }
+    footer .widget {
+        margin-top: 50px;
+    }
+    footer .row > div:nth-child(1) .widget,
+    footer .row > div:nth-child(2) .widget,
+    footer .row > div:nth-child(3) .widget {
+        margin-top: 0;
+    }
+    .location > li p {
+        width: 83%;
+    }
+    .editing-interest form input {
+        width: 73%;
+    }
+    form .form-group.half {
+        width: 48.5%;
+    }
+    .knowldeg-box {
+        padding: 20px 10px;
+    }
+    .knowldeg-box > span {
+        font-size: 20px;
+    }
+    .knowldeg-box > p {
+        font-size: 14px;
+    }
+    .log-reg-area {
+        display: inline-block;
+        position: unset;
+        transform: translate(0px);
+        width: 100%;
+        height: inherit;
+    }
+    .peoples-mesg-box {
+        width: 76.5%;
+    }
+    .peoples > li figure {
+        max-width: 30px;
+        min-width: 30px;
+        width: 30px;
+    }
+    .message-text-container form button {
+        right: 25px;
+    }
+    .liked-pages > li {
+        width: 32.5%;
+        min-width: 32.5%;
+        max-width: 32.5%;
+    }
+    .photos > li {
+        min-width: 24%;
+        width: 24%;
+    }
+    .inbox-sec {
+        margin-left: 0;
+        margin-bottom: 50px;
+    }
+    .inbox-panel-head {
+        padding: 10px;
+    }
+    .sidebar {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    .linked-image {
+        margin-right: 20px;
+        width: 22%;
+    }
+    .advertisment-box img {
+        width: 100%;
+    }
+    .chat-box {
+        bottom: 25px;
+        right: 30px;
+        top: auto;
+    }
+    .widget-page .sidebar .widget {
+        margin: 0 0 30px;
+        width: 100%;
+    }
+    .sidebar .widget {
+        margin: 10px;
+        width: 47.2%;
+    }
+    a.add-butn {
+        top: 7px;
+    }
+    .pepl-info {
+        width: 92%;
+    }
+    .central-meta {
+        margin: 10px 10px 10px 0;
+        width: 100%;
+    }
+    .advertisment-box {
+        margin: 10px;
+        width: 47.1%;
+    }
+    .widget-page .advertisment-box {
+        margin: 0 0 30px;
+        width: 100%;
+    }
+    .widget ul.recent-photos li a img,
+    .widget ul.recent-photos li a {
+        width: 100%;
+    }
+    .accordion {
+        width: 100%;
+    }
+    .top-banner > h1 {
+        width: 100%;
+        font-size: 40px;
+    }
+    .ext-gap {
+        padding: 50px 0;
+    }
+    .faq-area {
+        margin: 30px 10px 0;
+    }
+    .contact-form form .form-group {
+        margin-right: 0;
+        width: 100%;
+    }
+    .contact-form {
+        padding: 30px;
+    }
+    .cntct-adres {
+        padding: 30px;
+    }
+    .cntct-adres > ul > li span {
+        font-size: 12px;
+        width: 77%;
+    }
+    .know-box {
+        margin-top: 50px;
+    }
+    .checkout-total {
+        margin-top: 20px;
+    }
+    .purify {
+        float: left;
+        margin-top: 15px;
+        text-align: left;
+        width: 100%;
+    }
+    .post-filter-sec > form {
+        width: 100%;
+    }
+    .purify .chosen-container {
+        width: 37.4% !important;
+    }
+    .right-pading {
+        padding-right: 0;
+    }
+    .left-pading {
+        padding-left: 0;
+    }
+    .baner-mockup {
+        width: 32%;
+    }
+    .baner-inf {
+        text-align: center;
+    }
+    .baner-inf > span {
+        font-size: 40px;
+        margin-right: 20px;
+    }
+    .baner-inf > a {
+        font-size: 14px;
+        padding: 6px 30px;
+    }
+    .contct-info2 {
+        margin-top: 30px;
+    }
+    .category-box {
+        border: 1px solid #eaeaea;
+        padding: 40px;
+    }
+    .our-teambox {
+        margin-bottom: 30px;
+    }
+    .about-picture {
+        margin-top: 30px;
+    }
+    .about-picture > img {
+        width: 100%;
+    }
+    .gap100 {
+        padding: 60px 0;
+    }
+    .news-letter > form input {
+        width: 380px;
+    }
+    .videobg-meta {
+        left: 50px;
+        max-width: 100%;
+        width: 85%;
+        top: 42%;
+    }
+    .videobg-meta > h3 {
+        font-size: 35px;
+    }
+    .bv-video-wrap {
+        height: 500px !important;
+    }
+    .info > a {
+        margin-top: 15px;
+    }
+    .price-table {
+        margin-bottom: 30px;
+    }
+    aside.sidebar.full-style .widget {
+        margin-top: 30px;
+    }
+    .topic-data > span {
+        width: 80px;
+    }
+    .fixed-sidebar {
+        display: none;
+    }
+    .sidebar.left,
+    .sidebar.right {
+        float: none;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .edit-phto {
+        bottom: auto;
+        left: 60px !important;
+        top: 50px;
+    }
+    .add-btn {
+        bottom: auto;
+        top: 50px;
+    }
+    .timeline-info > ul li a {
+        font-size: 12px;
+        margin-right: 11px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    p {
+        font-size: 13px;
+    }
+    .topbar,
+    .side-panel {
+        display: none;
+    }
+    .responsive-header {
+        display: block;
+    }
+    .error-meta {
+        top: 25%;
+    }
+    .user-avatar {
+        margin: 0;
+    }
+    .feature-photo > figure {
+        margin-bottom: 10px;
+    }
+    .user-avatar {
+        border: medium none;
+        border-radius: 0;
+        width: 85%;
+        margin: 10px 0;
+    }
+    .fileContainer {
+        font-size: 10px;
+    }
+    .feature-photo > .edit-phto {
+        bottom: auto;
+        font-size: 13px;
+        left: 20px !important;
+        padding: 5px;
+        top: 20px;
+    }
+    .user-avatar .edit-phto {
+        padding: 5px;
+        font-size: 12px;
+        left: 0 !important;
+    }
+    .add-btn {
+        bottom: auto;
+        top: 130px;
+        z-index: 9;
+        right: 30px;
+    }
+    .add-btn > a {
+        font-size: 11px;
+        padding: 3px 13px;
+    }
+    .edit-phto .fileContainer [type="file"] {
+        width: 100%;
+    }
+    .central-meta {
+        padding: 30px 15px;
+    }
+    .newpst-input {
+        width: 83%;
+    }
+    .post-meta .detail {
+        width: 100%;
+    }
+    .we-video-info > ul li span {
+        font-size: 14px;
+    }
+    .we-video-info > ul li span ins {
+        font-size: 10px;
+    }
+    .we-video-info > ul li.social-media {
+        margin-right: 0;
+    }
+    .we-comment {
+        width: 30%;
+    }
+    .we-comet > li ul {
+        margin-left: 20px;
+    }
+    .we-comet > li ul .we-comment {
+        width: 21%;
+    }
+    .post-comt-box {
+        width: 90%;
+    }
+    li.post-comment .comet-avatar {
+        max-width: 8%;
+        width: 8%;
+    }
+    .sidebar .widget:last-child {
+        margin-bottom: 0;
+    }
+    .error-meta > h1 {
+        font-size: 55px;
+    }
+    .error-meta span {
+        font-size: 15px;
+    }
+    .cntct-adres {
+        padding: 40px 30px;
+    }
+    .cntct-adres > ul > li span {
+        width: 79%;
+    }
+    .cntct-adres > ul {
+        margin-bottom: 0;
+    }
+    .contact-form form .form-group {
+        margin-right: 0;
+        width: 100%;
+    }
+    .map-meta {
+        bottom: 0;
+        left: 0;
+        top: auto;
+        width: 100%;
+    }
+    .overlap {
+        margin-top: 30px;
+    }
+    .contact-form {
+        padding: 30px;
+        width: 100%;
+    }
+    .cntct-adres {
+        width: 100%;
+    }
+    .contct-info {
+        box-shadow: 0 0 10px #e6e6e6;
+        margin-bottom: 0;
+    }
+    .friend-name {
+        width: 86%;
+    }
+    .friend-info > figure {
+        width: 11.6%;
+    }
+    .editing-interest form input {
+        width: 100%;
+    }
+    .editing-interest form button {
+        float: right;
+    }
+    .editing-interest form button {
+        margin: 10px 2px;
+        padding: 6px 30px;
+    }
+    form .dob .form-group {
+        width: 100%;
+    }
+    .form-radio > .radio {
+        width: 30%;
+    }
+    .d-flex {
+        display: inline-block !important;
+        width: 100%;
+    }
+    form .form-group.half {
+        width: 100%;
+    }
+    .accordion {
+        width: 100%;
+    }
+    .top-banner > i {
+        max-width: 43px;
+        width: 43px;
+    }
+    .faq-top > h1 {
+        font-size: 40px;
+    }
+    .faq-top > form {
+        max-width: 100%;
+    }
+    .main-title {
+        font-size: 24px;
+    }
+    .log-reg-area {
+        padding: 20px;
+    }
+    .log-reg-area form .forgot-pwd,
+    .log-reg-area form .already-have {
+        text-align: left;
+        width: 100%;
+    }
+    .log-reg-area form .checkbox {
+        width: 100%;
+    }
+    .education {
+        padding-left: 0;
+    }
+    .education > li i {
+        margin-right: 5px;
+    }
+    #people-list figure {
+        width: 11%;
+    }
+    .mtr-btn {
+        padding: 5px 20px;
+    }
+    .sidebar .widget ul.recent-photos li {
+        margin-bottom: 3px;
+        width: 32.1%;
+    }
+    .peoples-mesg-box {
+        width: 72%;
+    }
+    .people-name > side-panel {
+        font-size: 12px;
+    }
+    .message-text-container form button {
+        right: 15px;
+    }
+    .photos > li {
+        border: 2px solid #fff;
+        float: left;
+        margin: 0;
+        min-width: 50%;
+        width: 50%;
+    }
+    .photos > li a {
+        overflow: unset;
+    }
+    .colla-apps {
+        margin-bottom: 0;
+    }
+    .timeline-info > ul li.admin-name {
+        left: -150px;
+        position: absolute;
+        top: -80px;
+    }
+    .timeline-info .admin-name > h5 {
+        color: #fff;
+        font-size: 22px;
+        text-shadow: 0 2px 0 #4a4a4a;
+    }
+    .comet-avatar {
+        max-width: 3.5%;
+        width: 3.5%;
+    }
+    .chat-box {
+        right: 0;
+        position: fixed;
+        bottom: 30px;
+    }
+    .page-infos > h5 {
+        font-size: 14px;
+    }
+    .timeline-info .admin-name > span {
+        color: #eee;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .post-meta .detail {
+        width: 61%;
+    }
+    .list-style > li {
+        width: 32.7%;
+    }
+    footer {
+        padding: 50px 0;
+    }
+    .vid-links {
+        margin-top: 20px;
+    }
+    .colla-apps > li {
+        width: 32.7%;
+    }
+    footer .row > div:nth-child(2) .widget,
+    footer .row > div:nth-child(3) .widget {
+        margin-top: 50px;
+    }
+    .inbox-panel-head > ul {
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+    .sidebar .widget .recent-photos a,
+    .sidebar .widget .recent-photos a img {
+        width: 100%;
+        display: inline-block;
+    }
+    .feature-photo .container-fluid {
+        padding: 0 30px;
+    }
+    .timeline-info > ul li a {
+        font-size: 13px;
+        margin-right: 33px;
+    }
+    .row.widget-page {
+        padding: 0 30px;
+    }
+    .sidebar .widget {
+        margin: 10px;
+        width: 46.6%;
+    }
+    .pepl-info {
+        width: 91%;
+    }
+    .liked-pages > li {
+        width: 32.4%;
+        min-width: 32.4%;
+        max-width: 32.4%;
+    }
+    .feature-photo > figure {
+        margin-bottom: 0;
+    }
+    .faq-top form button {
+        font-size: 16px;
+    }
+    .d-flex .tab-content {
+        margin-top: 15px;
+    }
+    .cnt-title > span {
+        font-size: 18px;
+    }
+    .map-meta > h1 {
+        font-size: 30px;
+    }
+    .know-box {
+        margin-top: 50px;
+    }
+    .knowldeg-box {
+        margin-bottom: 10px;
+    }
+    .single-btn > li {
+        margin-right: 10px;
+    }
+    .cart-sec table tr td {
+        width: 240px;
+    }
+    .cart-sec table tr td .cart-meta {
+        overflow: unset;
+        padding-left: 0;
+    }
+    .cart-meta > span {
+        font-size: 12px;
+        line-height: 16px;
+        max-width: 100%;
+        width: 100%;
+    }
+    .delete-cart {
+        left: 0;
+        right: auto;
+        top: 0;
+    }
+    .cart-prices {
+        width: 100px;
+    }
+    .cart-list-quantity {
+        width: 100px;
+    }
+    .total-price {
+        width: 100px;
+    }
+    .cart-sec table tr td .cart-avatar {
+        width: 105px;
+    }
+    .proceed {
+        float: left;
+        margin-top: 60px;
+        width: 100%;
+    }
+    .total-area > ul {
+        width: 100%;
+    }
+    .purify .chosen-container {
+        width: 35% !important;
+    }
+    .baner-mockup {
+        margin-top: -30px;
+    }
+    .container .purify .chosen-container {
+        margin-bottom: 10px;
+        width: 100% !important;
+    }
+    .container .purify > span {
+        display: inline-block;
+        margin-bottom: 15px;
+        margin-right: 0;
+        width: 100%;
+    }
+    .detail-top .connect-with {
+        box-shadow: 0 0 20px #bababa;
+        margin-top: 20px;
+        padding: 15px;
+        position: unset;
+        width: 100%;
+    }
+    .social-connect > li {
+        margin: 8px 0;
+        width: 50%;
+    }
+    .social-connect > li:nth-last-child(1),
+    .social-connect > li:nth-last-child(2) {
+        margin-bottom: 20px;
+    }
+    .social-connect > li:nth-last-child(1),
+    .social-connect > li:nth-last-child(2) {
+        margin-bottom: 0;
+    }
+    .baner-inf > span {
+        font-size: 30px;
+        margin-bottom: 10px;
+        margin-right: 0;
+        line-height: 30px;
+    }
+    blockquote {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+    .detail-meta > h2 {
+        font-size: 23px;
+    }
+    .admin-postmeta > h4 {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+    .admin-postmeta > span {
+        display: inline-block;
+        font-size: 12px;
+        margin-left: 0;
+        width: 100%;
+    }
+    .admin-postmeta > p {
+        font-size: 14px;
+    }
+    .site-admin {
+        padding: 20px;
+    }
+    .gap.ext-bottom {
+        padding-bottom: 60px;
+    }
+    .is-helpful > em {
+        float: left;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .option-set.icon-style > li {
+        padding: 0 16px;
+    }
+    .price-table > span {
+        font-size: 22px;
+    }
+    .price-table > h3 {
+        font-size: 20px;
+    }
+    .price-table > span i {
+        font-size: 15px;
+    }
+    .job-detail > ul li span{width: 94%;}
+}
+
+@media screen and (max-width: 480px) {
+    .user-avatar {
+        width: 30%;
+    }
+    .header-inner > h2 {
+        font-size: 16px;
+        padding-left: 0;
+    }
+    nav.breadcrumb {
+        padding-right: 0;
+    }
+    .pepl-info {
+        padding-left: 10px;
+        width: 87%;
+    }
+    a.add-butn {
+        font-size: 11.5px;
+    }
+    .notifi-meta {
+        width: 77%;
+    }
+    .notification-box > ul li > i.del {
+        width: 100%;
+    }
+    #people-list figure {
+        width: 15%;
+    }
+    .vid-links {
+        margin-top: 30px;
+    }
+    .sidebar .widget ul.recent-photos li {
+        width: 24.2%;
+        margin-bottom: 16px;
+    }
+    .peoples,
+    .peoples-mesg-box {
+        padding-left: 0;
+        width: 100%;
+    }
+    .peoples {
+        margin-bottom: 40px;
+    }
+    .peoples-mesg-box {
+        background: #fff none repeat scroll 0 0;
+        padding: 20px;
+    }
+    .message-text-container form button {
+        right: 15px;
+    }
+    .friend-logo > span::before,
+    .friend-logo > span::after {
+        top: -15px;
+    }
+    .friend-logo > span {
+        font-size: 140px;
+    }
+    .we-comet > li ul {
+        margin-left: 0;
+    }
+    .comet-avatar {
+        max-width: 5.3%;
+        width: 5.3%;
+    }
+    .timeline-info > ul li.admin-name {
+        left: 190px;
+        position: absolute;
+        top: -95px;
+    }
+    .timeline-info .admin-name > h5 {
+        color: #424242;
+        text-shadow: none;
+    }
+    .liked-pages > li {
+        max-width: 48.4%;
+        min-width: 48.4%;
+        width: 48.4%;
+    }
+    .user-avatar {
+        border: 4px solid #dfdfdf;
+        margin-bottom: 10px;
+        width: 45%;
+    }
+    .add-btn {
+        top: 70px;
+        right: 30px;
+    }
+    .user-avatar {
+        float: left;
+        margin-top: 15px;
+        width: 35%;
+        margin-bottom: 12px;
+    }
+    footer .widget-title h4::before {
+        width: 10%;
+    }
+    .timeline-info .admin-name > span {
+        color: #333;
+        display: block;
+        line-height: 20px;
+        position: unset;
+    }
+    .list-style > li {
+        width: 49%;
+    }
+    .post-meta .detail {
+        width: 48%;
+    }
+    .post-meta .detail > span {
+        display: inline-block;
+        font-size: 18px;
+        width: 100%;
+    }
+    .sidebar .widget {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        width: 100%;
+    }
+    footer .row > div:last-child .widget {
+        margin-bottom: 0;
+    }
+    .advertisment-box,
+    .advertisment-box img {
+        width: 100%;
+    }
+    .we-video-info > ul li span {
+        font-size: 14px;
+    }
+    .we-video-info > ul li span ins {
+        font-size: 10px;
+    }
+    .timeline-info > ul li a {
+        margin-right: 17px;
+        margin-bottom: 8px;
+    }
+    .feature-photo .container-fluid {
+        padding: 0 15px;
+    }
+    .flaged {
+        border: 1px solid #e1e8ed;
+        padding-bottom: 20px;
+    }
+    .inbox-navigation {
+        padding-bottom: 0;
+    }
+    .add-btn > span {
+        font-size: 12px;
+    }
+    .inbox-panel-head > ul {
+        display: inline-block;
+        float: none;
+        margin-right: 0;
+        margin-top: 10px;
+        vertical-align: middle;
+        width: auto;
+    }
+    .timeline-info > ul {
+        padding-left: 0;
+        line-height: initial;
+    }
+    .knowldeg-box {
+        margin-bottom: 10px;
+    }
+    .know-box {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .timeline-info > ul li a::after {
+        border-bottom: 5px solid;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        bottom: -5px;
+    }
+    .page-eror .error-meta > h1 {
+        font-size: 38px;
+    }
+    .gap100 {
+        padding: 60px 0;
+    }
+    .single-btn > li {
+        margin-right: 5px;
+    }
+    .single-btn > li > a {
+        font-size: 12px;
+        padding: 7px 15px;
+    }
+    .section-heading > h2 {
+        font-size: 30px;
+    }
+    .top-banner > h1 {
+        font-size: 30px;
+    }
+    a.btn2 {
+        font-size: 11px;
+        height: 39px;
+        line-height: 37px;
+        width: 145px;
+    }
+    .full-postmeta > h4 {
+        font-size: 26px;
+    }
+    .tab-content .comment-text {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .comment-form-author,
+    .comment-form-email {
+        margin-right: 0;
+        width: 100%;
+    }
+    .aditional-inf .main-title {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .adition-info {
+        width: 100%;
+    }
+    .tab-content .comment-text .user-name {
+        margin-right: 9px;
+    }
+    .star-rating {
+        margin-left: 9px;
+    }
+    .tab-content .commentlist > li {
+        width: 100%;
+    }
+    .tab-content .comment-text > p {
+        font-size: 14px;
+    }
+    .comment-respond {
+        width: 100%;
+    }
+    .logout-meta > p {
+        max-width: 100%;
+    }
+    .purify > span {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 0;
+        width: 100%;
+    }
+    .purify .chosen-container {
+        width: 38.5% !important;
+    }
+    .carrer-title > h2 {
+        font-size: 30px;
+    }
+    .contct-info2 .contact-form form .form-group {
+        width: 100%;
+    }
+    .l-post > figure,
+    .l-post > figure img {
+        width: 100%;
+    }
+    .l-post-meta {
+        width: 100%;
+    }
+    figure.alignright,
+    .alignright {
+        float: left;
+        margin-left: 0;
+        width: 100%;
+    }
+    figure.alignright,
+    .alignright img {
+        width: 100%;
+    }
+    .detail-meta > ul {
+        padding-left: 10px;
+        margin-bottom: 0;
+    }
+    nav.breadcrumb {
+        width: 100%;
+    }
+    .about-winku > h4 {
+        font-size: 24px;
+    }
+    .news-letter > h2 {
+        font-size: 30px;
+    }
+    .news-letter > form input {
+        width: 310px;
+    }
+    .our-teambox figure img {
+        width: 100%;
+    }
+    .getquot-baner > span {
+        font-size: 21px;
+    }
+    .getquot-baner {
+        text-align: center;
+    }
+    .getquot-baner > a {
+        display: inline-block;
+        float: none;
+        margin-top: 20px;
+        padding: 10px 40px;
+    }
+    .news-letter > form input {
+        width: 100%;
+    }
+    .news-letter > form button {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 14px 20px;
+    }
+    figure.sign-author {
+        width: 35%;
+    }
+    .videobg-meta > h3 {
+        font-size: 26px;
+    }
+    .info {
+        padding-left: 0;
+    }
+    .info p {
+        font-size: 15px;
+        padding-top: 0;
+    }
+    .option-set.icon-style > li {
+        padding: 0 12px;
+    }
+    .portfolio-box > img {
+        width: 100%;
+    }
+    .section-heading > p {
+        max-width: 100%;
+    }
+    .forum-list table tbody tr td p {
+        width: 300px;
+    }
+    .forum-open .table tr td p {
+        width: 300px;
+    }
+    .date-n-reply > span {
+        width: 200px;
+    }
+    .forum-open .table tr td p {
+        width: 300px;
+    }
+    .date-n-reply > span {
+        width: 200px;
+    }
+    .forum-list table tbody tr td h6 {
+        width: 300px;
+    }
+    .employer-info h2 {
+        font-size: 26px;
+        margin-top: 10px;
+    }
+    .job-detail > h3 {
+        font-size: 22px;
+    }
+
+}
+
+@media screen and (max-width: 420px) and (min-width: 361px) {
+    .post-meta .detail {
+        width: 100%;
+    }
+    .linked-image {
+        margin-right: 0;
+        width: 100%;
+    }
+    .linked-image img {
+        width: 100%;
+    }
+    .we-video-info > ul {
+        padding-left: 0;
+    }
+    .timeline-info > ul li a {
+        margin-right: 20px;
+    }
+    .shop-filter-sec > span {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .shop-filter {
+        float: left;
+        width: 100%;
+    }
+    .colla-apps > li {
+        width: 32.6%;
+    }
+    .colla-apps > li {
+        width: 100%;
+    }
+    .slider-nav-gold {
+        float: left;
+        position: unset;
+        width: 100%;
+        margin-top: 20px;
+        transform: translate(0);
+    }
+    .slider-for-gold .slick-track > li img {
+        max-width: 100%;
+        width: 100%;
+        min-width: 100%;
+    }
+    .single-btn > li > a {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+    .logout-meta > h2 {
+        font-size: 28px;
+    }
+    .purify .chosen-container {
+        margin-bottom: 10px;
+        width: 100% !important;
+    }
+    .career-page .purify .chosen-container {
+        width: 100% !important;
+    }
+    .commenter-photo {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+    .commenter-meta {
+        display: inline-block;
+        margin-top: 20px;
+        max-width: 100%;
+        padding-left: 0;
+        width: 100%;
+    }
+    .comment-box {
+        padding: 20px;
+    }
+    .comments > li > ul {
+        padding-left: 0;
+    }
+    .help-assistant {
+        width: 100%;
+    }
+    .post-dated {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .assistant-name {
+        width: 50%;
+    }
+    .help-topic {
+        padding-left: 0;
+    }
+    nav.breadcrumb {
+        width: 100%;
+    }
+    .videobg-meta {
+        left: 20px;
+    }
+    .videobg-meta > h3 {
+        font-size: 24px;
+    }
+    .job-detail > ul li span {
+        width: 90%;
+    }
+    .sociaz-media > li {
+        margin: 0 0 4px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .user-avatar {
+        width: 40%;
+    }
+    .bio{
+    text-align: justify !important; width: 1100px; color: #fff; font-family: calibri; margin-left:5%;max-width: 310px;text-decoration: none;outline: none;
+}
+    #people-list figure {
+        width: 21.4%;
+    }
+    .sidebar .widget ul.recent-photos li {
+        margin-bottom: 10px;
+        width: 32.2%;
+    }
+    .message-text-container form button {
+        right: 5px;
+    }
+    .peoples-mesg-box {
+        padding: 10px;
+    }
+    .coment-head > h5 {
+        white-space: nowrap;
+        max-width: 45%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .we-reply {
+        vertical-align: super;
+    }
+    .coment-head > span {
+        vertical-align: top;
+    }
+    .timeline-info > ul li.admin-name {
+        left: 153px;
+        margin-right: 0;
+        position: absolute;
+        top: -100px;
+    }
+    .timeline-info > ul li {
+        margin-right: 0;
+    }
+    .feature-photo .container-fluid {
+        padding: 0 15px;
+    }
+    .timeline-info .admin-name > h5 {
+        color: #424242;
+        text-shadow: none;
+    }
+    .comet-avatar {
+        max-width: 7.3%;
+        width: 7.3%;
+    }
+    .liked-pages > li {
+        max-width: 48.2%;
+        min-width: 48.2%;
+        width: 48.2%;
+    }
+    .page-infos > h5 {
+        font-size: 13px;
+    }
+    .add-btn {
+        top: 69px;
+        right: 20px;
+    }
+    .linked-image > a {
+        display: inline-block;
+        width: 100%;
+    }
+    .linked-image > a img {
+        width: 100%;
+    }
+    .align-left {
+        margin-right: 0;
+        width: 100%;
+    }
+    .post-meta .detail {
+        width: 100%;
+    }
+    .we-video-info > ul {
+        padding-left: 5px;
+    }
+    .editing-interest form ol > li {
+        width: 49%;
+    }
+    .colla-apps > li {
+        width: 100%;
+    }
+    .top-banner {
+        padding-left: 0;
+    }
+    .frnds .nav-tabs .nav-item {
+        margin-right: 28px;
+    }
+    .pepl-info > em {
+        float: right;
+        margin-left: 0px;
+        vertical-align: sub;
+        font-size: 10px;
+    }
+    a.add-butn {
+        font-size: 10px;
+        padding: 5px 6px;
+    }
+    .pepl-info > h4 {
+        width: auto;
+    }
+    .pepl-info {
+        width: 82%;
+    }
+    #frends a.add-butn.more-action {
+        right: 65px;
+    }
+    .frnds .nav-tabs .nav-item > span {
+        font-size: 11px;
+    }
+    .frnds .nav-tabs .nav-item {
+        font-size: 14px;
+    }
+    #frends a.add-butn.more-action,
+    a.add-butn.more-action {
+        position: unset;
+    }
+    nav.breadcrumb {
+        width: 47%;
+    }
+    .add_to_wishlist {
+        margin-left: 0;
+    }
+    .single-btn > li {
+        margin-right: 0;
+        width: 100%;
+    }
+    .single-btn > li > a {
+        margin-bottom: 10px;
+    }
+    .nav.nav-tabs.single-btn {
+        padding-bottom: 0;
+    }
+    .purify .chosen-container {
+        margin-bottom: 10px;
+        width: 100% !important;
+    }
+    .career-page .purify .chosen-container {
+        width: 100% !important;
+    }
+    .more-branches {
+        padding: 30px 20px 20px;
+    }
+    .l-post .l-post-meta > h4 {
+        font-size: 18px;
+    }
+    .tags > a {
+        font-size: 13px;
+    }
+    .commenter-photo {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+    .commenter-meta {
+        display: inline-block;
+        margin-top: 20px;
+        max-width: 100%;
+        padding-left: 0;
+        width: 100%;
+    }
+    .comment-box {
+        padding: 20px;
+    }
+    .comments > li > ul {
+        padding-left: 0;
+    }
+    .help-topic {
+        padding-left: 0;
+    }
+    .help-assistant {
+        width: 100%;
+    }
+    .assistant-name {
+        width: 50%;
+    }
+    .post-dated {
+        width: 100%;
+    }
+    .is-helpful {
+        margin-top: 30px;
+    }
+    nav.breadcrumb {
+        width: 100%;
+    }
+    .getquot-baner {
+        padding: 35px 25px;
+    }
+    .videobg-meta > h3 {
+        font-size: 23px;
+    }
+    .videobg-meta {
+        left: 20px;
+    }
+    .job-detail > ul li span {
+        width: 90%;
+    }
+    .sociaz-media > li {
+        margin: 0 0 4px;
+    }
+    .employer-info > ul li > i {
+        display: inline-block;
+        width: 100%;
+    }
+    .employer-info > ul li {
+        margin-bottom: 15px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .user-avatar {
+        width: 40%;
+    }
+    #people-list figure {
+        width: 20%;
+    }
+    .sidebar .widget ul.recent-photos li {
+        width: 32.1%;
+        margin-bottom: 4px;
+    }
+    .friend-logo > span {
+        font-size: 170px;
+    }
+    .frnds .nav-tabs .nav-item {
+        font-size: 14px;
+        margin-right: 15px;
+    }
+    .timeline-info > ul li.admin-name {
+        left: 128px;
+        top: -95px;
+    }
+    .add-btn {
+        right: 6px;
+        top: 57px;
+    }
+    .feature-photo > .edit-phto {
+        top: 10px;
+    }
+    .timeline-info .admin-name > span {
+        color: #333;
+    }
+    .timeline-info .admin-name > h5 {
+        color: #424242;
+        font-size: 20px;
+    }
+    .comet-avatar {
+        max-width: 10%;
+        width: 10%;
+    }
+    .liked-pages > li {
+        max-width: 48%;
+        min-width: 48%;
+        width: 48%;
+    }
+    .nearby-contct > li {
+        padding: 10px;
+    }
+    .pepl-info {
+        width: 81%;
+    }
+    .pepl-info > h4 {
+        width: auto;
+    }
+    .we-video-info > ul li.social-media {
+        position: absolute;
+        right: 20px;
+        top: -41px;
+    }
+    .pepl-info {
+        width: 80%;
+    }
+    .delivery-guide {
+        margin-bottom: 15px;
+    }
+    .add_to_wishlist {
+        margin-bottom: 14px;
+    }
+    nav.breadcrumb {
+        width: 100%;
+    }
+    .apply-bttons > a{font-size: 13px; padding: 8px 14px;}
+
+}

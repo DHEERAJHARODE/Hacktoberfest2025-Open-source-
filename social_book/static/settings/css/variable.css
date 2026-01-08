@@ -1,0 +1,39 @@
+/*------------- Variable ------------*/
+:root {
+  --iq-title-text: #3f414d;
+  --iq-body-text: #777D74;
+  --iq-primary: #50b5ff;
+  --iq-secondary: #a09e9e;
+  --iq-success: #49f0d3;
+  --iq-warning: #ffba68;
+  --iq-danger: #ff9b8a;
+  --iq-info: #d592ff;
+  --iq-dark: #3f414d;
+  --iq-light: #fafafb;
+  --iq-white: #ffffff;
+  --iq-black: #000000;
+  --iq-light-primary: #f5fbff;
+  --iq-light-secondary: #f1f2f1;
+  --iq-light-success: #eefff2;
+  --iq-light-danger: #fff5f4;
+  --iq-light-warning: #fffcf3;
+  --iq-light-info: #eee6f5;
+  --iq-light-dark: #f0efef;
+  --iq-primary-hover: #2aa3fb;
+  --iq-border-light: #f1f1f1;
+  --iq-dark-primary: #29324f;
+  --iq-dark-secondary: rgba(160,158,158,0.2);
+  --iq-dark-success: rgba(73,240,211,0.2);
+  --iq-dark-danger: rgba(255,155,138,0.2);
+  --iq-dark-warning: rgba(255,186,104,0.2);
+  --iq-dark-info: rgba(213,146,255,0.2);
+  --iq-primary-hover: #2aa3fb;
+  --iq-border-light: #f1f1f1;
+  --iq-dark-bg: #242C39;
+  --iq-dark-box: #242C39;
+  --iq-dark-body-text: #48dbfb;
+  --iq-dark-title-text: #fff;
+  --iq-border-dark: #252e4b;
+}
+
+

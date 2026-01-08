@@ -1,0 +1,182 @@
+/*=========================
+	FONT COLOR
+=========================*/
+.product-carousel .owl-nav .owl-prev::before, 
+.product-carousel .owl-nav .owl-next::before,
+.product-caro .owl-prev:hover:before, 
+.product-caro .owl-next:hover:before,
+.log-reg-area form .forgot-pwd,
+.log-reg-area form .already-have,
+.log-reg-area > p a,
+.top-area > ul > li > a > span,
+.timeline-info > ul li a.active,
+.timeline-info > ul li a:hover,
+.dropdowns > a.more-mesg,
+.activity-meta > h6 a,
+.activity-meta > span a:hover,
+.friend-name > ins,
+.description > p a,
+.we-reply,
+.sidebar .widget li:hover > a, .sidebar .widget li:hover > i,
+.friend-meta > a,
+.user-setting > a:hover,
+.we-comet li a.showmore,
+.twiter-feed > li p a,
+.tutor-links > li i,
+.tutor-links > li:hover,
+.pepl-info > span,
+.page-meta > a,
+.frnds .nav-tabs .nav-item a.active,
+.f-title i,
+#work > div a,
+.basics > li i,
+.education > li i,
+.groups > span i,
+a.forgot-pwd,
+.friend-meta > h4 a:hover,
+.x_title > h2,
+.post-meta .detail > span,
+.add-btn > a:hover,
+.top-area > ul.main-menu > li > ul li a:hover,
+.dropdowns.active > a i,
+.user-setting > a i,
+.form-group input.form-file ~ .control-label, 
+.form-group input.has-value ~ .control-label, 
+.form-group input:focus ~ .control-label, 
+.form-group input:valid ~ .control-label, 
+.form-group select ~ .control-label, 
+.form-group textarea.form-file ~ .control-label, 
+.form-group textarea.has-value ~ .control-label, 
+.form-group textarea:focus ~ .control-label, 
+.form-group textarea:valid ~ .control-label,
+.flaged > h3,
+.invition .friend-meta a.invite:hover,
+.more-optns > ul li:hover,
+.post-title > h4 a:hover,
+.post-title .p-date a:hover,
+.l-post .l-post-meta > h4 a:hover,
+.read:hover,
+blockquote,
+.tags > a:hover,
+.comment-titles > span,
+.help-list > ul li a:hover i,
+.carrer-title > h2 > span,
+.carrer-title > span a,
+.open-position > h4 a:hover,
+.option-set.icon-style > li > a.selected,
+.category-box > i,
+.getquot-baner > a,
+.branches-box > ul li i,
+.help-topic-result > h2 a:hover,
+.product-name > h5 a:hover,
+.full-postmeta .shopnow,
+.prices.style2 ins span,
+.single-btn > li > a.active,
+.total-box > ul > li.final-total,
+.logout-meta > p a,
+.forum-list table tbody tr td i,
+.forum-list table tbody tr td a,
+.widget ul.recent-topics > li > i,
+.date-n-reply > a,
+.topic-data > span,
+.help-list > ul li a:hover,
+.employer-info h2,
+.job-detail > ul li i,
+.company-intro > a
+{
+	color: orange;	
+}
+svg{
+stroke: #fff;
+}
+path.icon{
+	fill: #fff;
+}
+
+
+/*=========================
+	BACKGROUND COLOR
+=========================*/
+#nprogress .bar,
+.timeline-info > ul li a::before,
+.add-btn > a,
+.activitiez > li::before,
+form button,
+.colla-apps > li a:hover,
+a.underline:before,
+.setting-row input:checked + label,
+.user-avatar:hover .edit-phto,
+.error-meta > a,
+.color-bg,
+.add-butn,
+.nav.nav-tabs.likes-btn > li a.active,
+a.dislike-btn,
+.drop > a:hover,
+.btn-view.btn-load-more:hover,
+.accordion .card h5 button[aria-expanded="true"],
+.chat-head,
+.f-page > figure em,
+.inbox-panel-head > ul > li > a,
+.nav-tabs--left .nav-link.active,
+.nav-tabs--left .nav-link.active:hover,
+footer .widget-title h4::before,
+#topcontrol,
+.sidebar .widget-title::before,
+.f-title::before,
+.g-post-classic > figure > i::after,
+.purify > a,
+.help-list > a:hover,
+.open-position::before,
+.info > a,
+.category-box:hover, .category-box.selected,
+a.main-btn,
+.section-heading::before,
+.getquot-baner,
+.more-branches > h4::before,
+.is-helpful > a,
+.cart-optionz > li > a:hover,
+.paginationz > li a:hover,
+.paginationz > li a.active,
+.shopping-cart,
+a.btn2:hover,
+.form-submit > input[type="submit"],
+button.submit-checkout,
+.delete-cart:hover,
+.proceed .button,
+.amount-area .update-cart,
+a.addnewforum,
+.apply-bttons > a
+{
+	background: orange;
+}
+
+
+
+
+/*=========================
+	BORDER COLOR
+=========================*/
+.topbar .form-search input:focus,
+.add-btn > a:hover,
+.edit-phto:hover,
+.colla-apps > li a:hover,
+.user-avatar:hover .edit-phto,
+.top-area > ul.main-menu > li ul,
+.g-post-classic:hover > figure > i,
+.help-list > a:hover,
+a.btn2:hover,
+.single-btn > li > a.active
+{
+	border-color: orange;	
+}
+
+#nprogress .spinner-icon{
+	border-left-color: orange;
+}
+#nprogress .spinner-icon
+{
+	border-top-color: orange;		
+}
+.timeline-info > ul li a:after{
+	border-bottom-color: orange;
+}
