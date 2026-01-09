@@ -29,11 +29,11 @@ def choice_result(human_choice, computer_choice):
         print("Tie")
         
     elif (human_choice_number - computer_choice_number) % 3 == 1:
-        print("Computer wins!")
+        print("The computer wins!")
         COMPUTER_SCORE += 1
         
     else:
-        print("Human wins!")
+        print("The human wins!")
         HUMAN_SCORE += 1
 
 def rock():
