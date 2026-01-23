@@ -1,0 +1,73 @@
+*{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+label{
+    font-weight: bolder;
+    font-size: x-large;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 20px;
+}
+
+hr{
+    width: 50%;
+    border: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+
+.container{
+    border: 1px solid lightgray;
+    width: 700px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+}
+
+form input{
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 350px;
+    border-top: lightgray 1px solid;
+    border-bottom: lightgray 1px solid;
+    border-left: lightgray 1px solid;
+    border-right: lightgray 1px solid;
+}
+
+.btnSubmit{
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: blue;
+    color: white;
+    border-color: blue;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+}
+
+.goBack{
+    padding: 10px 20px;
+    margin-left: 615px;
+    margin-top: 60px;
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid blue;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 4px;
+    text-align: center;
+}
