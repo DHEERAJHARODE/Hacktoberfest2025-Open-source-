@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
-1. user enter a number
-2. divide in to 10 potions and store in an array;
+1. the user enters a number
+2. divide into 10 potions and store in an array;
 3. get the reverse array of it
 4. then compare the 2 int array number by number, if any of it in equal, break the loop
 */
