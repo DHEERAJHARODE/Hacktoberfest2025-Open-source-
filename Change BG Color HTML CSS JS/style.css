@@ -3,6 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+body{
+  background-color:yellow;
+}
 section{
   height:100vh;
   width: 100%;
