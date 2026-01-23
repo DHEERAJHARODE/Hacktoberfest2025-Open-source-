@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewportindexx" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>BG Color Generator</title>
+  <link rel="icon" href="img/icon.png">
   <link rel="stylesheet" href="./style.css">
+  <!-- For sweet alert 2 css -->
+  <link rel="stylesheet" href="sweetalert2.min.css">
+
 </head>
+
 <body>
-  <section>
-    <button>Change BG Color</button>
-    <h2></h2>
+  <button onclick="generateColor()">Change BG Color</button>
+  <section onclick="copy()">
+    <h2 id="colorCode"></h2>
   </section>
   <script src="./main.js"></script>
+  <!-- For Sweet alert 2 js-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script src="sweetalert2.min.js"></script>
+
 </body>
+
 </html>
