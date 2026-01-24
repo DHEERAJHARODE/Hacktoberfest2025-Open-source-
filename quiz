@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="style.css">
+<body>
+    <div class="container">
+        <div class="quiz-box hide">
+            <div class="top-section">
+                <div class="question-no"><h2>total number of question</h2></div>
+                <div class="timer"><h3></h3></div>
+            </div>
+            <div class="question" id="question">question comes here</div>
+            <div class="option-container">
+            </div>
+            <div class="next-ques-btn">
+                <button class="btn" type="button">next</button>
+            </div>
+        </div>
+        <div class="showscore"></div>
+        <div class="user">
+                <form class="form-area">
+                    <input type="text" class="input-area" placeholder="Enter Your Name..." required>
+                    <button type="button" class="btn start">start quiz</button>
+                </form>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
