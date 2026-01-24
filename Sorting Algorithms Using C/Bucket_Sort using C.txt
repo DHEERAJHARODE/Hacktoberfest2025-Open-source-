@@ -1,0 +1,73 @@
+# Bucket Sort in C
+
+## Overview
+
+**Bucket Sort** is a distribution sort that divides the input array into several "buckets." Each bucket is sorted individually, either using a different sorting algorithm or recursively applying the same bucket sort. This algorithm is particularly effective for uniformly distributed datasets.
+
+## Implementation
+
+Below is a simplified C implementation of the Bucket Sort algorithm.
+
+### C Code
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+#define BUCKET_SIZE 10 // Number of buckets
+
+// Function to sort an array using Bucket Sort
+void bucketSort(float arr[], int n) {
+    // Create buckets
+    float buckets[BUCKET_SIZE][n];
+    int bucketCounts[BUCKET_SIZE] = {0};
+
+    // Distribute elements into buckets
+    for (int i = 0; i < n; i++) {
+        int index = (int)(BUCKET_SIZE * arr[i]);
+        if (index >= BUCKET_SIZE) index = BUCKET_SIZE - 1; // Handle edge case
+        buckets[index][bucketCounts[index]++] = arr[i];
+    }
+
+    // Sort each bucket using insertion sort
+    for (int i = 0; i < BUCKET_SIZE; i++) {
+        for (int j = 1; j < bucketCounts[i]; j++) {
+            float temp = buckets[i][j];
+            int k = j - 1;
+            while (k >= 0 && buckets[i][k] > temp) {
+                buckets[i][k + 1] = buckets[i][k];
+                k--;
+            }
+            buckets[i][k + 1] = temp;
+        }
+    }
+
+    // Concatenate sorted buckets back into the original array
+    int index = 0;
+    for (int i = 0; i < BUCKET_SIZE; i++) {
+        for (int j = 0; j < bucketCounts[i]; j++) {
+            arr[index++] = buckets[i][j];
+        }
+    }
+}
+
+int main() {
+    float arr[] = {0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.32};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Unsorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%f ", arr[i]);
+    }
+    printf("\n");
+
+    bucketSort(arr, n);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%f ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
