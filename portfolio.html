@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #34495e;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 3px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .intro {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #ecf0f1;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .intro h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .intro p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .section {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+        .section h3 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #34495e;
+        }
+        .grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .grid-item {
+            background-color: #95a5a6;
+            width: 30%;
+            padding: 30px;
+            margin: 10px;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .grid-item:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #34495e;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .grid-item {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="intro" id="about">
+        <h2>Welcome to My World!</h2>
+        <p>I am a passionate developer, problem solver, and tech enthusiast. Here you can explore my journey, work, and interests.</p>
+    </section>
+
+    <section class="section" id="projects">
+        <h3>My Projects</h3>
+        <div class="grid">
+            <div class="grid-item">
+                <h4>Project One</h4>
+                <p>Responsive web design with advanced CSS techniques and animations.</p>
+            </div>
+            <div class="grid-item">
+                <h4>Project Two</h4>
+                <p>Full-stack web application with Node.js, MongoDB, and RESTful API integration.</p>
+            </div>
+            <div class="grid-item">
+                <h4>Project Three</h4>
+                <p>Automation scripts using Python, improving efficiency and reducing manual work.</p>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
