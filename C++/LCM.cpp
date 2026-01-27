@@ -1,4 +1,4 @@
-*
+/*
   Author Lakshay Goel
   Github profile: https://github.com/mrlakshaygoel
   Problem link: https://www.geeksforgeeks.org/program-to-find-lcm-of-two-numbers/

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "HelloWorls.C": "cpp"
+        "HelloWorls.C": "cpp",
+        "2D transformation.C": "cpp"
     }
 }
