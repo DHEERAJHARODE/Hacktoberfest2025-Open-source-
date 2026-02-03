@@ -1,27 +1,34 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-void insertion_sort(int a[],int n)
-{
-    int i,cur,j;
-    for(i=1; i<n;i++)
-    {
-        cur=a[i];
-        j=i-1;
-        while(j>=0 && a[j]>cur)
-        {
-            a[j+1]=a[j];
-            j--;
-        }
-        a[j+1]=cur;
-    }
-    cout<<"Sorted Element\n";
-    for(i=0;i<n;i++)
-    cout<<a[i]<<" ";
+void display(int *array, int size) {
+   for(int i = 0; i<size; i++)
+      cout << array[i] << " ";
+   cout << endl;
 }
-int main()
-{
-    int a[]={22,89,41,90,43,76,55};
-    int n = sizeof(a)/sizeof(a[0]);
-    insertion_sort(a,n);
-    return 0;
+void insertionSort(int *array, int size) {
+   int key, j;
+   for(int i = 1; i<size; i++) {
+      key = array[i];//take value
+      j = i;
+      while(j > 0 && array[j-1]>key) {
+         array[j] = array[j-1];
+         j--;
+      }
+      array[j] = key;   //insert in right place
+   }
+}
+int main() {
+   int n;
+   cout << "Enter the number of elements: ";
+   cin >> n;
+   int arr[n];    //create an array with given number of elements
+   cout << "Enter elements:" << endl;
+   for(int i = 0; i<n; i++) {
+      cin >> arr[i];
+   }
+   cout << "Array before Sorting: ";
+   display(arr, n);
+   insertionSort(arr, n);
+   cout << "Array after Sorting: ";
+   display(arr, n);
 }
