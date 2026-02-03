@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define nl "\n"
+#define ll long long int
+#define INF 1e9
+
+int par[6] = {0};
+
+int findPar(int x)
+{
+    if (par[x] == x)
+        return x;
+    return findPar(par[x]);
+}
+
+void merge(int x, int y)
+{
+    int px = findPar(x), py = findPar(y);
+    if (px != py)
+    {
+        if (x > y)
+            swap(x, y);
+        par[y] = x;
+    }
+}
+
+void solve()
+{
+    for (int i = 1; i <= 6; i++)
+    {
+        par[i] = i;
+    }
+
+    vector<pair<int, int>> edges = {{1, 2}, {2, 3}, {3, 4}, {4, 5}};
+    for (int i = 0; i < 4; i++)
+    {
+        merge(edges[i].first, edges[i].second);
+        for (int i = 1; i <= 5; i++)
+        {
+            cout << i << " -> " << par[i] << nl;
+        }
+        cout << "--------" << nl;
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int T = 1;
+    // cin >> T;
+    for (int t = 1; t <= T; t++)
+    {
+        // cout << "Case #" << t << ": ";
+        solve();
+    }
+}
