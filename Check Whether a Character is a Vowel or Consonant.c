@@ -13,8 +13,8 @@ int main() {
 
     // evaluates to 1 (true) if c is a vowel
     if (lowercase_vowel || uppercase_vowel)
-        printf("%c is a vowel.", c);
+        printf("%c is an vowel !!", c);
     else
-        printf("%c is a consonant.", c);
+        printf("%c is a consonant!!!", c);
     return 0;
 }
