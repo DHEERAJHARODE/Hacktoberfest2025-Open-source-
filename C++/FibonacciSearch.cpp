@@ -31,7 +31,7 @@ void FibonacciSearch(int *a, int start, int end, int *fab, int index, int item)
 	// If mid becomes start or end of the sub-array then element not found.
 	else if(mid == start || mid == end)
 	{
-		cout<<"\nElement not found";
+		cout<<"Element not found"<<endl;
 		return;
 	}
 	// According to the item value choose the partion to proceed further.
@@ -56,7 +56,7 @@ int main()
 	}
  
 	up:
-	cout<<"\nEnter the Element to be searched: ";
+	cout<<"Enter the Element to be searched: "<<endl;
 	cin>>n;
  
 	// Implement Fibonacci search.
