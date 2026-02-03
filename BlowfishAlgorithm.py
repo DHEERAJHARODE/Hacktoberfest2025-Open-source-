@@ -334,10 +334,10 @@ else:
     print("Invalid Input!!")
 
 data_encrypted = encrypt(encrypt_data)
-print("Encrypted data is: ",data_encrypted)
+print("Encrypted data: ",data_encrypted)
 print("Hex value :",hex(data_encrypted))
 data_decrypted = decrypt(data_encrypted)
-print("Data after decryption is : ",data_decrypted) 
+print("Data after decryption: ",data_decrypted) 
 
 
 
