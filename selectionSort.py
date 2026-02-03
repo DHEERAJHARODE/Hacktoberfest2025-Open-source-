@@ -14,10 +14,10 @@ def selectionSort(arr):
             if arr[i] > arr[j]:
                 # swap
                 arr[i], arr[j] = arr[j], arr[i]
-                swaps = swaps + 1
+                swaps+=1
 
-            j = j + 1
-        i = i + 1
+            j+=1
+        i+=1
         print(f"{arr}")
     print(f"Steps: {i} \t Swaps: {swaps}")
     return arr
