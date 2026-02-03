@@ -22,6 +22,7 @@ unsigned long long int lcm(int a,int b){
 int main()
 {
     unsigned long long int n1,n2;cin>>n1>>n2;
+  cout<<"LCM of the number is :"
     cout<<lcm(n1,n2);
     return 0;
 }
