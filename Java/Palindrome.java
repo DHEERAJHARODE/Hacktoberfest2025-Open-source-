@@ -1,3 +1,4 @@
+import java.util.*;
 public class Palindrome {
     public static boolean isPalindrome(int n) {
       int temp = n;
@@ -8,14 +9,18 @@ public class Palindrome {
         ans = ans*10+rem;
         n=n/10;
       }
-      if(ans==temp){
+      if(ans==temp)
         return true;
-      }
       return false;
     }
     public static void main(String[] args){
-        int N = 124321;
-        boolean res = isPalindrome(N);
-        System.out.print(res);
+        Scanner sc=new Scanner(System.in);
+        while(true){
+            System.out.println("Enter a number : ");
+            String N=sc.nextLine();
+            if(N.equals(""))
+                break;
+            System.out.println(N+" is a Palindrome no. : "+isPalindrome(Integer.parseInt(N)));
+        }
     }
 }
