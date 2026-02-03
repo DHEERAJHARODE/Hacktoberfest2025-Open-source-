@@ -1,5 +1,59 @@
 #include<bits/stdc++.h>  
 using namespace std; 
+#include <iostream>
+#include <vector>
+#include <string>
+
+
+// Function to find the common prefix of two strings
+std::string commonPrefix(const std::string& str1, const std::string& str2) {
+    std::string result;
+    int len1 = str1.length();
+    int len2 = str2.length();
+    int i = 0, j = 0;
+
+    while (i < len1 && j < len2) {
+        if (str1[i] != str2[j]) {
+            break;
+        }
+        result += str1[i];
+        i++;
+        j++;
+    }
+
+    return result;
+}
+
+// Function to find the longest common prefix among an array of strings
+std::string longestCommonPrefix(const std::vector<std::string>& strs) {
+    if (strs.empty()) {
+        return "";
+    }
+
+    std::string prefix = strs[0];
+
+    for (int i = 1; i < strs.size(); i++) {
+        prefix = commonPrefix(prefix, strs[i]);
+        if (prefix.empty()) {
+            break;
+        }
+    }
+
+    return prefix;
+}
+
+int main() {
+    std::vector<std::string> strings = {"flower", "flourish", "flour", "flop"};
+    std::string result = longestCommonPrefix(strings);
+
+    if (result.empty()) {
+        std::cout << "No common prefix found." << std::endl;
+    } else {
+        std::cout << "Longest common prefix: " << result << std::endl;
+    }
+
+    return 0;
+}
 
 //find length of longest common subsequence
 int lcs(string a,string b,int m,int n)  {   
