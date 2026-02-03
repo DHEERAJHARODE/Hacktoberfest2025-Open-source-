@@ -1,0 +1,33 @@
+def quickSort(head):
+
+    if not head or not head.next:
+        return head
+    pivot = head
+    smallhead = small = Node(-1)
+    largehead = large = Node(-1)
+    curr = head.next#because head is pivot
+    while curr:
+        if curr == pivot:
+            curr = curr.next
+        elif curr.data<pivot.data:
+            small.next = curr
+            curr = curr.next
+            small = small.next
+        else:
+            large.next = curr
+            curr = curr.next
+            large = large.next
+    small.next = None
+    large.next = None
+    small = quickSort(smallhead.next)
+    pivot.next = None#after sorting the half of linked list
+    large = quickSort(largehead.next)
+    temp = small
+    while temp and temp.next:
+        temp = temp.next
+    if temp:
+        temp.next =pivot#for more elements in linked list
+    else:
+        small = pivot#for less elements in the linked list
+    pivot.next = large#joining both the list
+    return small
