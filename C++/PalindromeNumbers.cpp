@@ -6,12 +6,12 @@ int main()
   cout<<"Enter the Number=";    
   cin>>n;    
  temp=n;    
- while(n>0)    
+ do   
 {    
  r=n%10;    
  sum=(sum*10)+r;    
  n=n/10;    
-}    
+} while(n>0) ;   
 if(temp==sum)    
 cout<<"Number is Palindrome.";    
 else    
