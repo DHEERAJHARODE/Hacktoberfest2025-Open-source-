@@ -30,6 +30,7 @@ public class ManualMethod {
       System.out.print(" " + array2[i]);
     }
 
+    
     //Creating a resulting array of the calculated length
     int[] result = new int[length];
     int position = 0;
@@ -45,7 +46,7 @@ public class ManualMethod {
       result[position] = element;
       position++;
     }
-
+    // Printing the result of merged two arrays.
     System.out.println("\nThe resulting array after merging two arrays is: ");
     System.out.println(Arrays.toString(result));
   }
