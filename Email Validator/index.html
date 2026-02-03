@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Email Validator📧</title>
+</head>
+<body>
+    <div>
+        <form id = "form" action="#">
+            <h3>Email Validator</h3>
+            <div class = "inputbox">
+            <input id = "input" name = "email" type = "text" placeholder="ENTER YOUR EMAIL" onkeydown="onValidation()">
+
+            </div>
+            <p id = "result"></p>
+        </form>
+    </div>
+    <script type = "text/javascript">
+        function onValidation(){
+            const result = document.getElementById('result')
+            const email = document.getElementById('input').value
+            const form = document.getElementById("form")
+            const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+            if(email.match(pattern)){
+                result.innerHTML = 'Email is valid!'
+                form.classList.add('valid')
+                form.classList.remove('invalid')
+            }
+            else {
+                result.innerHTML = 'Email is Invalid!'
+                form.classList.add('invalid')
+                form.classList.remove('valid')
+            }
+        }
+    </script>
+</body>
+</html>
