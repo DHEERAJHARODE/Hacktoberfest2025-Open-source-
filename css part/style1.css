@@ -25,7 +25,6 @@
     margin: 10px 0px 0px 40px;
 }
 button[type="button"] {
-    color: #fbfcfd;
     padding: 10px 25px;
     background: transparent;
     border: 1px solid #fff;
@@ -33,6 +32,43 @@ button[type="button"] {
     outline: none;
     cursor: pointer;
 }
+
+.btn {
+    color: #FFF;
+    transition: all 0.5s;
+    position: relative;
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+  
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.5s;
+    border: .5px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    transform: scale(1.3,1.5);
+  }
+  .btn:hover::after {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+
+
 .content {
     color: #fbfcfd;
     position: absolute;
