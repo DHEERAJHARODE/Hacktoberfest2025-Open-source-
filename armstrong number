@@ -1,0 +1,15 @@
+#armstrong number 
+num=input("enter the number")
+n=len(num);
+num=int(num)
+temp=int(num)
+arm=0
+for i in range (1,n+1):
+ rem=num%10
+ num=num//10
+ arm=arm+rem**n
+print(arm)
+if temp==arm:
+  print("it is armstrong number")
+else :
+  print("it is not a armstrong number")
