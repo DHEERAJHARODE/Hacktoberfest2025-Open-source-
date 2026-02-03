@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="background">
+    
+    <div class="calc">
+        <div class="output">
+            <input type="text" id="display">
+        </div>
+        <div class="row">
+            <button class="num" style="margin-right: 110px;" onclick="none()">AC</button>
+        <button class="num" style="margin-left: 110px;" onclick="buttonclick('/')">/</button>
+        </div>
+        <div class="row">
+            <button class="num" onclick="buttonclick(7)">7</button>
+            <button class="num" onclick="buttonclick(8)">8</button>
+            <button class="num" onclick="buttonclick(9)">9</button>
+            <button class="num" onclick="buttonclick('*')">x</button>
+        </div>
+        <div class="row">
+            <button class="num" onclick="buttonclick(4)">4</button>
+            <button class="num" onclick="buttonclick(5)">5</button>
+            <button class="num" onclick="buttonclick(6)">6</button>
+            <button class="num" onclick="buttonclick('-')">-</button>
+        </div>
+        <div class="row">
+            <button class="num" onclick="buttonclick(1)">1</button>
+            <button class="num" onclick="buttonclick(2)">2</button>
+            <button class="num" onclick="buttonclick(3)">3</button>
+            <button class="num" onclick="buttonclick('+')">+</button> 
+        </div>
+        <div class="row">
+            <button class="num" style="width: 175px;" onclick="buttonclick(0)">0</button>
+            <button class="num" onclick="buttonclick('.')">.</button>
+            <button class="num" onclick="equals()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function none(){
+            document.getElementById("display").value=" ";
+        }
+        function buttonclick(val){
+            document.getElementById("display").value+=val;
+        }
+        console.log("working")
+        function equals(){
+            var text=document.getElementById("display").value
+            var result=eval(text)
+            document.getElementById('display').value=result
+        }
+    </script>
+</body>
+</html>
