@@ -1,0 +1,38 @@
+# Develop a quiz application that asks the user #multiple-choice questions and
+# tracks their score. Utilize Python basics such #as lists, loops, and conditional
+# statements to create the application.
+
+questions = [
+    {
+        "question": "What is the capital of India?",
+        "options": ["a.Mumbai", "b.Delhi", "c.Kolkata", "d.Chennai"],
+        "correct_answer": "b",
+    },
+    {
+        "question": "Which of the following is a prime number?",
+        "options": ["a.15", "b.23", "c.21", "d.27"],
+        "correct_answer": "b",
+    },
+    {
+        "question": "Which of the following is not a fruit?",
+        "options": ["a.apple", "b.mango", "c.potato", "d.banana"],
+        "correct_answer": "c",
+    },
+]
+
+score = 0
+
+for i in questions:
+    print(i["question"])
+    print(i["options"])
+    user_input = str(input("Enter your answer : ")).lower()
+
+    for j in i["options"]:
+        if user_input == i["correct_answer"]:
+            print("Correct!\n")
+            score += 1
+            break
+    else:
+        print("Wrong answer")
+
+print("You scored ", score, " out of ", len(questions), ".")
