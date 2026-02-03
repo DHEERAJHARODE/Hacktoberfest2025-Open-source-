@@ -1,0 +1,39 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+a{
+	color:#0DABC7;
+}
+/* Main Page Start */
+#top-heading{
+	margin:20px;
+	text-align:center;
+}
+#sub-heading{
+	text-align:center;
+	
+}
+table, th, td {
+  border:solid 1px gray;
+  height:200px;
+}
+table{
+	border:6px outset gray;
+	margin-left:150px;
+	margin-right:150px;
+	margin-top:50px;
+}
+.set1{
+	padding:10px;
+}
+/* Main Page End */
+
+/* Blog Page start */
+#video1{
+	border:3px solid #0DABC7;
+	
+}
+
+/* Blog Page End */
