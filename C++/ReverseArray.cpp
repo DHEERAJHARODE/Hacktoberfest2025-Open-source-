@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 
-    int n;
+    int n,i,j;
     cout << ("Enter Size of Array ");
     cin >> n;
 
@@ -14,13 +14,25 @@ int main()
     {
         cin >> arr[i];
     }
+    
+    // reversing the Array
+    
+    i=0,j=n-1;
+    
+    while(i<j){
+      swap(arr[i],arr[j]);
+      i++;
+      j--;
+    }
+    
 
     cout << ("The Array After Reversing is ");
 
-    for (int j = n-1 ; j >= 0; j--)
-    {
-        cout << arr[j]<<" ";
-    }
+     
+     for(i=0;i<n;i++)
+     cout<<arr[i]<<" ";
+   
+   
 
     return 0;
 }
