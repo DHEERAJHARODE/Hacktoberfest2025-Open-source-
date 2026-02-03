@@ -1,37 +1,36 @@
-// C++ code to demonstrate star pattern
-#include <iostream>
+//   1
+//  121
+// 12321
+//1234321
+#include<iostream>
 using namespace std;
- 
-// Function to demonstrate printing pattern
-void pypart2(int n)
-{
-    int i = 0, j = 0, k = 0;
-    while (i < n) {
-       
-        // for spacing
-        while (k <= n - i - 2) {
-            cout << " ";
-            k++;
-        }
-        k = 0;
-       
-          // For Pattern printing
-        while (j < 2 * i - 1) {
-            cout << "*";
-            j++;
-        }
-        j = 0;
-        i++;
-        cout << endl;
-    }
-}
- 
-// Driver Code
 int main()
 {
-    int n = 5;
-   
-      // Function Call
-    pypart2(n);
-    return 0;
+ int n;
+ cin>>n;
+ int i = 1;
+ while(i<=n){
+    int space = n-i;
+    while(space){
+        cout<<" ";
+        space--;
+    }
+    int j=1;
+    int num = 1;
+    while(j<=i){
+        cout<<num;
+        num++;
+        j++;
+    }
+    int k = 1;
+    int num2 = i-1;
+    while(k<=i-1){
+        cout<<num2;
+        num2--;
+        k++;
+    }
+    cout<<endl;
+    i++;
+ }   
+ return 0;
 }
