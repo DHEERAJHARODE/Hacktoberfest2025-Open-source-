@@ -1,0 +1,170 @@
+<!-- This is a boiler plate for your portfolio website -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Your Name</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+  $("a").on('click', function(event) {
+
+    if (this.hash !== "") {
+      
+      event.preventDefault();
+
+      
+      var hash = this.hash;
+        
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+        </script>
+        
+        
+    
+    <style>
+    
+        *{
+                margin: 0px;
+                padding: 0px;
+                border: 0px;
+                background-color: rgb(0, 0, 0);
+        
+        }    
+            
+        a {
+            color: white;
+        }
+        
+        #changecolor {
+	
+            //background-color: #F26627;
+        }
+        
+        #colorme{
+            //background-color: #325D79;
+        }
+        
+        #colorabout{
+            //background-color: #9BD7D1;
+        }
+        
+        #finalcolor {
+	      //background-color: #F9A26C;
+        }
+        
+        #boxcolor {
+	       
+        }
+        
+        p {
+                color: white;
+                font-size: 20px;
+        }
+        
+        h1 {
+                color: white;
+        }
+        
+        #fontinc{
+                font-size: 40px;
+        }
+        
+        #fontincr{
+                font-size: 40px;
+        }
+        
+        
+    </style>
+    
+    <meta name="google-site-verification" content="yJ99sVwgiu8XSnb_pVBKpZhje2-DiCsYkTp8bBRhaG4" />
+    </head>
+<body class="w3-content" style="max-width:1300px">
+
+<!-- First Grid: Logo & About -->
+<div class="w3-row" id="myPage">
+  <div class="w3-half w3 w3-container w3-center" style="height:700px" id="colorme">
+    <div class="w3-padding-64">
+      <h1 style="color: #8508fa">Your Name</h1>
+    </div>
+    <div class="w3-padding-64" id="boxcolor">
+      <a href="#" class="w3-button w3-black w3-block w3-hover-white w3-padding-16" id="fontinc">Home</a>
+      <a href="#contact" class="w3-button w3-black w3-block w3-hover-white w3-padding-16" id="fontincr">Contact</a>
+    </div>
+  </div>
+  <div class="w3-half w3 w3-container" style="height:700px" id="colorabout">
+    <div class="w3-padding-64 w3-center">
+      <h1>About Me</h1>
+      <img src="profile.jpeg" class="w3-margin w3-circle" alt="Person" style="width:50%">
+      <div class="w3-left-align w3-padding-large">
+        <p>Point 1</p>
+        <p>Point 2</p>
+        <p>Point 3</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Second Grid: Swing By & Contact -->
+<div class="w3-row" id="contact">
+  <div class="w3-half w3 w3-container w3-center" style="height:700px" id="finalcolor">
+    <div class="w3-padding-64">
+      <h1>Experience</h1>
+    </div>
+    <div class="w3-padding-64" style="font-size: 30px">
+        <p>Point 1</p>
+
+    </div>
+  </div>
+  <div class="w3-half w3- w3-container" style="height:700px" id="changecolor">
+    <div class="w3-padding-64 w3-padding-large">
+      <h1>Contact/Follow me</h1>
+      <p class="w3-opacity">GET IN TOUCH</p>
+        <h3 style="color: #801336"><a href="mailto:#@gmail.com">##</a><h3>
+            <h3 style="color: #CC2A49">Twitter: <a href="#"> ## </a></h3>
+            <h3 style="color: #CC2A49">Instagram: <a href="#">##</a></h3>
+            <h3 style="color: #CC2A49">Github: <a href=""</a></h3>
+            <h3 style="color: #CC2A49">LinkedIn: <a href="">##</a></h3>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+    <p>Copyright # 2021 &copy;</p><br />
+    <a href="#" style="font-size:24px" class="fa" target="_blank">&#xf099;</a>
+    <a href="#" style="font-size:24px" class="fa" target="_blank">&#xf16d;</a>
+    <a href="#" style="font-size:24px" class="fa" target="_blank">&#xf0e1;</a>
+    <a href="#" style="font-size:24px" class="fa" target="_blank">&#xf09b;</a>  
+</footer>
+
+</body>
+</html>
