@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+    int data;
+    struct node* left;
+    struct node* right;
+} node;
+
+node* create_node(int data) {
+    node* temp = (node*)malloc(sizeof(node));
+    if (temp == NULL) {
+        printf("Memory Allocation failed\n");
+        exit(1);
+    }
+    temp->data = data;
+    temp->left = NULL;
+    temp->right = NULL;
+    return temp;
+}
+
+void create_node_left(node* root, int data) {
+    if (root->left == NULL)
+        root->left = create_node(data);
+    else
+        create_node_left(root->left, data);
+}
+
+void create_node_right(node* root, int data) {
+    if (root->right == NULL)
+        root->right = create_node(data);
+    else
+        create_node_right(root->right, data);
+}
+
+node* mirror(node* root) {
+    if (root == NULL) 
+        return NULL;
+    node* temp = root->left;
+    root->left = mirror(root->right);
+    root->right = mirror(temp);
+    return root;
+}
+
+void display(node* root) {
+    if (root == NULL) 
+        return;
+    display(root->left);
+    printf("%d ", root->data);
+    display(root->right);
+}
+
+int main() {
+    node* root = create_node(1);
+    create_node_left(root, 2);
+    create_node_left(root->left, 4);
+    create_node_right(root->left, 5);
+    create_node_right(root, 3);
+    create_node_left(root->right, 6);
+    create_node_right(root->right, 7);
+    
+    printf("Original tree: ");
+    display(root);
+    printf("\n");
+
+    root = mirror(root);
+    
+    printf("Mirrored tree: ");
+    display(root);
+    printf("\n");
+
+    return 0;
+}
