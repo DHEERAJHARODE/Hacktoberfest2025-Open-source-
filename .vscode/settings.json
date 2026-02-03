@@ -1,5 +1,6 @@
 {
-    "files.associations": {
-        "HelloWorls.C": "cpp"
-    }
+  "files.associations": {
+    "HelloWorls.C": "cpp"
+  },
+  "liveServer.settings.port": 5501
 }
