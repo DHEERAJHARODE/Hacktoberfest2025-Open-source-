@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "HelloWorls.C": "cpp"
+        "HelloWorls.C": "cpp",
+        "xstring": "cpp",
+        "vector": "cpp"
     }
 }
