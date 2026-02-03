@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void solve(vector<int> &arr,int target,int ind,vector<int> &temp,vector<vector<int>>&ans){
+        int n= arr.size();
+        // base case
+                if(target==0){
+                    ans.push_back(temp);
+                    return ;
+                }
+            
+            
+            for(int i = ind;i<n;i++){
+                if( i> ind && arr[i]==arr[i-1])
+                continue;
+                if(arr[i]>target)
+                break;
+
+                temp.push_back(arr[i]);
+                solve(arr,target-arr[i],i+1,temp,ans);
+                temp.pop_back();
+
+            }
+          
+
+
+        }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
+        int n = candidates.size();
+        int index=0;
+        vector<int> temp;
+        vector<vector<int>> ans;
+        
+        solve(candidates,target,index,temp,ans);
+        return ans;
+    }
+};
