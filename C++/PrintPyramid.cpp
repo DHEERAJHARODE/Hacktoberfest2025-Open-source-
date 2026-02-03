@@ -11,17 +11,17 @@ void pypart2(int n)
         // for spacing
         while (k <= n - i - 2) {
             cout << " ";
-            k++;
+            ++k;
         }
         k = 0;
        
           // For Pattern printing
         while (j < 2 * i - 1) {
             cout << "*";
-            j++;
+            ++j;
         }
         j = 0;
-        i++;
+        ++i;
         cout << endl;
     }
 }
