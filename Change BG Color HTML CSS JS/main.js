@@ -1,16 +1,15 @@
-const button = document.querySelector('button');
-const h2El = document.querySelector('h2');
-const bgEl = document.querySelector('section');
-// const hexColorEl = [1,2,3,4,5,6,7,8,9,'A','B','c','D','E','F'];
+const colors = ["blue", "red", "rgba(133,122,200)", "green"];
+const btn = document.getElementById("btn");
+const color = document.querySelector(".color");
 
-button.addEventListener('click', () => {
-  let color = '#';
-  color += Math.random().toString(16).slice(2, 8).toUpperCase();
-  // for(i=0; i<6; i++){
-  //   const number = Math.floor(Math.random()*hexColorEl.length);
-  //   color += hexColorEl[number];
-  // }
-  // console.log(color)
-  bgEl.style.backgroundColor = color;
-  h2El.innerText = color
+btn.addEventListener("click", function () {
+  const randomNumber = getRandomNumber();
+  // console.log(randomNumber);
+
+  document.body.style.backgroundColor = colors[randomNumber];
+  color.textContent = colors[randomNumber];
 });
+
+function getRandomNumber() {
+  return Math.floor(Math.random() * colors.length);
+}
