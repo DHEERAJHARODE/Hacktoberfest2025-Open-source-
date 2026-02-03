@@ -8,7 +8,7 @@ class Ball(t.Turtle):
         self.color("white")
         self.x = 10
         self.y = 10
-        self.move_speed = 0.1
+        self.move_speed = 0.15
 
 
 
