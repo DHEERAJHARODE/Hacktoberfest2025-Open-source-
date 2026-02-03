@@ -1,0 +1,88 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+    font-family: sans-serif;
+}
+
+body {
+    z-index: -1;
+    background-color: black;
+}
+
+#staticBackdrop {
+    background: transparent;
+}
+#staticBackdropLabel {
+    color: cornsilk;
+}
+
+#heading {
+    width: 100vw;
+    text-align: center;
+    margin: 1rem;
+    margin-left: 0;
+    background-color: rgb(119, 16, 204);
+    color: white;
+}
+
+.changePlayer {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.turn {
+    margin-right: 6px;
+    margin-left: 6px;
+    margin-top: 20px;
+    pointer-events: none;
+}
+
+.mainBox {
+    background-color: coral;
+    margin: auto;
+    margin-top: 50px;
+    height: 60vh;
+    width: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playingBox {
+    height: 57%;
+    width: 65.7%;
+    border: 1px solid rebeccapurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    top: -5%;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33.33%;
+    width: 33.33%;
+    border: 2px solid rebeccapurple;
+    text-align: center;
+    color: white;
+}
+
+.box span {
+    font-size: 100vh;
+}
+
+.win {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+    background-color: black;
+}
