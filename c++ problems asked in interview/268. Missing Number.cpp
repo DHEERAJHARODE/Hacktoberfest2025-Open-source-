@@ -23,11 +23,16 @@ public:
         int sum = 0 ;
         int n = nums.size();
         for(int i=0;i<n;i++){
-            sum = sum + nums[i];
+            sum += nums[i];
         }
         
         return ( n*(n+1)/2 - sum ); 
     }
 };
 
+Solution Approach:
+First we find sum of elements of the given array.
+Then, we can get the missing number by subtracting the sum of first n natural numbers from the calculated sum of the array.
+
 Time Complexity : O(n)
+Space Complexity : O(1)
