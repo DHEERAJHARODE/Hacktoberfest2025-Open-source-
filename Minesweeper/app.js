@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let bombCount = 20;
   let isGameOver = false;
   let flags = 0;
+  let mine = 0;
   const restart = document.getElementById("restart");
   let shuffledArray;
   // create board
