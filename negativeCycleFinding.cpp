@@ -1,3 +1,6 @@
+typedef long long ll;
+#include <bits/stdc++.h> 
+using namespace std;
 struct Edge {
     ll a, b, cost;
 };
