@@ -52,7 +52,7 @@ void heapify(int arr[], int n, int i)
  
 
 // main function to do heap sort
-void heapSort(int arr[], int n)
+void heapsort(int arr[], int n)
 {
     // Build heap (rearrange array)
     for (int i = n / 2 - 1; i >= 0; i--)
@@ -82,7 +82,7 @@ int main()
     int arr[] = { 12, 11, 13, 5, 6, 7 };
     int n = sizeof(arr) / sizeof(arr[0]);
  
-    heapSort(arr, n);
+    heapsort(arr, n);
  
     cout << "Sorted array is \n";
     printArray(arr, n);
