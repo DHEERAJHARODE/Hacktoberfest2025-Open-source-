@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    // Creating a vector of integers
+    std::vector<int> numbers;
+
+    // Adding elements to the vector
+    numbers.push_back(10);
+    numbers.push_back(20);
+    numbers.push_back(30);
+
+    // Accessing elements in the vector
+    std::cout << "First element: " << numbers[0] << std::endl;
+    std::cout << "Second element: " << numbers[1] << std::endl;
+    std::cout << "Third element: " << numbers[2] << std::endl;
+
+    // Modifying elements in the vector
+    numbers[1] = 50;
+
+    // Iterating over the vector using a for loop
+    std::cout << "Modified vector: ";
+    for (int i = 0; i < numbers.size(); i++) {
+        std::cout << numbers[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Clearing the vector
+    numbers.clear();
+
+    // Checking if the vector is empty
+    if (numbers.empty()) {
+        std::cout << "Vector is empty" << std::endl;
+    }
+
+    return 0;
+}
