@@ -1,0 +1,23 @@
+class Solution {
+    public String mostCommonWord(String p, String[] banned) {
+
+String s[]= p.replaceAll("[^a-zA-Z]"," ").toLowerCase().split("\\s+");     
+
+ ArrayList<String> a = new ArrayList<>( Arrays.asList(banned)); 
+
+
+HashMap<String,Integer>map=new HashMap<>();
+for(String w:s)
+{
+    if(!a.contains(w))
+    map.put(w,map.getOrDefault(w,0)+1);
+}
+
+PriorityQueue<Map.Entry<String,Integer>>pq=new PriorityQueue<>((d,b)->b.getValue()-d.getValue());
+pq.addAll(map.entrySet());
+return pq.poll().getKey();
+
+
+
+    }
+}
