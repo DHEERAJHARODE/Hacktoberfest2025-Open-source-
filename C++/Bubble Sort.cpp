@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 void swapping(int &a, int &b) {      //swap the content of a and b
    int temp;
