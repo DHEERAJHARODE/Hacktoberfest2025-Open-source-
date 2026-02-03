@@ -1,0 +1,27 @@
+#include<stdio.h>  
+
+int main()    
+{    
+
+int a, b, c;
+
+//Input 2 numbers
+printf (" Enter the first number ->");
+scanf ( "%d", &a);
+
+printf ("Enter second number ->");
+scanf ( "%d", &b);
+
+//Printing the numbers before swap
+printf ("Before swap, the numbers were a=%d and b=%d",a,b); 
+
+//Using a third variable for temporary storage    
+c = a;
+a = b;
+b = c;
+
+//Printing the numbers after swap
+printf("\nAfter swap, the numbers are a=%d and b=%d",a,b);  
+
+return 0;  
+}   
