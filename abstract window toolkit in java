@@ -1,0 +1,42 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SimpleAWTExample {
+    public static void main(String[] args) {
+        // Create the main frame
+        Frame frame = new Frame("AWT Example");
+
+        // Create a button
+        Button button = new Button("Click Me!");
+
+        // Create a label to display messages
+        Label label = new Label("Hello, AWT!");
+
+        // Create a layout manager (optional)
+        FlowLayout flowLayout = new FlowLayout();
+        frame.setLayout(flowLayout);
+
+        // Add the button and label to the frame
+        frame.add(button);
+        frame.add(label);
+
+        // Add an action listener to the button
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText("Button Clicked!");
+            }
+        });
+
+        // Set frame properties
+        frame.setSize(300, 100);
+        frame.setVisible(true);
+
+        // Handle window close event
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                System.exit(0);
+            }
+        });
+    }
+}
