@@ -1,0 +1,34 @@
+#Python program to hide the mouse cursor on the Terminal screen
+
+
+# Python program for the above approach 
+import curses 
+import time 
+
+# Initializing curses 
+stdscr = curses.initscr() 
+
+# Setting the cursor to visible by 
+# inserting 1 as argument 
+curses.curs_set(1) 
+
+# Delay of 2 seconds 
+time.sleep(2) 
+
+# Setting the cursor to invisible by 
+# inserting 0 as argument 
+curses.curs_set(0) 
+
+# Delay of 2 seconds 
+time.sleep(2) 
+
+# Setting the cursor to visible by 
+# inserting 1 as argument 
+curses.curs_set(1) 
+
+# Delay of 2 seconds 
+time.sleep(2) 
+
+# Restoring terminal to it's 
+# original state 
+curses.endwin() 
