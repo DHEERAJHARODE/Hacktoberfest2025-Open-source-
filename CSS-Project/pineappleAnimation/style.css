@@ -1,0 +1,210 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #fcf8bb;
+}
+.container{
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+.pineapple{
+    background-color: #ffaa00;
+    height: 180px;
+    width: 140px;
+    border-radius: 65px;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-image: repeating-linear-gradient(
+        135deg,
+        transparent 0,
+        transparent 40px,
+        #ff9700 40px,
+        #ff9700 52px
+    ),
+    repeating-linear-gradient(
+        45deg,
+        transparent 0,
+        transparent 40px,
+        #ff9700 40px,
+        #ff9700 52px
+    );
+    background-size: 200% 200%;
+    background-position: 0 17px;
+    animation: jump 0.5s infinite;
+}
+.pineapple:before,
+.pineapple:after{
+    position: absolute;
+    content:"";
+    height: 80px;
+    width: 32px;
+    background-color: #ffaa00;
+    top: 25px;
+    z-index: -1;
+    transform-origin: bottom;
+    border-radius: 25px;
+}
+.pineapple:before{
+    left:10px;
+    transform: rotate(-50deg);
+    animation: hand-l 0.5s infinite;
+}
+@keyframes hand-l{
+    50%{
+        transform: rotate(-42deg);
+    }
+}
+.pineapple:after{
+    right:10px;
+    transform: rotate(50deg);
+    animation: hand-r 0.5s infinite;
+}
+@keyframes hand-r{
+    50%{
+        transform: rotate(42deg);
+    }
+}
+.leaf{
+    background-color: #498725;
+    height:70px;
+    width: 70px;
+    border-radius: 70px 0;
+    transform: rotate(135deg);
+    position: absolute;
+    top: -65px;
+    z-index: -1;
+    margin: auto;
+    left: 0;
+    right: 0;
+    animation: leaves 0.5s infinite;
+}
+@keyframes leaves{
+    50%{
+        transform: rotate(135deg) translate(6px,-6px);
+    }
+}
+.leaf:before,
+.leaf:after{
+    position: absolute;
+    content: "";
+    background-color: #3f6b15;
+    height: 70px;
+    width: 70px;
+    border-radius: 70px 0;
+    transform-origin: right;
+    top: -5px;
+}
+.leaf:before{
+    transform: rotate(40deg);
+    right: 20px;
+    animation: leaf-right 0.5s infinite;
+}
+@keyframes leaf-right{
+    50%{
+      transform: rotate(32deg);
+    }
+}
+.leaf:after{
+    transform: rotate(-40deg);
+    left: 20px;
+    animation: leaf-left 0.5s infinite;
+}
+@keyframes leaf-left{
+    50%{
+      transform: rotate(-32deg);
+    }
+}
+.leg-left,
+.leg-right{
+    height: 80px;
+    width: 32px;
+    background-color: #ffaa00;
+    border-radius: 25px;
+    position: absolute;
+    top: 130px;
+    border-radius: 25px;
+    z-index: -1;
+}
+/* contributed by Dibwarjeet Bordolai https://github.com/git-dibwar */
+
+.leg-left{
+    left:22px;
+    animation: legs 0.6s infinite;
+}
+
+.leg-right{
+    right:22px;
+    animation: legs 0.6s 0.3s infinite;
+}
+
+@keyframes legs{
+    50%{
+        transform: translateY(-15px);
+    }
+}
+.eye-left,
+.eye-right{
+    background-color: #1e1e1e;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    position: absolute;
+    top: 70px;
+    animation: blink 1s infinite;
+}
+.eye-left{
+    left: 32px;
+}
+.eye-right{
+    right: 32px;
+}
+@keyframes blink{
+    20%{
+        transform: scaleY(0.3);
+    }
+    25%{
+        transform: scaleY(1);
+    }
+}
+.mouth{
+    height: 20px;
+    width: 35px;
+    background-color: #1e1e1e;
+    border-radius: 0 0 35px 35px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 105px;
+}
+/* contributed by Dibwarjeet Bordolai https://github.com/git-dibwar */
+@keyframes jump{
+    50%{
+        top: 95px;
+    }
+}
+.shadow{
+    height: 30px;
+    width: 160px;
+    background-color: rgba(30,30,30,0.05);
+    border-radius: 50%;
+    position: absolute;
+    top: 290px;
+    z-index: -2;
+    margin: auto;
+    left: 0;
+    right: 0;
+    animation: shadow 0.5s infinite;
+}
+@keyframes shadow{
+    50%{
+        transform: scaleX(0.85);
+    }
+}
