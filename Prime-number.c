@@ -10,6 +10,9 @@ int main() {
       if((number % loop) == 0) {
          prime = 0;
       }
+      else{
+         continue;
+      }
    }
 
    if (prime == 1)
