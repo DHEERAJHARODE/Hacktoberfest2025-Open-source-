@@ -1,26 +1,26 @@
-import random
+import random  
 import tkinter
 
-wts=open("settings.txt","r")
+wts=open("settings.txt","r")  
 global fs
 fs=int(wts.read())
 print(fs)
 wts.close()
 
-def boxer():
+def boxer():    #Defining Character "Boxer"
     global cclass
     cclass="Boxer"
     gameplay()
-def kickboxer():
+def kickboxer():  #Defining Character "Kickboxer"
     global cclass
     cclass="Muay Thai"
     gameplay()
-def wrestler():
+def wrestler():  #Defining Character "Wrestler"
     global cclass
     cclass="Street Fight"
     gameplay()
 
-def menug():
+def menug():  #Creating Main Menu Screen
     global menu
     menu=tkinter.Tk()
     menu.title("Fight Night")
@@ -29,7 +29,7 @@ def menug():
     
     print("Game initialised.\n")
 
-    def togglefullscreen():
+    def togglefullscreen():  #Enabling or Disabling Fullscreen Mode
         global fs
         if fs==1:
             fs-=1
@@ -50,7 +50,7 @@ def menug():
             wts.close()
 
 
-    title=tkinter.Label(menu, text="Simple Fighting Game", font=("Courier", 28, "bold"), pady=20,bg="Green", fg="white")
+    title=tkinter.Label(menu, text="Simple Fighting Game", font=("Courier", 28, "bold"), pady=20,bg="Green", fg="white")  #Applying Gui for main menu
     boxert=tkinter.Button(menu, text="Boxer", command=boxer, pady=20, width=100)
     kickboxert=tkinter.Button(menu, text="Muay Thai",command=kickboxer, pady=20, width=100)
     wrestlert=tkinter.Button(menu, text="Street Fighter",command=wrestler, pady=20, width=100)
@@ -75,7 +75,7 @@ def menug():
     fsy.pack()
     menu.mainloop()
 
-def gameplay():
+def gameplay():  #Creating GUI for Gameplay
     global menu
     menu.destroy()
     window=tkinter.Tk()
@@ -88,7 +88,7 @@ def gameplay():
         window.attributes("-fullscreen",True)
 
 
-    global basehp
+    global basehp  #Defining Character's Stats
     global health
     global cclass
     global tdmgp
@@ -124,7 +124,7 @@ def gameplay():
     global pwin
     pwin=0
 
-    def pwin():
+    def pwin():  #Defining Player wining conditions
         global ehealth
         if ehealth<=0:
             ehealthl.configure(text="Health: 0"+"/"+str(ebasehp))
@@ -133,7 +133,7 @@ def gameplay():
             pwin=1
             winner.configure(text="Player has won")
 
-    def ewin():
+    def ewin():  #Defining enemy wining conditions
         global health
         if health<=0:
             healthl.configure(text="Health: 0"+"/"+str(basehp))
@@ -142,7 +142,7 @@ def gameplay():
             pwin=1
             winner.configure(text="Enemy has won")
 
-    def echance():
+    def echance(): #Defining Chance of landing a hit of enemy
         global pwin
         global tdmg
         
@@ -186,7 +186,7 @@ def gameplay():
                     healthl.configure(text="Health: "+str(int(round(health)))+"/"+str(basehp))
                 enemymove.configure(text="Enemy used: Grapple(Damage dealt: "+(str(tdmg))+")")           
             tdmg=0
-    def punchp():
+    def punchp():  #Defining Chance of landing a punch of player
         global pwin
         if pwin!=1:
             global ehealth
@@ -205,7 +205,7 @@ def gameplay():
             ewin()
 
 
-    def kickp():
+    def kickp():  #Defining Chance of landing a kick of player
         global pwin
         if pwin!=1:
             global ehealth
@@ -223,7 +223,7 @@ def gameplay():
             echance()
             ewin()
 
-    def grapplep():
+    def grapplep():  #Defining Chance of successful grappling of player
         if pwin!=1:
             global ehealth
             global tdmgp
@@ -240,12 +240,12 @@ def gameplay():
             pwin()
             echance()
             ewin()
-    def restart():
+    def restart():  #Getting back to main menu
         print("\nNew game loaded\n")
         window.destroy()
         menug()
 		
-    player=tkinter.Label(window, text="Player", font=("Courier", 24, "bold"))
+    player=tkinter.Label(window, text="Player", font=("Courier", 24, "bold"))  #Applying GUI for Gameplay
     healthl=tkinter.Label(window, text=("Health: "+str(health)+"/"+str(basehp)), font=("Courier", 18))
     enemy=tkinter.Label(window, text="Enemy", font=("Courier", 24, "bold"))
     ehealthl=tkinter.Label(window, text=("Health: "+str(ehealth)+"/"+str(ebasehp)), font=("Courier", 18))
