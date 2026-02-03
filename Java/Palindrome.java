@@ -1,21 +1,24 @@
 public class Palindrome {
     public static boolean isPalindrome(int n) {
-      int temp = n;
-      int rem;
-      int ans = 0;
-      while(n>0){
-        rem = n%10;
-        ans = ans*10+rem;
-        n=n/10;
-      }
-      if(ans==temp){
-        return true;
-      }
-      return false;
+        if (n < 0) {
+            return false; // Negative numbers are not palindromes
+        }
+
+        int original = n;
+        int reversed = 0;
+
+        while (n > 0) {
+            int digit = n % 10;
+            reversed = reversed * 10 + digit;
+            n /= 10;
+        }
+
+        return original == reversed;
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         int N = 124321;
         boolean res = isPalindrome(N);
-        System.out.print(res);
+        System.out.println(res);
     }
 }
