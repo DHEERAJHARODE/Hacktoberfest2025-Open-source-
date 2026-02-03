@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+  
+
+void bucketSort(float arr[], int n)
+{
+      
+  
+    vector<float> bucket[n];
+  
+    for (int i = 0; i < n; i++) {
+       int val=n*arr[i];
+        bucket[val].push_back(arr[i]);
+    }
+    for (int i = 0; i < n; i++)
+        sort(bucket[i].begin(), bucket[i].end());
+  
+     int ind = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < bucket[i].size(); j++)
+            arr[ind++] = bucket[i][j];
+}
+  
+
+int main()
+{
+    float arr[]
+        = { 0.343, 0.565, 0.457, 0.7324, 0.665, 0.121 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bucketSort(arr, n);
+  
+    cout << "Sorted array is \n";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    return 0;
+}
