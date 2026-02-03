@@ -12,6 +12,8 @@ int main()
  sum=(sum*10)+r;    
  n=n/10;    
 }    
+  cout<<"Given number is "<<temp<<endl;
+  cout<<"Reversed number is "<<sum<<endl;
 if(temp==sum)    
 cout<<"Number is Palindrome.";    
 else    
