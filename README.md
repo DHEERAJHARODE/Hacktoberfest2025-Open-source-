@@ -65,7 +65,7 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
 ---
 
 ## 🎯Objectives
-**The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest 2022**
+**The Main Objectives of this Repositry is to help People for their Contribution in Hacktoberfest 2023**
 
 <!-- # :handshake: Our Contributors
 <a href="https://github.com/hctnm2/Beginner-Hacktoberfest/graphs/contributors">
