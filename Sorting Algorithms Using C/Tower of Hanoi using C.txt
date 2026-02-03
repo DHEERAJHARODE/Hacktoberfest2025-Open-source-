@@ -4,22 +4,24 @@ void towers(int, char, char, char);
  
 int main()
 {
-    int num;
+    int number;
  
-    printf("Enter the number of disks : ");
-    scanf("%d", &num);
+    printf("Enter the number of total disks : ");
+    scanf("%d", &number);
     printf("The sequence of moves involved in the Tower of Hanoi are :\n");
-    towers(num, 'A', 'C', 'B');
+    towers(number, 'A', 'C', 'B');
     return 0;
 }
-void towers(int num, char frompeg, char topeg, char auxpeg)
+void towers(int number, char start, char final, char middle)
 {
-    if (num == 1)
+    
+    if (number == 1)
     {
-        printf("\n Move disk 1 from peg %c to peg %c", frompeg, topeg);
+        printf("\n Move disk 1 from peg %c to peg %c", start, final);
         return;
     }
-    towers(num - 1, frompeg, auxpeg, topeg);
-    printf("\n Move disk %d from peg %c to peg %c", num, frompeg, topeg);
-    towers(num - 1, auxpeg, topeg, frompeg);
+ 
+    towers(number - 1, start, middle, final);
+    printf("\n Move disk %d from peg %c to peg %c", number, start, final);
+    towers(number - 1, middle, final, start);
 }
