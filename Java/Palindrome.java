@@ -1,21 +1,26 @@
-public class Palindrome {
-    public static boolean isPalindrome(int n) {
-      int temp = n;
-      int rem;
-      int ans = 0;
-      while(n>0){
-        rem = n%10;
-        ans = ans*10+rem;
-        n=n/10;
-      }
-      if(ans==temp){
-        return true;
-      }
-      return false;
-    }
-    public static void main(String[] args){
-        int N = 124321;
-        boolean res = isPalindrome(N);
-        System.out.print(res);
+import java.util.*;
+class Palindrome
+{
+    public static void main(String args[])
+    {
+        int a,b,c,rev=0;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter A Number-");
+        a=sc.nextInt();
+        b=a;
+        while(b>0)
+        {
+            c=b%10;
+            rev=rev*10+c;
+            b=b/10;
+        }
+        if(rev==a)
+        {
+            System.out.println("The Given Number "+a+" is a Palindrome Number.");
+        }
+        else
+        {
+            System.out.println("The Given Number "+a+" is not a Palindrome Number.");
+        }
     }
 }
