@@ -1,0 +1,26 @@
+<!-- JAVASCRIPT ARRAYS  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bands or Artists</title>
+    
+</head>
+<body>
+    <script>
+        let bands =["artists"];
+        let input = prompt("Enter your favorite band name");
+        if(input == bands)
+        {
+            document.write("That's one of my favorites,too");
+        }
+        else{
+            document.write("Sorry,not a favorite of mine");
+        }
+        console.log(bands);
+    </script>
+    
+</body>
+</html>
