@@ -1,85 +1,36 @@
 import requests
-import pandas as pd
-from bs4 import BeautifulSoup
+from datetime import datetime
 import os
-import shutil
-import urllib
-import schedule
-import time
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
-import datetime
+API_KEY=os.environ["API_KEY"]
+APP_ID=os.environ["APP_ID"]
 
-def job(searchString):
-    searchUrl = "https://www.google.com/search?q="+searchString+"&source=lnms&tbm=isch"
-    result = requests.get(searchUrl)
+headers={
+    "x-app-id":APP_ID,
+    "x-app-key":API_KEY,
+    "Content-Type": "application/json"
+    # "x-remote-user-id":0
+}
+parameters={
+    "query":input("what workout did you do today?"),
+    "gender":"male",
+    "weight_kg":"60.0",
+    "height_cm":"170.0",
+    "age":"19"
+}
+response=requests.post("https://trackapi.nutritionix.com/v2/natural/exercise",json=parameters,headers=headers)
+nutrition_data=response.json()
 
-# if successful parse the download into a BeautifulSoup object, which allows easy manipulation
-    if result.status_code == 200:
-        soup = BeautifulSoup(result.content, "html.parser")
-
-    div = soup.findAll('img',{'class':'yWs4tf'})
-
-    f= open("urls.txt","w+")
-    for i in div:
-        f.write(i['src']+'\n')
-    f.close()
-
-    with open('urls.txt') as f:
-        lines = [line.rstrip() for line in f]
-
-
-    os.mkdir('kaks')
-    for i,j in enumerate(lines):
-        jojo= urllib.request.urlretrieve(j,'img'+str(i)+'.jpg')
-        os.rename(jojo[0], "kaks/"+jojo[0])
-
-    shutil.make_archive('kaks', 'zip', 'kaks')
-
-
-def email(usermail,password,clientemail):
-
-    msg = MIMEMultipart()
-    filename='kaks.zip'
-    attachment  =open(filename,'rb')
-    part = MIMEBase('application','octet-stream')
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition',"attachment; filename= "+filename)
-    msg.attach(part)
-    text = msg.as_string()
-    server=smtplib.SMTP_SSL("smtp.gmail.com",465)
-
-    server.login(usermail,password)
-    server.sendmail(usermail,clientemail,text)
-    server.quit()
-
-def main_job(year,month,date,hour,minute,second,name,username,password,clientmail):
-    sendtime = datetime.datetime(year,month,date,hour,minute,second)
-    st = sendtime.timestamp()
-    t = time.time()
-    print(f"scheduled time:{year}-{month}-{date}-{hour}-{minute}-{second}")
-
-    x = time.sleep(st - t)
-    job(name)
-    time.sleep(15)
-    email(username,password,clientmail)
-    print("done")
-
-
-#main_job(year,month,date,hour,minute,second,name of the thing,your email id,your password,client's email id)
-
-main_job(2021,8,12,17,00,00,"cats","youremailid","password","clientemailid")
-
-
-
-"""if there is a gmail authentication erron..........
-
-
-https: // myaccount.google.com / lesssecureapps?pli = 1 & rapt = AEjHL4NoPGAIuu_It757bkDeFtPrGVtbKB9FnMFUVkkp4Nhhldhmqm4jR0jTujaRMutCqVPZwNRbpbgsddZCDTVmGjxp4Pe2jg
-
-........go here and allow less secure apps"""
+data={}
+for i in range(len(nutrition_data['exercises'])):
+    user_data={'sheet1':{
+        "date":datetime.now().strftime("%d/%m/%Y"),
+         "time":datetime.now().strftime("%X"),
+        "exercise":nutrition_data['exercises'][i]["user_input"],
+        "duration":nutrition_data['exercises'][i]["duration_min"],
+        "calories":nutrition_data['exercises'][i]["nf_calories"]
+    }}
+    data=user_data
+    response = requests.post("https://api.sheety.co/41003832fdd39c2d2858d727ff7f1cfd/workoutTracking/sheet1", json=data,auth=(os.environ["USER_NAME"], os.environ["PASSWORD"]))
+    # print(response.text)
+print(f"Your data is successfully saved in sheet 😍😍")
 
