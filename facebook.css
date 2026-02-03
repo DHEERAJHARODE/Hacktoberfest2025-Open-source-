@@ -1,0 +1,190 @@
+.header{
+    height: 85px;
+    width: 100%;
+    background-color: #3b5998;
+}
+.signin_email{
+    height: 20px;
+}
+.signin_pass{
+    height: 20px;
+}
+.logo_text{
+    font-size: 42px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Helvetica Neue, Helvetica,Arial,sans-serif;
+    margin-left: 150px;
+}
+.logo_text:hover{
+    color: white;
+}
+.logo{
+    width: 50%;
+    padding-top: 25px;
+    float: left;
+}
+.login{
+    width: 50%;
+    float: left;
+}
+.table{
+    padding-top: 10px;
+    padding-left: 140px;
+    float: left;
+}
+.button_login{
+    height: 20px;
+    font-size: 10px;
+    top: 0px;
+    color: white;
+    background-color: #29487d;
+    border: 0;
+}
+.second{
+    background: linear-gradient(white,#D3D8E8);
+    width: 100%;
+    height: 850px;
+    padding-left: 200px;
+    padding-top: 30px;
+}
+.picture{
+    width: 50%;
+    color: #29487d;
+    float: left;
+    margin-left: -50px;
+}
+.text{
+    font-weight: bold;
+    font-size: 25px;
+}
+.text_area{
+    width: 50%;
+    float: left;
+    padding-left: 90px;
+}
+.first_name{
+    float: left;
+    width: 120px;
+    font-size: medium;
+}
+.second_name{
+    float: left;
+    width: 120px;
+    font-size: medium;
+}
+.mob_no{
+    margin-top: 10px;
+    font-size: medium;
+}
+.pass{
+    margin-top: 10px;
+    font-size: medium;
+}
+text_one{
+    width: 100%;
+    float: left;
+}
+.text_two{
+    float: left;
+    width: 100%;
+}
+.text_three{
+    
+    float: left;
+    width: 100%;
+}
+.dob{
+    float: left;
+    padding-top: 30px;
+    width: 100%;
+}
+.birthday{
+    float: left;
+    font-size: large;
+    font-weight: bold;
+    color: gray;
+    width: 100%;
+}
+.tab{
+    padding: 0px;
+    margin-left: -15px;
+}
+.select{
+    max-width: 70px;
+}
+.dob_select{
+    float: left;
+    padding-top: 10px;
+    border-color: rgb(226, 226, 226);
+}
+.dob_month{
+    padding-top: 10px;
+    border-color: rgb(226, 226, 226);
+    margin-left: -20px;
+}
+.dob_year{
+    padding-top: 10px;
+    border-color: rgb(226, 226, 226);
+    margin-left: -15px;
+}
+.gender{
+    width: 100%;
+    float: left;
+}
+.text_gender{
+    font-size: large;
+    font-weight: bold;
+    float: left;
+    color: gray;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.male{
+    padding-right: 0px;
+}
+.female{
+    margin-left: -35px;
+}
+.custom{
+    margin-left: -20px;
+}
+.terms{
+    float: left; 
+    color: grey;
+    margin-top: 20px;
+    width: 100%;
+}
+#button{
+    float: left;
+    margin-top: 25px;
+    height: 35px;
+    width: 200px;
+    background-color: rgb(50, 105, 50);
+    color: white;
+    border: 0;
+    font-weight: bold;
+    border-radius: 5px;
+    text-shadow: 0.5px 0.5px black;
+    font-size: 17px;
+}
+.bottom_text{
+    float: left;
+    font-weight: bold;
+    color: grey;
+    margin-top: 35px;
+}
+.error {
+    color: #F00;
+  }
+  .checkboxRequiredMsg{
+    display: none;
+  }
+
+body{
+    margin: 0;
+    font-family: Helvetica Neue, Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
