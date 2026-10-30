@@ -7,7 +7,7 @@ package queue;
 
 /**
  *
- * @author Zohaib Hassan Soomro
+ * @author Zohaib sumit Hassan Soomro
  */
 public class ArrayQueue implements Queue {
 
